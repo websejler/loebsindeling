@@ -1,0 +1,11 @@
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\bin\Debug\loebsindeling.exe.config
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\bin\Debug\loebsindeling.exe
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\bin\Debug\loebsindeling.pdb
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.csproj.AssemblyReference.cache
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.csproj.SuggestedBindingRedirects.cache
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.Properties.Resources.resources
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.csproj.GenerateResource.cache
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.csproj.CoreCompileInputs.cache
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.exe
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.pdb
+C:\Users\JST\Source\Repos\websejler\loebsindeling\loebsindeling\obj\Debug\loebsindeling.Form1.resources

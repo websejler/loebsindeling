@@ -20,6 +20,9 @@ namespace loebsindeling
             saveFileDialog1.FileName = "NA";
         }
 
+        //openDataFileButton_Click
+        // function runs when "open data file" button is pressed.
+        // selects the path to the file from data shall be loaded.
         private void openDataFileButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog(this);
@@ -27,7 +30,9 @@ namespace loebsindeling
             Boat.loadBoatsFromFile(openFileDialog1.FileName);
             loadedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
         }
-
+        //sortButton_Click
+        // function runs when "sort butten is pressed
+        // sorts the list acording to the sorting algorithem specifides by "sortedBoatsTextBox"
         private void sortButton_Click(object sender, EventArgs e) {
             int i = sortingAlgorithmComboBox.SelectedIndex;
             if(i == -1) {
@@ -47,7 +52,8 @@ namespace loebsindeling
             
             
         }
-
+        //chooseExportPathButton_Click
+        // function runs when "choose export Path" butten is pressed
         private void chooseExportPathButton_Click(object sender, EventArgs e) {
             saveFileDialog1.Filter = "CSV File (.csv)|*.csv|All files (*.*)|*.*";
             saveFileDialog1.ShowDialog(this);
