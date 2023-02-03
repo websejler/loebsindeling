@@ -23,10 +23,33 @@ namespace loebsindeling
             openFileDialog1.ShowDialog(this);
             openDataFilePathTextBox.Text = openFileDialog1.FileName;
             Boat.loadBoatsFromFile(openFileDialog1.FileName);
-            loadedBoatsTextBox.Text = "";
-            foreach (Boat boat in Boat.boats) {
-                loadedBoatsTextBox.Text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.SejlNummer + "\r\n";
+            loadedBoatsTextBox.Text = Boat.boatsToString(Boat.boats);
+        }
+
+        private void sortButton_Click(object sender, EventArgs e) {
+            int i = sortingAlgorithmComboBox.SelectedIndex;
+            if(i == -1) {
+                sortedBoatsTextBox.Text = "Pleas select a sorting algorithm.";
+                return;
             }
+            
+            switch(sortingAlgorithmComboBox.Items[i].ToString().ToLower()) {
+                case "sv":
+                    Sorting.svSorting(Boat.boats);
+                    sortedBoatsTextBox.Text = Boat.boatsToString(Boat.boats);
+                    break;
+                default:
+                    sortedBoatsTextBox.Text = "Pleas select a sorting algorithm.";
+                    break;
+            }
+            
+            
+        }
+
+        private void chooseExportPathButton_Click(object sender, EventArgs e) {
+            saveFileDialog1.Filter = "CSV File (.csv)|*.csv|All files (*.*)|*.*";
+            saveFileDialog1.ShowDialog(this);
+            exportPathTextBox.Text = saveFileDialog1.FileName;
         }
     }
 }

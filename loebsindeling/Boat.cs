@@ -14,34 +14,42 @@ namespace loebsindeling
         private string baadNavn;
         private string nation;
         private int sejlNummer;
+        private double sv;
+
         public Boat(string data) {
             string newdata = "";
             bool inQuotation = false;
             for (int i = 0; i < data.Length; i++){
-               //if (data[i] == '"') inQuotation = !inQuotation;
+               if (data[i] == '"') inQuotation = !inQuotation;
 
                if (inQuotation) {
                     if (data[i] == ',') {
                         newdata += '.';
-                    } else {
-                        newdata += data[i];
+                    }else {
+                        if (data[i] != '"') newdata += data[i];
                     }
                 } else {
-                    newdata += data[i];
+                    if (data[i] != '"') newdata += data[i];
                 }
             }
             
             string[] dataArray = newdata.Split(',');
+            for(int i = 0; i < dataArray.Length; i++) {
+                dataArray[i] = dataArray[i].Replace('.', ',');
+            }
+
             Int32.TryParse(dataArray[0], out certifikat);
             baadNavn = dataArray[1];
             nation = dataArray[2];
             Int32.TryParse(dataArray[3], out sejlNummer);
+            Double.TryParse(dataArray[83], out sv);
         }
 
         public int Certifikat { get { return certifikat; } set { certifikat = value; } }
         public string BaadNavn { get { return baadNavn; } set { baadNavn = value; } }
         public string Nation { get { return nation; } set { nation = value; } }
         public int SejlNummer { get { return sejlNummer; } set { sejlNummer = value; } }
+        public double Sv { get { return sv;} set { sv = value; } }
 
         public static void loadBoatsFromFile(string path) {
             boats.Clear();
@@ -54,6 +62,14 @@ namespace loebsindeling
                 Boat boat = new Boat(line);
                 boats.Add(boat);
             }
+        }
+
+        public static string boatsToString(List<Boat> boats) {
+            string text = "";
+            foreach (Boat boat in Boat.boats) {
+                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Sv + "\r\n";
+            }
+            return text;
         }
     }
 }

@@ -31,12 +31,23 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openDataFileButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.openDataFilePathTextBox = new System.Windows.Forms.TextBox();
+            this.loadData = new System.Windows.Forms.TabPage();
             this.loadedBoatsTextBox = new System.Windows.Forms.TextBox();
+            this.openDataFilePathTextBox = new System.Windows.Forms.TextBox();
+            this.sortBoats = new System.Windows.Forms.TabPage();
+            this.sortedBoatsTextBox = new System.Windows.Forms.TextBox();
+            this.sortButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sortingAlgorithmComboBox = new System.Windows.Forms.ComboBox();
+            this.exportData = new System.Windows.Forms.TabPage();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.exportPathTextBox = new System.Windows.Forms.TextBox();
+            this.chooseExportPathButton = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.loadData.SuspendLayout();
+            this.sortBoats.SuspendLayout();
+            this.exportData.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -55,44 +66,27 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.loadData);
+            this.tabControl1.Controls.Add(this.sortBoats);
+            this.tabControl1.Controls.Add(this.exportData);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(796, 436);
+            this.tabControl1.Size = new System.Drawing.Size(796, 616);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // loadData
             // 
-            this.tabPage1.Controls.Add(this.loadedBoatsTextBox);
-            this.tabPage1.Controls.Add(this.openDataFilePathTextBox);
-            this.tabPage1.Controls.Add(this.openDataFileButton);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(788, 410);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(788, 410);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // openDataFilePathTextBox
-            // 
-            this.openDataFilePathTextBox.Enabled = false;
-            this.openDataFilePathTextBox.Location = new System.Drawing.Point(121, 6);
-            this.openDataFilePathTextBox.Name = "openDataFilePathTextBox";
-            this.openDataFilePathTextBox.Size = new System.Drawing.Size(647, 20);
-            this.openDataFilePathTextBox.TabIndex = 1;
+            this.loadData.Controls.Add(this.loadedBoatsTextBox);
+            this.loadData.Controls.Add(this.openDataFilePathTextBox);
+            this.loadData.Controls.Add(this.openDataFileButton);
+            this.loadData.Location = new System.Drawing.Point(4, 22);
+            this.loadData.Name = "loadData";
+            this.loadData.Padding = new System.Windows.Forms.Padding(3);
+            this.loadData.Size = new System.Drawing.Size(788, 590);
+            this.loadData.TabIndex = 0;
+            this.loadData.Text = "Load Data";
+            this.loadData.UseVisualStyleBackColor = true;
             // 
             // loadedBoatsTextBox
             // 
@@ -101,20 +95,125 @@
             this.loadedBoatsTextBox.Name = "loadedBoatsTextBox";
             this.loadedBoatsTextBox.ReadOnly = true;
             this.loadedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.loadedBoatsTextBox.Size = new System.Drawing.Size(718, 276);
+            this.loadedBoatsTextBox.Size = new System.Drawing.Size(718, 475);
             this.loadedBoatsTextBox.TabIndex = 2;
+            // 
+            // openDataFilePathTextBox
+            // 
+            this.openDataFilePathTextBox.Location = new System.Drawing.Point(121, 6);
+            this.openDataFilePathTextBox.Name = "openDataFilePathTextBox";
+            this.openDataFilePathTextBox.ReadOnly = true;
+            this.openDataFilePathTextBox.Size = new System.Drawing.Size(647, 20);
+            this.openDataFilePathTextBox.TabIndex = 1;
+            // 
+            // sortBoats
+            // 
+            this.sortBoats.Controls.Add(this.sortedBoatsTextBox);
+            this.sortBoats.Controls.Add(this.sortButton);
+            this.sortBoats.Controls.Add(this.label1);
+            this.sortBoats.Controls.Add(this.sortingAlgorithmComboBox);
+            this.sortBoats.Location = new System.Drawing.Point(4, 22);
+            this.sortBoats.Name = "sortBoats";
+            this.sortBoats.Padding = new System.Windows.Forms.Padding(3);
+            this.sortBoats.Size = new System.Drawing.Size(788, 590);
+            this.sortBoats.TabIndex = 1;
+            this.sortBoats.Text = "Sort Boats";
+            this.sortBoats.UseVisualStyleBackColor = true;
+            // 
+            // sortedBoatsTextBox
+            // 
+            this.sortedBoatsTextBox.Location = new System.Drawing.Point(14, 60);
+            this.sortedBoatsTextBox.Multiline = true;
+            this.sortedBoatsTextBox.Name = "sortedBoatsTextBox";
+            this.sortedBoatsTextBox.ReadOnly = true;
+            this.sortedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.sortedBoatsTextBox.Size = new System.Drawing.Size(764, 524);
+            this.sortedBoatsTextBox.TabIndex = 3;
+            // 
+            // sortButton
+            // 
+            this.sortButton.Location = new System.Drawing.Point(693, 7);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(85, 25);
+            this.sortButton.TabIndex = 2;
+            this.sortButton.Text = "Sort boats";
+            this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Sorting algorithm";
+            // 
+            // sortingAlgorithmComboBox
+            // 
+            this.sortingAlgorithmComboBox.FormattingEnabled = true;
+            this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
+            "Sv"});
+            this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(102, 6);
+            this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";
+            this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
+            this.sortingAlgorithmComboBox.TabIndex = 0;
+            // 
+            // exportData
+            // 
+            this.exportData.Controls.Add(this.exportButton);
+            this.exportData.Controls.Add(this.exportPathTextBox);
+            this.exportData.Controls.Add(this.chooseExportPathButton);
+            this.exportData.Location = new System.Drawing.Point(4, 22);
+            this.exportData.Name = "exportData";
+            this.exportData.Padding = new System.Windows.Forms.Padding(3);
+            this.exportData.Size = new System.Drawing.Size(788, 590);
+            this.exportData.TabIndex = 2;
+            this.exportData.Text = "Export Data";
+            this.exportData.UseVisualStyleBackColor = true;
+            // 
+            // exportButton
+            // 
+            this.exportButton.Location = new System.Drawing.Point(707, 7);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(75, 23);
+            this.exportButton.TabIndex = 2;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = true;
+            // 
+            // exportPathTextBox
+            // 
+            this.exportPathTextBox.Location = new System.Drawing.Point(128, 8);
+            this.exportPathTextBox.Name = "exportPathTextBox";
+            this.exportPathTextBox.ReadOnly = true;
+            this.exportPathTextBox.Size = new System.Drawing.Size(542, 20);
+            this.exportPathTextBox.TabIndex = 1;
+            // 
+            // chooseExportPathButton
+            // 
+            this.chooseExportPathButton.Location = new System.Drawing.Point(7, 7);
+            this.chooseExportPathButton.Name = "chooseExportPathButton";
+            this.chooseExportPathButton.Size = new System.Drawing.Size(115, 23);
+            this.chooseExportPathButton.TabIndex = 0;
+            this.chooseExportPathButton.Text = "Choose export path";
+            this.chooseExportPathButton.UseVisualStyleBackColor = true;
+            this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 620);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Løbsindeling";
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.loadData.ResumeLayout(false);
+            this.loadData.PerformLayout();
+            this.sortBoats.ResumeLayout(false);
+            this.sortBoats.PerformLayout();
+            this.exportData.ResumeLayout(false);
+            this.exportData.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -124,10 +223,19 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button openDataFileButton;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage loadData;
         private System.Windows.Forms.TextBox openDataFilePathTextBox;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage sortBoats;
         private System.Windows.Forms.TextBox loadedBoatsTextBox;
+        private System.Windows.Forms.ComboBox sortingAlgorithmComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button sortButton;
+        private System.Windows.Forms.TextBox sortedBoatsTextBox;
+        private System.Windows.Forms.TabPage exportData;
+        private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.TextBox exportPathTextBox;
+        private System.Windows.Forms.Button chooseExportPathButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
