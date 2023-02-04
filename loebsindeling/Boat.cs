@@ -64,10 +64,32 @@ namespace loebsindeling
             }
         }
 
-        public static string boatsToString(List<Boat> boats) {
+        public static string boatsToStringSimpel(List<Boat> boats) {
             string text = "";
             foreach (Boat boat in Boat.boats) {
-                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Sv + "\r\n";
+                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " +boat.SejlNummer + "\r\n";
+            }
+            return text;
+        }
+
+        public static string boatsToStringAll(List<Boat> boats) {
+            string text = "";
+            foreach (Boat boat in Boat.boats) {
+                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + "  -  " + boat.Sv + "\r\n";
+            }
+            return text;
+        }
+
+        public static string boatsToCsvString(List<Boat> boats) {
+            string text = "";
+            foreach(Boat boat in Boat.boats) {
+                text += boat.Certifikat + ";";
+                text += boat.BaadNavn + ";";
+                text += boat.Nation + ";";
+                text += boat.SejlNummer + ";";
+                text += boat.Sv.ToString() + ";";
+
+                text += "\r\n";
             }
             return text;
         }

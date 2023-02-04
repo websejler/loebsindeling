@@ -66,13 +66,16 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.loadData);
             this.tabControl1.Controls.Add(this.sortBoats);
             this.tabControl1.Controls.Add(this.exportData);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(796, 616);
+            this.tabControl1.Size = new System.Drawing.Size(780, 523);
             this.tabControl1.TabIndex = 1;
             // 
             // loadData
@@ -83,27 +86,32 @@
             this.loadData.Location = new System.Drawing.Point(4, 22);
             this.loadData.Name = "loadData";
             this.loadData.Padding = new System.Windows.Forms.Padding(3);
-            this.loadData.Size = new System.Drawing.Size(788, 590);
+            this.loadData.Size = new System.Drawing.Size(772, 497);
             this.loadData.TabIndex = 0;
             this.loadData.Text = "Load Data";
             this.loadData.UseVisualStyleBackColor = true;
             // 
             // loadedBoatsTextBox
             // 
-            this.loadedBoatsTextBox.Location = new System.Drawing.Point(33, 81);
+            this.loadedBoatsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadedBoatsTextBox.Location = new System.Drawing.Point(6, 50);
             this.loadedBoatsTextBox.Multiline = true;
             this.loadedBoatsTextBox.Name = "loadedBoatsTextBox";
             this.loadedBoatsTextBox.ReadOnly = true;
             this.loadedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.loadedBoatsTextBox.Size = new System.Drawing.Size(718, 475);
+            this.loadedBoatsTextBox.Size = new System.Drawing.Size(760, 441);
             this.loadedBoatsTextBox.TabIndex = 2;
             // 
             // openDataFilePathTextBox
             // 
+            this.openDataFilePathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.openDataFilePathTextBox.Location = new System.Drawing.Point(121, 6);
             this.openDataFilePathTextBox.Name = "openDataFilePathTextBox";
             this.openDataFilePathTextBox.ReadOnly = true;
-            this.openDataFilePathTextBox.Size = new System.Drawing.Size(647, 20);
+            this.openDataFilePathTextBox.Size = new System.Drawing.Size(645, 20);
             this.openDataFilePathTextBox.TabIndex = 1;
             // 
             // sortBoats
@@ -115,24 +123,28 @@
             this.sortBoats.Location = new System.Drawing.Point(4, 22);
             this.sortBoats.Name = "sortBoats";
             this.sortBoats.Padding = new System.Windows.Forms.Padding(3);
-            this.sortBoats.Size = new System.Drawing.Size(788, 590);
+            this.sortBoats.Size = new System.Drawing.Size(772, 497);
             this.sortBoats.TabIndex = 1;
             this.sortBoats.Text = "Sort Boats";
             this.sortBoats.UseVisualStyleBackColor = true;
             // 
             // sortedBoatsTextBox
             // 
-            this.sortedBoatsTextBox.Location = new System.Drawing.Point(14, 60);
+            this.sortedBoatsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortedBoatsTextBox.Location = new System.Drawing.Point(6, 53);
             this.sortedBoatsTextBox.Multiline = true;
             this.sortedBoatsTextBox.Name = "sortedBoatsTextBox";
             this.sortedBoatsTextBox.ReadOnly = true;
             this.sortedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sortedBoatsTextBox.Size = new System.Drawing.Size(764, 524);
+            this.sortedBoatsTextBox.Size = new System.Drawing.Size(760, 441);
             this.sortedBoatsTextBox.TabIndex = 3;
             // 
             // sortButton
             // 
-            this.sortButton.Location = new System.Drawing.Point(693, 7);
+            this.sortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortButton.Location = new System.Drawing.Point(687, 6);
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(85, 25);
             this.sortButton.TabIndex = 2;
@@ -167,22 +179,26 @@
             this.exportData.Location = new System.Drawing.Point(4, 22);
             this.exportData.Name = "exportData";
             this.exportData.Padding = new System.Windows.Forms.Padding(3);
-            this.exportData.Size = new System.Drawing.Size(788, 590);
+            this.exportData.Size = new System.Drawing.Size(772, 497);
             this.exportData.TabIndex = 2;
             this.exportData.Text = "Export Data";
             this.exportData.UseVisualStyleBackColor = true;
             // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(707, 7);
+            this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportButton.Location = new System.Drawing.Point(691, 7);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
             this.exportButton.TabIndex = 2;
             this.exportButton.Text = "Export";
             this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // exportPathTextBox
             // 
+            this.exportPathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.exportPathTextBox.Location = new System.Drawing.Point(128, 8);
             this.exportPathTextBox.Name = "exportPathTextBox";
             this.exportPathTextBox.ReadOnly = true;
@@ -203,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 620);
+            this.ClientSize = new System.Drawing.Size(784, 527);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Løbsindeling";
