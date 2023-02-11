@@ -1,6 +1,6 @@
 ﻿namespace loebsindeling
 {
-    partial class Form1
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.

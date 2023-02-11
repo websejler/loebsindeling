@@ -15,5 +15,11 @@ namespace loebsindeling {
 			});
 			return boatList;
 		}
+
+		public static List<Boat> dh2022Sort(List<Boat> boatList)
+		{
+			
+			return null;
+		}
 	}
 }
