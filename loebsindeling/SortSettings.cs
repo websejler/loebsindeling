@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace loebsindeling
 {
-    public partial class Form1 : Form
+    public partial class SortSettings : Form
     {
-        public Form1()
+        public SortSettings()
         {
             InitializeComponent();
         }
+
+        
     }
 }
