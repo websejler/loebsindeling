@@ -40,6 +40,18 @@ namespace loebsindeling
                     Sorting.svSorting(Boat.boats);
                     sortedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
                     break;
+                case "dh2022":
+                    SortSettingsDH2022 Form2 = new SortSettingsDH2022();
+                    Form2.ShowDialog();
+
+                    if (Form2.abortFlag)
+                        break;
+
+                    int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
+                    int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
+                    Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
+                    sortedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+                    break;
                 default:
                     sortedBoatsTextBox.Text = "Pleas select a sorting algorithm.";
                     break;

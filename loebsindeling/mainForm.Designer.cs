@@ -165,7 +165,8 @@
             // 
             this.sortingAlgorithmComboBox.FormattingEnabled = true;
             this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
-            "Sv"});
+            "Sv",
+            "DH2022"});
             this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(102, 6);
             this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";
             this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
@@ -215,13 +216,13 @@
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
-            // Form1
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 527);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "mainForm";
             this.Text = "Løbsindeling";
             this.tabControl1.ResumeLayout(false);
             this.loadData.ResumeLayout(false);

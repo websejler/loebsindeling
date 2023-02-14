@@ -56,11 +56,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorting.cs" />
-    <Compile Include="SortSettings.cs">
+    <Compile Include="sortsettings\SortSettingsDH2022.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SortSettings.Designer.cs">
-      <DependentUpon>SortSettings.cs</DependentUpon>
+    <Compile Include="sortsettings\SortSettingsDH2022.Designer.cs">
+      <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
@@ -74,8 +74,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SortSettings.resx">
-      <DependentUpon>SortSettings.cs</DependentUpon>
+    <EmbeddedResource Include="sortsettings\SortSettingsDH2022.resx">
+      <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
