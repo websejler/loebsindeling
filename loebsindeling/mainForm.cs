@@ -1,4 +1,5 @@
-﻿using System;
+﻿using loebsindeling.groupsettings;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +32,7 @@ namespace loebsindeling
         private void sortButton_Click(object sender, EventArgs e) {
             int i = sortingAlgorithmComboBox.SelectedIndex;
             if(i == -1) {
-                sortedBoatsTextBox.Text = "Pleas select a sorting algorithm.";
+                sortedBoatsTextBox.Text = "Please select a sorting algorithm.";
                 return;
             }
             
@@ -50,10 +51,10 @@ namespace loebsindeling
                     int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
                     int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
                     Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
-                    sortedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+                    sortedBoatsTextBox.Text = Boat.boatsToStringSort(Boat.boats);
                     break;
                 default:
-                    sortedBoatsTextBox.Text = "Pleas select a sorting algorithm.";
+                    sortedBoatsTextBox.Text = "Please select a sorting algorithm.";
                     break;
             }
             
@@ -75,6 +76,35 @@ namespace loebsindeling
             } else {
                 MessageBox.Show("Please choose a export path.");
             }
+        }
+
+        private void groupeBoatsButton_Click(object sender, EventArgs e)
+        {
+            int i = groupeBoatsComboBox.SelectedIndex;
+            if (i == -1){
+                groupeBoatsTextBox.Text = "Please select a grouping algorithm.";
+                return;
+            }
+
+            switch(groupeBoatsComboBox.Items[i].ToString().ToLower())
+            {
+                case "jst-grouping":
+                    jst_groupSettings form2 = new jst_groupSettings();
+                    form2.ShowDialog();
+
+                    if (form2.abortFlag)
+                        break;
+
+                    int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
+                    Grouping.jst_grouping(Boat.boats, numberOfgroups);
+                    groupeBoatsTextBox.Text = Boat.boatsToStringGrouping(Boat.boats);
+                    break;
+
+                default :
+                    sortedBoatsTextBox.Text = "Please select a grouping algorithm.";
+                    break;
+            }
+
         }
     }
 }

@@ -39,6 +39,11 @@
             this.sortButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.sortingAlgorithmComboBox = new System.Windows.Forms.ComboBox();
+            this.groupeBoat = new System.Windows.Forms.TabPage();
+            this.groupeBoatsTextBox = new System.Windows.Forms.TextBox();
+            this.groupeBoatsButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupeBoatsComboBox = new System.Windows.Forms.ComboBox();
             this.exportData = new System.Windows.Forms.TabPage();
             this.exportButton = new System.Windows.Forms.Button();
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
@@ -47,6 +52,7 @@
             this.tabControl1.SuspendLayout();
             this.loadData.SuspendLayout();
             this.sortBoats.SuspendLayout();
+            this.groupeBoat.SuspendLayout();
             this.exportData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.loadData);
             this.tabControl1.Controls.Add(this.sortBoats);
+            this.tabControl1.Controls.Add(this.groupeBoat);
             this.tabControl1.Controls.Add(this.exportData);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
@@ -172,6 +179,62 @@
             this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
             this.sortingAlgorithmComboBox.TabIndex = 0;
             // 
+            // groupeBoat
+            // 
+            this.groupeBoat.Controls.Add(this.groupeBoatsTextBox);
+            this.groupeBoat.Controls.Add(this.groupeBoatsButton);
+            this.groupeBoat.Controls.Add(this.label2);
+            this.groupeBoat.Controls.Add(this.groupeBoatsComboBox);
+            this.groupeBoat.Location = new System.Drawing.Point(4, 22);
+            this.groupeBoat.Name = "groupeBoat";
+            this.groupeBoat.Size = new System.Drawing.Size(772, 497);
+            this.groupeBoat.TabIndex = 3;
+            this.groupeBoat.Text = "Groupe Boat";
+            this.groupeBoat.UseVisualStyleBackColor = true;
+            // 
+            // groupeBoatsTextBox
+            // 
+            this.groupeBoatsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupeBoatsTextBox.Location = new System.Drawing.Point(3, 51);
+            this.groupeBoatsTextBox.Multiline = true;
+            this.groupeBoatsTextBox.Name = "groupeBoatsTextBox";
+            this.groupeBoatsTextBox.ReadOnly = true;
+            this.groupeBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.groupeBoatsTextBox.Size = new System.Drawing.Size(760, 441);
+            this.groupeBoatsTextBox.TabIndex = 7;
+            // 
+            // groupeBoatsButton
+            // 
+            this.groupeBoatsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupeBoatsButton.Location = new System.Drawing.Point(684, 4);
+            this.groupeBoatsButton.Name = "groupeBoatsButton";
+            this.groupeBoatsButton.Size = new System.Drawing.Size(85, 25);
+            this.groupeBoatsButton.TabIndex = 6;
+            this.groupeBoatsButton.Text = "Groupe boats";
+            this.groupeBoatsButton.UseVisualStyleBackColor = true;
+            this.groupeBoatsButton.Click += new System.EventHandler(this.groupeBoatsButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Grouping algorithm";
+            // 
+            // groupeBoatsComboBox
+            // 
+            this.groupeBoatsComboBox.FormattingEnabled = true;
+            this.groupeBoatsComboBox.Items.AddRange(new object[] {
+            "JST-Grouping"});
+            this.groupeBoatsComboBox.Location = new System.Drawing.Point(109, 4);
+            this.groupeBoatsComboBox.Name = "groupeBoatsComboBox";
+            this.groupeBoatsComboBox.Size = new System.Drawing.Size(248, 21);
+            this.groupeBoatsComboBox.TabIndex = 4;
+            // 
             // exportData
             // 
             this.exportData.Controls.Add(this.exportButton);
@@ -229,6 +292,8 @@
             this.loadData.PerformLayout();
             this.sortBoats.ResumeLayout(false);
             this.sortBoats.PerformLayout();
+            this.groupeBoat.ResumeLayout(false);
+            this.groupeBoat.PerformLayout();
             this.exportData.ResumeLayout(false);
             this.exportData.PerformLayout();
             this.ResumeLayout(false);
@@ -253,6 +318,11 @@
         private System.Windows.Forms.TextBox exportPathTextBox;
         private System.Windows.Forms.Button chooseExportPathButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TabPage groupeBoat;
+        private System.Windows.Forms.TextBox groupeBoatsTextBox;
+        private System.Windows.Forms.Button groupeBoatsButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox groupeBoatsComboBox;
     }
 }
 
