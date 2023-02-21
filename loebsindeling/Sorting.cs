@@ -4,16 +4,26 @@ using System.Collections.Generic;
 namespace loebsindeling {
     internal class Sorting {
 		public static List<Boat> svSorting(List<Boat> boatList) {
-			boatList.Sort(delegate (Boat x, Boat y) {
-				if (x.Sv == y.Sv) {
-					return 0;
-				} else if (x.Sv > y.Sv) {
-					return 1;
-				} else {
-					return -1;
-				};
-			});
-			return boatList;
+            foreach (Boat boat in boatList)
+            {
+                boat.score = boat.Sv;
+            }
+            boatList.Sort(delegate (Boat x, Boat y)
+            {
+                if (x.score == y.score)
+                {
+                    return 0;
+                }
+                else if (x.score > y.score)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                };
+            });
+            return boatList;
 		}
 
 		public static List<Boat> dh2022Sort(List<Boat> boatList, int upAndDownCount, int circleCount)
@@ -151,7 +161,7 @@ namespace loebsindeling {
                     return -1;
                 };
             });
-            return null;
+            return boatList;
 		}
 	}
 }

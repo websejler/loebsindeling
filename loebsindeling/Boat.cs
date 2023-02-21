@@ -24,7 +24,8 @@ namespace loebsindeling
 
 
         public List<int> ints;
-        public int score;
+        public double score;
+        private int groupeId;
 
         public Boat(string data) {
             string newdata = "";
@@ -61,6 +62,7 @@ namespace loebsindeling
             Double.TryParse(dataArray[91], out taudh);
 
             ints = new List<int>();
+            groupeId = 0;
         }
 
         public int Certifikat { get { return certifikat; } set { certifikat = value; } }
@@ -74,6 +76,7 @@ namespace loebsindeling
         public double Taudl { get { return taudl; } set { taudl = value; } }
         public double Taudm { get { return taudm; } set { taudm = value; } }
         public double Taudh { get { return taudh; } set { taudh = value; } }
+        public int GroupeId { get { return groupeId; } set { groupeId = value; } }
 
         public static void loadBoatsFromFile(string path) {
             boats.Clear();
@@ -96,21 +99,33 @@ namespace loebsindeling
             return text;
         }
 
-        public static string boatsToStringAll(List<Boat> boats) {
+        public static string boatsToStringSort(List<Boat> boats) {
             string text = "";
             foreach (Boat boat in Boat.boats) {
-                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + "  -  tacil: " + boat.ints[0] + "  -  tacim: " + boat.ints[1] + "  -  " + boat.score + "\r\n";
+                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + "\r\n";
             }
             return text;
         }
 
-        public static string boatsToCsvString(List<Boat> boats) {
+        public static string boatsToStringGrouping(List<Boat> boats)
+        {
             string text = "";
+            foreach (Boat boat in Boat.boats)
+            {
+                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + " - " + boat.groupeId + "\r\n";
+            }
+            return text;
+        }
+
+
+        public static string boatsToCsvString(List<Boat> boats) {
+            string text = "Certifikat;Baadnavn;Nation;SejlNummer;groupe;SV;\r\n";
             foreach(Boat boat in Boat.boats) {
                 text += boat.Certifikat + ";";
                 text += boat.BaadNavn + ";";
                 text += boat.Nation + ";";
                 text += boat.SejlNummer + ";";
+                text += boat.groupeId + ";";
                 text += boat.Sv.ToString() + ";";
 
                 text += "\r\n";
