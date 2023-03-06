@@ -30,10 +30,10 @@ namespace loebsindeling {
 		{
 			//sort for tacil
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Tacil == y.Tacil)
+                if (x.TACIL == y.TACIL)
                 {
                     return 0;
-                } else if (x.Tacil > y.Tacil)
+                } else if (x.TACIL > y.TACIL)
                 {
                     return 1;
                 } else {
@@ -47,11 +47,11 @@ namespace loebsindeling {
 				i++;
 			}
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Tacim == y.Tacim)
+                if (x.TACIM == y.TACIM)
                 {
                     return 0;
                 }
-                else if (x.Tacim > y.Tacim)
+                else if (x.TACIM > y.TACIM)
                 {
                     return 1;
                 }
@@ -67,11 +67,11 @@ namespace loebsindeling {
                 i++;
             }
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Tacih == y.Tacih)
+                if (x.TACIH == y.TACIH)
                 {
                     return 0;
                 }
-                else if (x.Tacih > y.Tacih)
+                else if (x.TACIH > y.TACIH)
                 {
                     return 1;
                 }
@@ -87,11 +87,11 @@ namespace loebsindeling {
                 i++;
             }
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Taudl == y.Taudl)
+                if (x.TAUDL == y.TAUDL)
                 {
                     return 0;
                 }
-                else if (x.Taudl > y.Taudl)
+                else if (x.TAUDL > y.TAUDL)
                 {
                     return 1;
                 }
@@ -107,11 +107,11 @@ namespace loebsindeling {
                 i++;
             }
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Taudm == y.Taudm)
+                if (x.TAUDM == y.TAUDM)
                 {
                     return 0;
                 }
-                else if (x.Taudm > y.Taudm)
+                else if (x.TAUDM > y.TAUDM)
                 {
                     return 1;
                 }
@@ -127,11 +127,11 @@ namespace loebsindeling {
                 i++;
             }
             boatList.Sort(delegate (Boat x, Boat y) {
-                if (x.Taudh == y.Taudh)
+                if (x.TAUDH == y.TAUDH)
                 {
                     return 0;
                 }
-                else if (x.Taudh > y.Taudh)
+                else if (x.TAUDH > y.TAUDH)
                 {
                     return 1;
                 }
@@ -164,4 +164,5 @@ namespace loebsindeling {
             return boatList;
 		}
 	}
+
 }
