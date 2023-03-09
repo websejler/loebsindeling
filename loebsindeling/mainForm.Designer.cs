@@ -66,7 +66,7 @@
             this.openDataFileButton.Name = "openDataFileButton";
             this.openDataFileButton.Size = new System.Drawing.Size(99, 23);
             this.openDataFileButton.TabIndex = 0;
-            this.openDataFileButton.Text = "Open Data File";
+            this.openDataFileButton.Text = "Åben datafil";
             this.openDataFileButton.UseVisualStyleBackColor = true;
             this.openDataFileButton.Click += new System.EventHandler(this.openDataFileButton_Click);
             // 
@@ -95,7 +95,7 @@
             this.loadData.Padding = new System.Windows.Forms.Padding(3);
             this.loadData.Size = new System.Drawing.Size(772, 497);
             this.loadData.TabIndex = 0;
-            this.loadData.Text = "Load Data";
+            this.loadData.Text = "Indlæs både";
             this.loadData.UseVisualStyleBackColor = true;
             // 
             // loadedBoatsTextBox
@@ -132,7 +132,7 @@
             this.sortBoats.Padding = new System.Windows.Forms.Padding(3);
             this.sortBoats.Size = new System.Drawing.Size(772, 497);
             this.sortBoats.TabIndex = 1;
-            this.sortBoats.Text = "Sort Boats";
+            this.sortBoats.Text = "Sorter både";
             this.sortBoats.UseVisualStyleBackColor = true;
             // 
             // sortedBoatsTextBox
@@ -147,6 +147,7 @@
             this.sortedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sortedBoatsTextBox.Size = new System.Drawing.Size(760, 441);
             this.sortedBoatsTextBox.TabIndex = 3;
+            this.sortedBoatsTextBox.TextChanged += new System.EventHandler(this.sortedBoatsTextBox_TextChanged);
             // 
             // sortButton
             // 
@@ -155,7 +156,7 @@
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(85, 25);
             this.sortButton.TabIndex = 2;
-            this.sortButton.Text = "Sort boats";
+            this.sortButton.Text = "Sorter både";
             this.sortButton.UseVisualStyleBackColor = true;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
@@ -164,9 +165,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sorting algorithm";
+            this.label1.Text = "Sorteringsalgoritmer";
             // 
             // sortingAlgorithmComboBox
             // 
@@ -174,7 +175,7 @@
             this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
             "Sv",
             "DH2022"});
-            this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(102, 6);
+            this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(116, 6);
             this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";
             this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
             this.sortingAlgorithmComboBox.TabIndex = 0;
@@ -189,7 +190,7 @@
             this.groupeBoat.Name = "groupeBoat";
             this.groupeBoat.Size = new System.Drawing.Size(772, 497);
             this.groupeBoat.TabIndex = 3;
-            this.groupeBoat.Text = "Groupe Boat";
+            this.groupeBoat.Text = "Grupper både";
             this.groupeBoat.UseVisualStyleBackColor = true;
             // 
             // groupeBoatsTextBox
@@ -212,7 +213,7 @@
             this.groupeBoatsButton.Name = "groupeBoatsButton";
             this.groupeBoatsButton.Size = new System.Drawing.Size(85, 25);
             this.groupeBoatsButton.TabIndex = 6;
-            this.groupeBoatsButton.Text = "Groupe boats";
+            this.groupeBoatsButton.Text = "Grupper både";
             this.groupeBoatsButton.UseVisualStyleBackColor = true;
             this.groupeBoatsButton.Click += new System.EventHandler(this.groupeBoatsButton_Click);
             // 
@@ -221,16 +222,16 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Grouping algorithm";
+            this.label2.Text = "Grupperings algoritme";
             // 
             // groupeBoatsComboBox
             // 
             this.groupeBoatsComboBox.FormattingEnabled = true;
             this.groupeBoatsComboBox.Items.AddRange(new object[] {
             "JST-Grouping"});
-            this.groupeBoatsComboBox.Location = new System.Drawing.Point(109, 4);
+            this.groupeBoatsComboBox.Location = new System.Drawing.Point(123, 3);
             this.groupeBoatsComboBox.Name = "groupeBoatsComboBox";
             this.groupeBoatsComboBox.Size = new System.Drawing.Size(248, 21);
             this.groupeBoatsComboBox.TabIndex = 4;
@@ -245,7 +246,7 @@
             this.exportData.Padding = new System.Windows.Forms.Padding(3);
             this.exportData.Size = new System.Drawing.Size(772, 497);
             this.exportData.TabIndex = 2;
-            this.exportData.Text = "Export Data";
+            this.exportData.Text = "Gem både";
             this.exportData.UseVisualStyleBackColor = true;
             // 
             // exportButton
@@ -275,7 +276,7 @@
             this.chooseExportPathButton.Name = "chooseExportPathButton";
             this.chooseExportPathButton.Size = new System.Drawing.Size(115, 23);
             this.chooseExportPathButton.TabIndex = 0;
-            this.chooseExportPathButton.Text = "Choose export path";
+            this.chooseExportPathButton.Text = "Vælg export sti";
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 

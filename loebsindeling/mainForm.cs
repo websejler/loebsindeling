@@ -106,5 +106,10 @@ namespace loebsindeling
             }
 
         }
+
+        private void sortedBoatsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
