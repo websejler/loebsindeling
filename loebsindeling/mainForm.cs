@@ -25,8 +25,16 @@ namespace loebsindeling
         {
             openFileDialog1.ShowDialog(this);
             openDataFilePathTextBox.Text = openFileDialog1.FileName;
-            Boat.loadBoatsFromFile(openFileDialog1.FileName);
-            loadedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+            try
+            {
+                Boat.loadBoatsFromFile(openFileDialog1.FileName);
+                loadedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+            }
+            catch (InvalidDataException)
+            {
+                loadedBoatsTextBox.Text = "Data kunne ikke læses";
+            }
+            
         }
 
         private void sortButton_Click(object sender, EventArgs e) {

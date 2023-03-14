@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace loebsindeling
 {
@@ -160,129 +162,135 @@ namespace loebsindeling
             for(int i = 0; i < dataArray.Length; i++) {
                 dataArray[i] = dataArray[i].Replace('.', ',');
             }
-
-            Int32.TryParse(dataArray[0], out certifikat);
-            baadNavn = dataArray[1];
-            nation = dataArray[2];
-            Int32.TryParse(dataArray[3], out sejlNummer);
-            Int32.TryParse(dataArray[4], out aar);
-            baadType = dataArray[5];
-            Int32.TryParse(dataArray[6], out klasseStatusId);
-            Int32.TryParse(dataArray[7], out rigSejlId);
-            Double.TryParse(dataArray[8], out e);
-            Double.TryParse(dataArray[9], out p);
-            Double.TryParse(dataArray[10], out hB);
-            Double.TryParse(dataArray[11], out mGM);
-            Double.TryParse(dataArray[12], out mGU);
-            Double.TryParse(dataArray[13], out tmax);
-            Double.TryParse(dataArray[14], out lP);
-            Double.TryParse(dataArray[15], out fSP);
-            Double.TryParse(dataArray[16], out sPL);
-            Double.TryParse(dataArray[17], out j);
-            Double.TryParse(dataArray[18], out tPS);
-            Double.TryParse(dataArray[19], out jHW);
-            Double.TryParse(dataArray[20], out iSP);
-            Double.TryParse(dataArray[21], out sL);
-            Double.TryParse(dataArray[22], out sLU);
-            Double.TryParse(dataArray[23], out sLE);
-            Double.TryParse(dataArray[24], out sF);
-            Double.TryParse(dataArray[25], out sMG);
-            Double.TryParse(dataArray[26], out sFA);
-            Double.TryParse(dataArray[27], out sMGA);
-            Int32.TryParse(dataArray[28], out propelId);
-            Boolean.TryParse(dataArray[29], out rF);
-            Boolean.TryParse(dataArray[30], out mF);
-            Boolean.TryParse(dataArray[31], out hF);
-            Int32.TryParse(dataArray[32], out propelId1);
-            propelNavn = dataArray[33];
-            Int32.TryParse(dataArray[34], out skrogId);
-            Double.TryParse(dataArray[35], out gmax);
-            Double.TryParse(dataArray[36], out sGmax);
-            Double.TryParse(dataArray[37], out fBSB);
-            Double.TryParse(dataArray[38], out fBBB);
-            Double.TryParse(dataArray[39], out sBmax);
-            Double.TryParse(dataArray[40], out uDFSB);
-            Double.TryParse(dataArray[41], out uDFBB);
-            Double.TryParse(dataArray[42], out oF);
-            Double.TryParse(dataArray[43], out oA);
-            Double.TryParse(dataArray[44], out uDHBmax);
-            Double.TryParse(dataArray[45], out uDHmax);
-            Double.TryParse(dataArray[46], out sTF);
-            Double.TryParse(dataArray[47], out aF);
-            Int32.TryParse(dataArray[48], out specielId);
-            Double.TryParse(dataArray[49], out bmax);
-            Double.TryParse(dataArray[50], out lOA);
-            Double.TryParse(dataArray[51], out d);
-            Double.TryParse(dataArray[52], out k);
-            Double.TryParse(dataArray[53], out kC);
-            Double.TryParse(dataArray[54], out wBF);
-            Double.TryParse(dataArray[55], out wBL);
-            Double.TryParse(dataArray[56], out wBT);
-            Double.TryParse(dataArray[57], out wBV);
-            Double.TryParse(dataArray[58], out sSC);
-            Double.TryParse(dataArray[59], out sST);
-            Int32.TryParse(dataArray[60], out kFId);
-            Boolean.TryParse(dataArray[61], out kontrolVejet);
-            Boolean.TryParse(dataArray[62], out kontrolMaalt);
-            Boolean.TryParse(dataArray[63], out kontrolKrenget);
-            Int32.TryParse(dataArray[64], out propelId2);
-            propelNavn1 = dataArray[65];
-            Int32.TryParse(dataArray[66], out kFId1);
-            kFTekst = dataArray[67];
-            Int32.TryParse(dataArray[68], out baadId);
-            Double.TryParse(dataArray[69], out sSA);
-            Double.TryParse(dataArray[70], out fA1);
-            Double.TryParse(dataArray[71], out fA2);
-            Double.TryParse(dataArray[72], out fA3);
-            Double.TryParse(dataArray[73], out sA);
-            Double.TryParse(dataArray[74], out s);
-            Double.TryParse(dataArray[75], out l);
-            Double.TryParse(dataArray[76], out b);
-            Double.TryParse(dataArray[77], out g);
-            Double.TryParse(dataArray[78], out bogG);
-            Double.TryParse(dataArray[79], out dHK);
-            Double.TryParse(dataArray[80], out wS);
-            Double.TryParse(dataArray[81], out dp);
-            Int32.TryParse(dataArray[82], out wmin);
-            Double.TryParse(dataArray[83], out sv);
-            Double.TryParse(dataArray[84], out tCC);
-            Double.TryParse(dataArray[85], out gPH);
-            Double.TryParse(dataArray[86], out tACIL);
-            Double.TryParse(dataArray[87], out tACIM);
-            Double.TryParse(dataArray[88], out tACIH);
-            Double.TryParse(dataArray[89], out tAUDL);
-            Double.TryParse(dataArray[90], out tAUDM);
-            Double.TryParse(dataArray[91], out tAUDH);
-            Double.TryParse(dataArray[92], out sAS);
-            Double.TryParse(dataArray[93], out sAA);
-            Double.TryParse(dataArray[94], out cW);
-            Double.TryParse(dataArray[95], out tAU3);
-            Double.TryParse(dataArray[96], out tAU4);
-            Double.TryParse(dataArray[97], out tAU5);
-            Double.TryParse(dataArray[98], out tAU6);
-            Double.TryParse(dataArray[99], out tAU7);
-            Double.TryParse(dataArray[100], out tAU8);
-            Double.TryParse(dataArray[101], out tAU10);
-            Double.TryParse(dataArray[102], out tAD3);
-            Double.TryParse(dataArray[103], out tAD4);
-            Double.TryParse(dataArray[104], out tAD5);
-            Double.TryParse(dataArray[105], out tAD6);
-            Double.TryParse(dataArray[106], out tAD7);
-            Double.TryParse(dataArray[107], out tAD8);
-            Double.TryParse(dataArray[108], out tAD10);
-            Double.TryParse(dataArray[109], out tACI3);
-            Double.TryParse(dataArray[110], out tACI4);
-            Double.TryParse(dataArray[111], out tACI5);
-            Double.TryParse(dataArray[112], out tACI6);
-            Double.TryParse(dataArray[113], out tACI7);
-            Double.TryParse(dataArray[114], out tACI8);
-            Double.TryParse(dataArray[115], out tACI10);
-            Double.TryParse(dataArray[116], out pLTCI);
-            Double.TryParse(dataArray[117], out pLDCI);
-            Double.TryParse(dataArray[118], out eCI);
-            Double.TryParse(dataArray[119], out pLTUD);
-            Double.TryParse(dataArray[120], out pLDUD);
-            Double.TryParse(dataArray[121], out eUD);
+            try
+            {
+                Int32.TryParse(dataArray[0], out certifikat);
+                baadNavn = dataArray[1];
+                nation = dataArray[2];
+                Int32.TryParse(dataArray[3], out sejlNummer);
+                Int32.TryParse(dataArray[4], out aar);
+                baadType = dataArray[5];
+                Int32.TryParse(dataArray[6], out klasseStatusId);
+                Int32.TryParse(dataArray[7], out rigSejlId);
+                Double.TryParse(dataArray[8], out e);
+                Double.TryParse(dataArray[9], out p);
+                Double.TryParse(dataArray[10], out hB);
+                Double.TryParse(dataArray[11], out mGM);
+                Double.TryParse(dataArray[12], out mGU);
+                Double.TryParse(dataArray[13], out tmax);
+                Double.TryParse(dataArray[14], out lP);
+                Double.TryParse(dataArray[15], out fSP);
+                Double.TryParse(dataArray[16], out sPL);
+                Double.TryParse(dataArray[17], out j);
+                Double.TryParse(dataArray[18], out tPS);
+                Double.TryParse(dataArray[19], out jHW);
+                Double.TryParse(dataArray[20], out iSP);
+                Double.TryParse(dataArray[21], out sL);
+                Double.TryParse(dataArray[22], out sLU);
+                Double.TryParse(dataArray[23], out sLE);
+                Double.TryParse(dataArray[24], out sF);
+                Double.TryParse(dataArray[25], out sMG);
+                Double.TryParse(dataArray[26], out sFA);
+                Double.TryParse(dataArray[27], out sMGA);
+                Int32.TryParse(dataArray[28], out propelId);
+                Boolean.TryParse(dataArray[29], out rF);
+                Boolean.TryParse(dataArray[30], out mF);
+                Boolean.TryParse(dataArray[31], out hF);
+                Int32.TryParse(dataArray[32], out propelId1);
+                propelNavn = dataArray[33];
+                Int32.TryParse(dataArray[34], out skrogId);
+                Double.TryParse(dataArray[35], out gmax);
+                Double.TryParse(dataArray[36], out sGmax);
+                Double.TryParse(dataArray[37], out fBSB);
+                Double.TryParse(dataArray[38], out fBBB);
+                Double.TryParse(dataArray[39], out sBmax);
+                Double.TryParse(dataArray[40], out uDFSB);
+                Double.TryParse(dataArray[41], out uDFBB);
+                Double.TryParse(dataArray[42], out oF);
+                Double.TryParse(dataArray[43], out oA);
+                Double.TryParse(dataArray[44], out uDHBmax);
+                Double.TryParse(dataArray[45], out uDHmax);
+                Double.TryParse(dataArray[46], out sTF);
+                Double.TryParse(dataArray[47], out aF);
+                Int32.TryParse(dataArray[48], out specielId);
+                Double.TryParse(dataArray[49], out bmax);
+                Double.TryParse(dataArray[50], out lOA);
+                Double.TryParse(dataArray[51], out d);
+                Double.TryParse(dataArray[52], out k);
+                Double.TryParse(dataArray[53], out kC);
+                Double.TryParse(dataArray[54], out wBF);
+                Double.TryParse(dataArray[55], out wBL);
+                Double.TryParse(dataArray[56], out wBT);
+                Double.TryParse(dataArray[57], out wBV);
+                Double.TryParse(dataArray[58], out sSC);
+                Double.TryParse(dataArray[59], out sST);
+                Int32.TryParse(dataArray[60], out kFId);
+                Boolean.TryParse(dataArray[61], out kontrolVejet);
+                Boolean.TryParse(dataArray[62], out kontrolMaalt);
+                Boolean.TryParse(dataArray[63], out kontrolKrenget);
+                Int32.TryParse(dataArray[64], out propelId2);
+                propelNavn1 = dataArray[65];
+                Int32.TryParse(dataArray[66], out kFId1);
+                kFTekst = dataArray[67];
+                Int32.TryParse(dataArray[68], out baadId);
+                Double.TryParse(dataArray[69], out sSA);
+                Double.TryParse(dataArray[70], out fA1);
+                Double.TryParse(dataArray[71], out fA2);
+                Double.TryParse(dataArray[72], out fA3);
+                Double.TryParse(dataArray[73], out sA);
+                Double.TryParse(dataArray[74], out s);
+                Double.TryParse(dataArray[75], out l);
+                Double.TryParse(dataArray[76], out b);
+                Double.TryParse(dataArray[77], out g);
+                Double.TryParse(dataArray[78], out bogG);
+                Double.TryParse(dataArray[79], out dHK);
+                Double.TryParse(dataArray[80], out wS);
+                Double.TryParse(dataArray[81], out dp);
+                Int32.TryParse(dataArray[82], out wmin);
+                Double.TryParse(dataArray[83], out sv);
+                Double.TryParse(dataArray[84], out tCC);
+                Double.TryParse(dataArray[85], out gPH);
+                Double.TryParse(dataArray[86], out tACIL);
+                Double.TryParse(dataArray[87], out tACIM);
+                Double.TryParse(dataArray[88], out tACIH);
+                Double.TryParse(dataArray[89], out tAUDL);
+                Double.TryParse(dataArray[90], out tAUDM);
+                Double.TryParse(dataArray[91], out tAUDH);
+                Double.TryParse(dataArray[92], out sAS);
+                Double.TryParse(dataArray[93], out sAA);
+                Double.TryParse(dataArray[94], out cW);
+                Double.TryParse(dataArray[95], out tAU3);
+                Double.TryParse(dataArray[96], out tAU4);
+                Double.TryParse(dataArray[97], out tAU5);
+                Double.TryParse(dataArray[98], out tAU6);
+                Double.TryParse(dataArray[99], out tAU7);
+                Double.TryParse(dataArray[100], out tAU8);
+                Double.TryParse(dataArray[101], out tAU10);
+                Double.TryParse(dataArray[102], out tAD3);
+                Double.TryParse(dataArray[103], out tAD4);
+                Double.TryParse(dataArray[104], out tAD5);
+                Double.TryParse(dataArray[105], out tAD6);
+                Double.TryParse(dataArray[106], out tAD7);
+                Double.TryParse(dataArray[107], out tAD8);
+                Double.TryParse(dataArray[108], out tAD10);
+                Double.TryParse(dataArray[109], out tACI3);
+                Double.TryParse(dataArray[110], out tACI4);
+                Double.TryParse(dataArray[111], out tACI5);
+                Double.TryParse(dataArray[112], out tACI6);
+                Double.TryParse(dataArray[113], out tACI7);
+                Double.TryParse(dataArray[114], out tACI8);
+                Double.TryParse(dataArray[115], out tACI10);
+                Double.TryParse(dataArray[116], out pLTCI);
+                Double.TryParse(dataArray[117], out pLDCI);
+                Double.TryParse(dataArray[118], out eCI);
+                Double.TryParse(dataArray[119], out pLTUD);
+                Double.TryParse(dataArray[120], out pLDUD);
+                Double.TryParse(dataArray[121], out eUD);
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                throw new InvalidDataException("Data can not be read by programe");
+            }
 
             ints = new List<int>();
             groupeId = 0;
@@ -415,12 +423,19 @@ namespace loebsindeling
         public static void loadBoatsFromFile(string path) {
             boats.Clear();
             string[] lines = System.IO.File.ReadAllLines(path);
-            
+
             foreach (string line in lines) {
                 if (line[0] == 'C') {
                     continue;
                 }
-                Boat boat = new Boat(line);
+                Boat boat;
+                try { 
+                   boat = new Boat(line);
+                }
+                catch (InvalidDataException e)
+                {
+                    throw e;
+                }
                 boats.Add(boat);
             }
             int i = 1; //todo remove
