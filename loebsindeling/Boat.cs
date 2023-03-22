@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace loebsindeling
 {
@@ -424,16 +426,80 @@ namespace loebsindeling
 
         public static void loadBoatsFromFile(string path) {
             boats.Clear();
-            string[] lines = System.IO.File.ReadAllLines(path);
+            string[] lines = {""};
+            if (path.EndsWith(".csv"))
+            {
+                lines = System.IO.File.ReadAllLines(path);
+                
+            } else if (path.EndsWith(".xlsx"))
+            {
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbooks xlWorkbookS = xlApp.Workbooks;
+                Excel.Workbook xlWorkbook = xlWorkbookS.Open(path);
+                Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+                Excel.Range xlRange = xlWorksheet.UsedRange;
+                int rowCount = xlRange.Rows.Count;
+                int colCount = xlRange.Columns.Count;
+                lines = new string[rowCount];
+                //reads all values from sheet 1
+                object[,] values = xlRange.Value2;
+                //cleanup
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
 
-            foreach (string line in lines) {
-                if (line[0] == 'C' || line[0] == 'c') {
+                //rule of thumb for releasing com objects:
+                //  never use two dots, all COM objects must be referenced and released individually
+                //  ex: [somthing].[something].[something] is bad
+
+                //release com objects to fully kill excel process from running in the background
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+                Marshal.ReleaseComObject(xlWorkbookS);
+
+                //quit and release
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                string temp = "";
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    string line = "";
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        //new line
+                        if (j == 1)
+                            Console.Write(i + "\n\r");
+
+                        //write the value to the console
+                        if (values[i, j] != null)
+                        {
+                            temp = values[i, j].ToString() + ",";
+                        }
+                        else
+                        {
+                            temp = ",";
+                        }
+                        line += temp;
+
+                        //add useful things here!   
+                    }
+                    lines[i - 1] = line;
+                }
+            }
+            foreach (string line in lines)
+            {
+                if (line[0] == 'C' || line[0] == 'c')
+                {
                     initDataLocationIndex(line);
                     continue;
                 }
                 Boat boat;
-                try { 
-                   boat = new Boat(line);
+                try
+                {
+                    boat = new Boat(line);
                 }
                 catch (InvalidDataException e)
                 {
