@@ -30,9 +30,9 @@ namespace loebsindeling
                 Boat.loadBoatsFromFile(openFileDialog1.FileName);
                 loadedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
             }
-            catch (InvalidDataException)
+            catch (InvalidDataException error)
             {
-                loadedBoatsTextBox.Text = "Data kunne ikke læses";
+                loadedBoatsTextBox.Text = "Data kunne ikke læses \n\r" + error.StackTrace;
             }
             
         }
