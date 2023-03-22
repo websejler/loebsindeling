@@ -13,12 +13,14 @@ namespace loebsindeling
     {   
         public static List<Boat> boats = new List<Boat>();
 
+        private static Dictionary<string, int> dataLocationIndex = new Dictionary<string, int>();
+
         private int certifikat;
         private string baadNavn;
         private string baadType;
         private string nation;
         private int sejlNummer;
-        private int aar;
+        private int byggeAar;
         private int klasseStatusId;
         private int rigSejlId;
         private double e;
@@ -164,130 +166,130 @@ namespace loebsindeling
             }
             try
             {
-                Int32.TryParse(dataArray[0], out certifikat);
-                baadNavn = dataArray[1];
-                nation = dataArray[2];
-                Int32.TryParse(dataArray[3], out sejlNummer);
-                Int32.TryParse(dataArray[4], out aar);
-                baadType = dataArray[5];
-                Int32.TryParse(dataArray[6], out klasseStatusId);
-                Int32.TryParse(dataArray[7], out rigSejlId);
-                Double.TryParse(dataArray[8], out e);
-                Double.TryParse(dataArray[9], out p);
-                Double.TryParse(dataArray[10], out hB);
-                Double.TryParse(dataArray[11], out mGM);
-                Double.TryParse(dataArray[12], out mGU);
-                Double.TryParse(dataArray[13], out tmax);
-                Double.TryParse(dataArray[14], out lP);
-                Double.TryParse(dataArray[15], out fSP);
-                Double.TryParse(dataArray[16], out sPL);
-                Double.TryParse(dataArray[17], out j);
-                Double.TryParse(dataArray[18], out tPS);
-                Double.TryParse(dataArray[19], out jHW);
-                Double.TryParse(dataArray[20], out iSP);
-                Double.TryParse(dataArray[21], out sL);
-                Double.TryParse(dataArray[22], out sLU);
-                Double.TryParse(dataArray[23], out sLE);
-                Double.TryParse(dataArray[24], out sF);
-                Double.TryParse(dataArray[25], out sMG);
-                Double.TryParse(dataArray[26], out sFA);
-                Double.TryParse(dataArray[27], out sMGA);
-                Int32.TryParse(dataArray[28], out propelId);
-                Boolean.TryParse(dataArray[29], out rF);
-                Boolean.TryParse(dataArray[30], out mF);
-                Boolean.TryParse(dataArray[31], out hF);
-                Int32.TryParse(dataArray[32], out propelId1);
-                propelNavn = dataArray[33];
-                Int32.TryParse(dataArray[34], out skrogId);
-                Double.TryParse(dataArray[35], out gmax);
-                Double.TryParse(dataArray[36], out sGmax);
-                Double.TryParse(dataArray[37], out fBSB);
-                Double.TryParse(dataArray[38], out fBBB);
-                Double.TryParse(dataArray[39], out sBmax);
-                Double.TryParse(dataArray[40], out uDFSB);
-                Double.TryParse(dataArray[41], out uDFBB);
-                Double.TryParse(dataArray[42], out oF);
-                Double.TryParse(dataArray[43], out oA);
-                Double.TryParse(dataArray[44], out uDHBmax);
-                Double.TryParse(dataArray[45], out uDHmax);
-                Double.TryParse(dataArray[46], out sTF);
-                Double.TryParse(dataArray[47], out aF);
-                Int32.TryParse(dataArray[48], out specielId);
-                Double.TryParse(dataArray[49], out bmax);
-                Double.TryParse(dataArray[50], out lOA);
-                Double.TryParse(dataArray[51], out d);
-                Double.TryParse(dataArray[52], out k);
-                Double.TryParse(dataArray[53], out kC);
-                Double.TryParse(dataArray[54], out wBF);
-                Double.TryParse(dataArray[55], out wBL);
-                Double.TryParse(dataArray[56], out wBT);
-                Double.TryParse(dataArray[57], out wBV);
-                Double.TryParse(dataArray[58], out sSC);
-                Double.TryParse(dataArray[59], out sST);
-                Int32.TryParse(dataArray[60], out kFId);
-                Boolean.TryParse(dataArray[61], out kontrolVejet);
-                Boolean.TryParse(dataArray[62], out kontrolMaalt);
-                Boolean.TryParse(dataArray[63], out kontrolKrenget);
-                Int32.TryParse(dataArray[64], out propelId2);
-                propelNavn1 = dataArray[65];
-                Int32.TryParse(dataArray[66], out kFId1);
-                kFTekst = dataArray[67];
-                Int32.TryParse(dataArray[68], out baadId);
-                Double.TryParse(dataArray[69], out sSA);
-                Double.TryParse(dataArray[70], out fA1);
-                Double.TryParse(dataArray[71], out fA2);
-                Double.TryParse(dataArray[72], out fA3);
-                Double.TryParse(dataArray[73], out sA);
-                Double.TryParse(dataArray[74], out s);
-                Double.TryParse(dataArray[75], out l);
-                Double.TryParse(dataArray[76], out b);
-                Double.TryParse(dataArray[77], out g);
-                Double.TryParse(dataArray[78], out bogG);
-                Double.TryParse(dataArray[79], out dHK);
-                Double.TryParse(dataArray[80], out wS);
-                Double.TryParse(dataArray[81], out dp);
-                Int32.TryParse(dataArray[82], out wmin);
-                Double.TryParse(dataArray[83], out sv);
-                Double.TryParse(dataArray[84], out tCC);
-                Double.TryParse(dataArray[85], out gPH);
-                Double.TryParse(dataArray[86], out tACIL);
-                Double.TryParse(dataArray[87], out tACIM);
-                Double.TryParse(dataArray[88], out tACIH);
-                Double.TryParse(dataArray[89], out tAUDL);
-                Double.TryParse(dataArray[90], out tAUDM);
-                Double.TryParse(dataArray[91], out tAUDH);
-                Double.TryParse(dataArray[92], out sAS);
-                Double.TryParse(dataArray[93], out sAA);
-                Double.TryParse(dataArray[94], out cW);
-                Double.TryParse(dataArray[95], out tAU3);
-                Double.TryParse(dataArray[96], out tAU4);
-                Double.TryParse(dataArray[97], out tAU5);
-                Double.TryParse(dataArray[98], out tAU6);
-                Double.TryParse(dataArray[99], out tAU7);
-                Double.TryParse(dataArray[100], out tAU8);
-                Double.TryParse(dataArray[101], out tAU10);
-                Double.TryParse(dataArray[102], out tAD3);
-                Double.TryParse(dataArray[103], out tAD4);
-                Double.TryParse(dataArray[104], out tAD5);
-                Double.TryParse(dataArray[105], out tAD6);
-                Double.TryParse(dataArray[106], out tAD7);
-                Double.TryParse(dataArray[107], out tAD8);
-                Double.TryParse(dataArray[108], out tAD10);
-                Double.TryParse(dataArray[109], out tACI3);
-                Double.TryParse(dataArray[110], out tACI4);
-                Double.TryParse(dataArray[111], out tACI5);
-                Double.TryParse(dataArray[112], out tACI6);
-                Double.TryParse(dataArray[113], out tACI7);
-                Double.TryParse(dataArray[114], out tACI8);
-                Double.TryParse(dataArray[115], out tACI10);
-                Double.TryParse(dataArray[116], out pLTCI);
-                Double.TryParse(dataArray[117], out pLDCI);
-                Double.TryParse(dataArray[118], out eCI);
-                Double.TryParse(dataArray[119], out pLTUD);
-                Double.TryParse(dataArray[120], out pLDUD);
-                Double.TryParse(dataArray[121], out eUD);
+                try { Int32.TryParse(dataArray[dataLocationIndex["certifikat"]], out certifikat); } catch (KeyNotFoundException e) { certifikat = -1; };
+                try { baadNavn = dataArray[dataLocationIndex["baadnavn"]]; } catch (KeyNotFoundException e) { baadNavn = "N/A"; };
+                try { nation = dataArray[dataLocationIndex["nation"]]; } catch (KeyNotFoundException e) { nation = "N/A"; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["sejlnummer"]], out sejlNummer); } catch (KeyNotFoundException e) { sejlNummer = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["byggeaar"]], out byggeAar); } catch (KeyNotFoundException e) { byggeAar = -1; };
+                try { baadType = dataArray[dataLocationIndex["baadtypenavn"]]; } catch (KeyNotFoundException e) { baadType = "N/A"; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["klassestatusid"]], out klasseStatusId); } catch (KeyNotFoundException e) { klasseStatusId = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["rigsejlid"]], out rigSejlId); } catch (KeyNotFoundException e) { rigSejlId = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["e"]], out e); } catch (KeyNotFoundException ee) { e = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["p"]], out p); } catch (KeyNotFoundException e) { p = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["hb"]], out hB); } catch (KeyNotFoundException e) { hB = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["mgm"]], out mGM); } catch (KeyNotFoundException e) { mGM = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["mgu"]], out mGU); } catch (KeyNotFoundException e) { mGU = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tmax"]], out tmax); } catch (KeyNotFoundException e) { tmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["lp"]], out lP); } catch (KeyNotFoundException e) { lP = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fsp"]], out fSP); } catch (KeyNotFoundException e) { fSP = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["spl"]], out sPL); } catch (KeyNotFoundException e) { sPL = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["j"]], out j); } catch (KeyNotFoundException e) { j = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tps"]], out tPS); } catch (KeyNotFoundException e) { tPS = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["jhw"]], out jHW); } catch (KeyNotFoundException e) { jHW = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["isp"]], out iSP); } catch (KeyNotFoundException e) { iSP = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sl"]], out sL); } catch (KeyNotFoundException e) { sL = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["slu"]], out sLU); } catch (KeyNotFoundException e) { sLU = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sle"]], out sLE); } catch (KeyNotFoundException e) { sLE = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sf"]], out sF); } catch (KeyNotFoundException e) { sF = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["smg"]], out sMG); } catch (KeyNotFoundException e) { sMG = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sfa"]], out sFA); } catch (KeyNotFoundException e) { sFA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["smga"]], out sMGA); } catch (KeyNotFoundException e) { sMGA = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["propelid"]], out propelId); } catch (KeyNotFoundException e) { propelId = -1; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["rf"]], out rF); } catch (KeyNotFoundException e) { rF = false; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["mf"]], out mF); } catch (KeyNotFoundException e) { mF = false; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["hf"]], out hF); } catch (KeyNotFoundException e) { hF = false; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["propelid1"]], out propelId1); } catch (KeyNotFoundException e) { propelId1 = -1; };
+                try { propelNavn = dataArray[dataLocationIndex["propelnavn"]]; } catch (KeyNotFoundException e) { propelNavn = "N/A"; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["skrogid"]], out skrogId); } catch (KeyNotFoundException e) { skrogId = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["gmax"]], out gmax); } catch (KeyNotFoundException e) { gmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sgmax"]], out sGmax); } catch (KeyNotFoundException e) { sGmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fbsb"]], out fBSB); } catch (KeyNotFoundException e) { fBSB = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fbbb"]], out fBBB); } catch (KeyNotFoundException e) { fBBB = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sbmax"]], out sBmax); } catch (KeyNotFoundException e) { sBmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["udfsb"]], out uDFSB); } catch (KeyNotFoundException e) { uDFSB = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["udfbb"]], out uDFBB); } catch (KeyNotFoundException e) { uDFBB = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["of"]], out oF); } catch (KeyNotFoundException e) { oF = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["oa"]], out oA); } catch (KeyNotFoundException e) { oA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["udhbmax"]], out uDHBmax); } catch (KeyNotFoundException e) { uDHBmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["udhmax"]], out uDHmax); } catch (KeyNotFoundException e) { uDHmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["stf"]], out sTF); } catch (KeyNotFoundException e) { sTF = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["af"]], out aF); } catch (KeyNotFoundException e) { aF = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["specielid"]], out specielId); } catch (KeyNotFoundException e) { specielId = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["bmax"]], out bmax); } catch (KeyNotFoundException e) { bmax = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["loa"]], out lOA); } catch (KeyNotFoundException e) { lOA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["d"]], out d); } catch (KeyNotFoundException e) { d = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["k"]], out k); } catch (KeyNotFoundException e) { k = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["kc"]], out kC); } catch (KeyNotFoundException e) { kC = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["wbf"]], out wBF); } catch (KeyNotFoundException e) { wBF = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["wbl"]], out wBL); } catch (KeyNotFoundException e) { wBL = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["wbt"]], out wBT); } catch (KeyNotFoundException e) { wBT = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["wbv"]], out wBV); } catch (KeyNotFoundException e) { wBV = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["ssc"]], out sSC); } catch (KeyNotFoundException e) { sSC = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sst"]], out sST); } catch (KeyNotFoundException e) { sST = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["kfid"]], out kFId); } catch (KeyNotFoundException e) { kFId = -1; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["kontrolvejet"]], out kontrolVejet); } catch (KeyNotFoundException e) { kontrolVejet = false; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["kontrolmaalt"]], out kontrolMaalt); } catch (KeyNotFoundException e) { kontrolMaalt = false; };
+                try { Boolean.TryParse(dataArray[dataLocationIndex["kontrolkrenget"]], out kontrolKrenget); } catch (KeyNotFoundException e) { kontrolKrenget = false; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["propelid2"]], out propelId2); } catch (KeyNotFoundException e) { propelId2 = -1; };
+                try { propelNavn1 = dataArray[dataLocationIndex["propelnavn1"]]; } catch (KeyNotFoundException e) { propelNavn1 = "N/A"; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["kfid1"]], out kFId1); } catch (KeyNotFoundException e) { kFId1 = -1; };
+                try { kFTekst = dataArray[dataLocationIndex["kftekst"]]; } catch (KeyNotFoundException e) { kFTekst = "N/A"; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["baadid"]], out baadId); } catch (KeyNotFoundException e) { baadId = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["ssa"]], out sSA); } catch (KeyNotFoundException e) { sSA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fa1"]], out fA1); } catch (KeyNotFoundException e) { fA1 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fa2"]], out fA2); } catch (KeyNotFoundException e) { fA2 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["fa3"]], out fA3); } catch (KeyNotFoundException e) { fA3 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sa"]], out sA); } catch (KeyNotFoundException e) { sA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["s"]], out s); } catch (KeyNotFoundException e) { s = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["l"]], out l); } catch (KeyNotFoundException e) { l = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["b"]], out b); } catch (KeyNotFoundException e) { b = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["g"]], out g); } catch (KeyNotFoundException e) { g = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["bogg"]], out bogG); } catch (KeyNotFoundException e) { bogG = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["dhk"]], out dHK); } catch (KeyNotFoundException e) { dHK = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["ws"]], out wS); } catch (KeyNotFoundException e) { wS = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["dp"]], out dp); } catch (KeyNotFoundException e) { dp = -1; };
+                try { Int32.TryParse(dataArray[dataLocationIndex["wmin"]], out wmin); } catch (KeyNotFoundException e) { wmin = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sv"]], out sv); } catch (KeyNotFoundException e) { sv = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tcc"]], out tCC); } catch (KeyNotFoundException e) { tCC = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["gph"]], out gPH); } catch (KeyNotFoundException e) { gPH = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tacil"]], out tACIL); } catch (KeyNotFoundException e) { tACIL = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tacim"]], out tACIM); } catch (KeyNotFoundException e) { tACIM = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tacih"]], out tACIH); } catch (KeyNotFoundException e) { tACIH = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taudl"]], out tAUDL); } catch (KeyNotFoundException e) { tAUDL = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taudm"]], out tAUDM); } catch (KeyNotFoundException e) { tAUDM = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taudh"]], out tAUDH); } catch (KeyNotFoundException e) { tAUDH = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["sas"]], out sAS); } catch (KeyNotFoundException e) { sAS = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["saa"]], out sAA); } catch (KeyNotFoundException e) { sAA = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["cw"]], out cW); } catch (KeyNotFoundException e) { cW = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau3"]], out tAU3); } catch (KeyNotFoundException e) { tAU3 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau4"]], out tAU4); } catch (KeyNotFoundException e) { tAU4 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau5"]], out tAU5); } catch (KeyNotFoundException e) { tAU5 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau6"]], out tAU6); } catch (KeyNotFoundException e) { tAU6 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau7"]], out tAU7); } catch (KeyNotFoundException e) { tAU7 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau8"]], out tAU8); } catch (KeyNotFoundException e) { tAU8 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tau10"]], out tAU10); } catch (KeyNotFoundException e) { tAU10 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad3"]], out tAD3); } catch (KeyNotFoundException e) { tAD3 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad4"]], out tAD4); } catch (KeyNotFoundException e) { tAD4 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad5"]], out tAD5); } catch (KeyNotFoundException e) { tAD5 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad6"]], out tAD6); } catch (KeyNotFoundException e) { tAD6 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad7"]], out tAD7); } catch (KeyNotFoundException e) { tAD7 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad8"]], out tAD8); } catch (KeyNotFoundException e) { tAD8 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["tad10"]], out tAD10); } catch (KeyNotFoundException e) { tAD10 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci3"]], out tACI3); } catch (KeyNotFoundException e) { tACI3 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci4"]], out tACI4); } catch (KeyNotFoundException e) { tACI4 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci5"]], out tACI5); } catch (KeyNotFoundException e) { tACI5 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci6"]], out tACI6); } catch (KeyNotFoundException e) { tACI6 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci7"]], out tACI7); } catch (KeyNotFoundException e) { tACI7 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci8"]], out tACI8); } catch (KeyNotFoundException e) { tACI8 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["taci10"]], out tACI10); } catch (KeyNotFoundException e) { tACI10 = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["pltci"]], out pLTCI); } catch (KeyNotFoundException e) { pLTCI = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["pldci"]], out pLDCI); } catch (KeyNotFoundException e) { pLDCI = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["eci"]], out eCI); } catch (KeyNotFoundException e) { eCI = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["pltud"]], out pLTUD); } catch (KeyNotFoundException e) { pLTUD = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["pldud"]], out pLDUD); } catch (KeyNotFoundException e) { pLDUD = -1; };
+                try { Double.TryParse(dataArray[dataLocationIndex["eud"]], out eUD); } catch (KeyNotFoundException e) { eUD = -1; };
             }
-            catch (System.IndexOutOfRangeException)
+            catch (System.IndexOutOfRangeException e)
             {
                 throw new InvalidDataException("Data can not be read by programe");
             }
@@ -302,7 +304,7 @@ namespace loebsindeling
         public int SejlNummer { get { return sejlNummer; } set { sejlNummer = value; } }
         public int GroupeId { get { return groupeId; } set { groupeId = value; } }
         public string BaadType { get { return baadType; } set { baadType = value;} }
-        public int Aar { get { return aar; } set { aar = value; } }
+        public int ByggeAar { get { return byggeAar; } set { byggeAar = value; } }
         public int KlasseStatusId { get { return klasseStatusId; } set { klasseStatusId = value; } }
         public int RigSejlId { get { return rigSejlId;} set { rigSejlId = value; } }
         public double E { get { return e; } set { e = value; } }
@@ -425,7 +427,8 @@ namespace loebsindeling
             string[] lines = System.IO.File.ReadAllLines(path);
 
             foreach (string line in lines) {
-                if (line[0] == 'C') {
+                if (line[0] == 'C' || line[0] == 'c') {
+                    initDataLocationIndex(line);
                     continue;
                 }
                 Boat boat;
@@ -438,7 +441,16 @@ namespace loebsindeling
                 }
                 boats.Add(boat);
             }
-            int i = 1; //todo remove
+        }
+
+        private static void initDataLocationIndex(string line)
+        {   
+            dataLocationIndex.Clear();
+            string[] dataArray = line.Split(',');
+            for(int i = 0; i < dataArray.Length; i++)
+            {
+                dataLocationIndex.Add(dataArray[i].ToLower(), i);
+            }
         }
 
         public static string boatsToStringSimpel(List<Boat> boats) {
