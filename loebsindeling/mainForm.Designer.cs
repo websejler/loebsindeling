@@ -32,7 +32,6 @@
             this.openDataFileButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.loadData = new System.Windows.Forms.TabPage();
-            this.loadedBoatsTextBox = new System.Windows.Forms.TextBox();
             this.openDataFilePathTextBox = new System.Windows.Forms.TextBox();
             this.sortBoats = new System.Windows.Forms.TabPage();
             this.sortedBoatsTextBox = new System.Windows.Forms.TextBox();
@@ -49,11 +48,13 @@
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
             this.chooseExportPathButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.loadDataDataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.loadData.SuspendLayout();
             this.sortBoats.SuspendLayout();
             this.groupeBoat.SuspendLayout();
             this.exportData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -87,7 +88,7 @@
             // 
             // loadData
             // 
-            this.loadData.Controls.Add(this.loadedBoatsTextBox);
+            this.loadData.Controls.Add(this.loadDataDataGridView1);
             this.loadData.Controls.Add(this.openDataFilePathTextBox);
             this.loadData.Controls.Add(this.openDataFileButton);
             this.loadData.Location = new System.Drawing.Point(4, 22);
@@ -97,19 +98,6 @@
             this.loadData.TabIndex = 0;
             this.loadData.Text = "Indlæs både";
             this.loadData.UseVisualStyleBackColor = true;
-            // 
-            // loadedBoatsTextBox
-            // 
-            this.loadedBoatsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadedBoatsTextBox.Location = new System.Drawing.Point(6, 50);
-            this.loadedBoatsTextBox.Multiline = true;
-            this.loadedBoatsTextBox.Name = "loadedBoatsTextBox";
-            this.loadedBoatsTextBox.ReadOnly = true;
-            this.loadedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.loadedBoatsTextBox.Size = new System.Drawing.Size(760, 441);
-            this.loadedBoatsTextBox.TabIndex = 2;
             // 
             // openDataFilePathTextBox
             // 
@@ -280,6 +268,19 @@
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
+            // loadDataDataGridView1
+            // 
+            this.loadDataDataGridView1.AllowUserToAddRows = false;
+            this.loadDataDataGridView1.AllowUserToDeleteRows = false;
+            this.loadDataDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.loadDataDataGridView1.Location = new System.Drawing.Point(6, 44);
+            this.loadDataDataGridView1.MultiSelect = false;
+            this.loadDataDataGridView1.Name = "loadDataDataGridView1";
+            this.loadDataDataGridView1.ReadOnly = true;
+            this.loadDataDataGridView1.RowHeadersVisible = false;
+            this.loadDataDataGridView1.Size = new System.Drawing.Size(760, 447);
+            this.loadDataDataGridView1.TabIndex = 2;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +298,7 @@
             this.groupeBoat.PerformLayout();
             this.exportData.ResumeLayout(false);
             this.exportData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -309,7 +311,6 @@
         private System.Windows.Forms.TabPage loadData;
         private System.Windows.Forms.TextBox openDataFilePathTextBox;
         private System.Windows.Forms.TabPage sortBoats;
-        private System.Windows.Forms.TextBox loadedBoatsTextBox;
         private System.Windows.Forms.ComboBox sortingAlgorithmComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button sortButton;
@@ -324,6 +325,7 @@
         private System.Windows.Forms.Button groupeBoatsButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox groupeBoatsComboBox;
+        private System.Windows.Forms.DataGridView loadDataDataGridView1;
     }
 }
 

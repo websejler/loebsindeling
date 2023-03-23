@@ -27,12 +27,31 @@ namespace loebsindeling
             openDataFilePathTextBox.Text = openFileDialog1.FileName;
             try
             {
+                loadDataDataGridView1.ColumnCount = 5;
+                loadDataDataGridView1.Columns[0].Name = "Certifikat";
+                loadDataDataGridView1.Columns[0].ValueType = typeof(int);
+                loadDataDataGridView1.Columns[1].Name = "Baad type";
+                loadDataDataGridView1.Columns[2].Name = "Nation";
+                loadDataDataGridView1.Columns[3].Name = "SejlNummer";
+                loadDataDataGridView1.Columns[3].ValueType = typeof(int);
+                loadDataDataGridView1.Columns[4].Name = "Baad navn";
+
+
                 Boat.loadBoatsFromFile(openFileDialog1.FileName);
-                loadedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+                object[,] data = Boat.boatsToDataGridViewString(Boat.boats);
+                object[] temp = new object[data.GetLength(1)];
+                for (int j = 0; j < Boat.boats.Count; j++)
+                {
+                    for (int i = 0; i < data.GetLength(1); i++)
+                    {
+                        temp[i] = data[j, i];
+                    }
+                    loadDataDataGridView1.Rows.Add(temp);
+                }
             }
             catch (InvalidDataException error)
             {
-                loadedBoatsTextBox.Text = "Data kunne ikke læses \n\r" + error.StackTrace;
+                MessageBox.Show("Data kunne ikke læses \n\r" + error.StackTrace);
             }
             
         }
