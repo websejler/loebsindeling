@@ -527,6 +527,20 @@ namespace loebsindeling
             return text;
         }
 
+        public static object[,] boatsToDataGridViewString(List<Boat> boats)
+        {
+            object[,] text = new object[boats.Count,5];
+            for (int i = 0; i < boats.Count; i++)
+            {
+                text[i, 0] = boats[i].Certifikat;
+                text[i, 1] = boats[i].BaadType;
+                text[i, 2] = boats[i].Nation;
+                text[i, 3] = boats[i].SejlNummer;
+                text[i, 4] = boats[i].BaadNavn;
+            }
+            return text;
+        }
+
         public static string boatsToStringSort(List<Boat> boats) {
             string text = "";
             foreach (Boat boat in Boat.boats) {
