@@ -547,14 +547,14 @@ namespace loebsindeling
 
 
         public static string boatsToCsvString(List<Boat> boats) {
-            string text = "Certifikat;Baadnavn;Nation;SejlNummer;groupe;SV;\r\n";
+            string text = "Certifikat;Baadnavn;Nation;SejlNummer;groupe;Soterings tal;\r\n";
             foreach(Boat boat in Boat.boats) {
                 text += boat.Certifikat + ";";
                 text += boat.BaadNavn + ";";
                 text += boat.Nation + ";";
                 text += boat.SejlNummer + ";";
                 text += boat.groupeId + ";";
-                text += boat.Sv.ToString() + ";";
+                text += boat.score + ";";
 
                 text += "\r\n";
             }
