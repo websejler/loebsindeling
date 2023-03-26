@@ -26,7 +26,9 @@ namespace loebsindeling
             openFileDialog1.ShowDialog(this);
             openDataFilePathTextBox.Text = openFileDialog1.FileName;
             try
-            {
+            {   
+                loadDataDataGridView1.Rows.Clear();
+                loadDataDataGridView1.Refresh();
                 loadDataDataGridView1.ColumnCount = 5;
                 loadDataDataGridView1.Columns[0].Name = "Certifikat";
                 loadDataDataGridView1.Columns[0].ValueType = typeof(int);
