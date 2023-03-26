@@ -157,11 +157,11 @@ namespace loebsindeling
                     }else {
                         if (data[i] != '"') newdata += data[i];
                     }
-                } else {
+               } else {
                     if (data[i] != '"') newdata += data[i];
-                }
+               }
             }
-            
+            newdata = newdata.Replace(';', ',');
             string[] dataArray = newdata.Split(',');
             for(int i = 0; i < dataArray.Length; i++) {
                 dataArray[i] = dataArray[i].Replace('.', ',');
@@ -512,6 +512,7 @@ namespace loebsindeling
         private static void initDataLocationIndex(string line)
         {   
             dataLocationIndex.Clear();
+            line = line.Replace(';', ',');
             string[] dataArray = line.Split(',');
             for(int i = 0; i < dataArray.Length; i++)
             {
