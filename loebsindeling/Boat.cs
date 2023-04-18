@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -15,7 +17,7 @@ namespace loebsindeling
     internal class Boat
     {
 
-        public static List<string> standartDisplayVars = new List<string> { "certifikat", "baadtypenavn", "nation", "sejlnummer", "baadnavn", "gph" };
+        public static List<string> standartDisplayVars = new List<string> { "certifikat", "baadtypenavn", "nation", "sejlnummer", "baadnavn", "sorterings score", "loeb nr" };
 
 
         public static List<Boat> boats = new List<Boat>();
@@ -293,7 +295,12 @@ namespace loebsindeling
                         //write the value to the console
                         if (values[i, j] != null)
                         {
-                            temp = values[i, j].ToString() + ",";
+                            temp = values[i, j].ToString();
+                            if (temp.Contains(","))
+                            {
+                                temp = "\"" + temp + "\"";
+                            }
+                            temp += ",";
                         }
                         else
                         {
@@ -359,6 +366,41 @@ namespace loebsindeling
                 text[i, 2] = boats[i].Nation;
                 text[i, 3] = boats[i].SejlNummer;
                 text[i, 4] = boats[i].BaadNavn;
+            }
+            return text;
+        }
+        public static object[,] boatsToDataGridViewString(List<Boat> boats, List<string> vars)
+        {
+            object[,] text = new object[boats.Count, vars.Count];
+            for (int i = 0; i < boats.Count; i++)
+            {
+                for(int j = 0; j<vars.Count; j++)
+                {
+                    if (vars[j].Equals("sorterings score"))
+                    {
+                        text[i,j] = boats[i].score;
+                    }
+                    else if (vars[j].Equals("loeb nr"))
+                    {
+                        text[i,j] = boats[i].groupeId;
+                    }
+                    else if (valuesThatIsInt.Any(vars[j].Contains))
+                    {
+                        text[i,j] = boats[i].intData[vars[j]];
+                    }
+                    else if (valuesThatIsString.Any(vars[j].Contains))
+                    {
+                        text[i,j] = boats[i].stringData[vars[j]];
+                    }
+                    else if (valuesThatIsBool.Any(vars[j].Contains))
+                    {
+                        text[i,j] = boats[i].boolData[vars[j]];
+                    }
+                    else
+                    {
+                        text[i,j] = boats[i].doubleData[vars[j]];
+                    }
+                }
             }
             return text;
         }
@@ -439,6 +481,53 @@ namespace loebsindeling
         public static Dictionary<string, int> getDataLocationIndex()
         {
             return dataLocationIndex;
+        }
+
+        internal static void displayDataGridView(List<Boat> boats, DataGridView dataGridView, List<string> vars)
+        {
+            
+            dataGridView.Rows.Clear();
+            dataGridView.Refresh();
+            if(boats.Count <= 0 )
+            {
+                return;
+            }
+            dataGridView.ColumnCount = vars.Count;
+            int i = 0;
+            //inits datagridview
+            foreach (string s in vars)
+            {
+                dataGridView.Columns[i].Name = s;
+                if (valuesThatIsInt.Any(s.Contains))
+                {
+                    dataGridView.Columns[i].ValueType = typeof(int);
+                    
+                }
+                else if (valuesThatIsString.Any(s.Contains))
+                {
+                }
+                else if (valuesThatIsBool.Any(s.Contains))
+                {
+                    dataGridView.Columns[i].ValueType = typeof(bool);
+                }
+                else
+                {
+                    dataGridView.Columns[i].ValueType = typeof(double);
+                }
+                i++;
+            }
+            //loads data to datagridview
+            
+            object[,] data = Boat.boatsToDataGridViewString(boats, vars);
+            object[] temp = new object[data.GetLength(1)];
+            for (int j = 0; j < Boat.boats.Count; j++)
+            {
+                for (int n= 0; n < data.GetLength(1); n++)
+                {
+                    temp[n] = data[j, n];
+                }
+                dataGridView.Rows.Add(temp);
+            }
         }
     }
 

@@ -35,7 +35,6 @@
             this.loadDataDataGridView1 = new System.Windows.Forms.DataGridView();
             this.openDataFilePathTextBox = new System.Windows.Forms.TextBox();
             this.sortBoats = new System.Windows.Forms.TabPage();
-            this.sortedBoatsTextBox = new System.Windows.Forms.TextBox();
             this.sortButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.sortingAlgorithmComboBox = new System.Windows.Forms.ComboBox();
@@ -51,12 +50,15 @@
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
             this.chooseExportPathButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.sortDataGridView = new System.Windows.Forms.DataGridView();
+            this.sortBoatChangeDataButton1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.loadData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).BeginInit();
             this.sortBoats.SuspendLayout();
             this.groupeBoat.SuspendLayout();
             this.exportData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sortDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -87,6 +89,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(780, 523);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // loadData
             // 
@@ -129,7 +132,8 @@
             // 
             // sortBoats
             // 
-            this.sortBoats.Controls.Add(this.sortedBoatsTextBox);
+            this.sortBoats.Controls.Add(this.sortBoatChangeDataButton1);
+            this.sortBoats.Controls.Add(this.sortDataGridView);
             this.sortBoats.Controls.Add(this.sortButton);
             this.sortBoats.Controls.Add(this.label1);
             this.sortBoats.Controls.Add(this.sortingAlgorithmComboBox);
@@ -141,23 +145,9 @@
             this.sortBoats.Text = "Sorter både";
             this.sortBoats.UseVisualStyleBackColor = true;
             // 
-            // sortedBoatsTextBox
-            // 
-            this.sortedBoatsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sortedBoatsTextBox.Location = new System.Drawing.Point(6, 53);
-            this.sortedBoatsTextBox.Multiline = true;
-            this.sortedBoatsTextBox.Name = "sortedBoatsTextBox";
-            this.sortedBoatsTextBox.ReadOnly = true;
-            this.sortedBoatsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sortedBoatsTextBox.Size = new System.Drawing.Size(760, 441);
-            this.sortedBoatsTextBox.TabIndex = 3;
-            // 
             // sortButton
             // 
-            this.sortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sortButton.Location = new System.Drawing.Point(687, 6);
+            this.sortButton.Location = new System.Drawing.Point(366, 6);
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(85, 25);
             this.sortButton.TabIndex = 2;
@@ -168,7 +158,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 10);
+            this.label1.Location = new System.Drawing.Point(6, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 1;
@@ -180,7 +170,7 @@
             this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
             "Sv",
             "DH2022"});
-            this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(116, 6);
+            this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(111, 8);
             this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";
             this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
             this.sortingAlgorithmComboBox.TabIndex = 0;
@@ -304,6 +294,32 @@
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
+            // sortDataGridView
+            // 
+            this.sortDataGridView.AllowUserToAddRows = false;
+            this.sortDataGridView.AllowUserToDeleteRows = false;
+            this.sortDataGridView.AllowUserToOrderColumns = true;
+            this.sortDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sortDataGridView.Location = new System.Drawing.Point(6, 37);
+            this.sortDataGridView.Name = "sortDataGridView";
+            this.sortDataGridView.ReadOnly = true;
+            this.sortDataGridView.Size = new System.Drawing.Size(760, 454);
+            this.sortDataGridView.TabIndex = 3;
+            // 
+            // sortBoatChangeDataButton1
+            // 
+            this.sortBoatChangeDataButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortBoatChangeDataButton1.Location = new System.Drawing.Point(683, 6);
+            this.sortBoatChangeDataButton1.Name = "sortBoatChangeDataButton1";
+            this.sortBoatChangeDataButton1.Size = new System.Drawing.Size(83, 23);
+            this.sortBoatChangeDataButton1.TabIndex = 4;
+            this.sortBoatChangeDataButton1.Text = "Skift vist data";
+            this.sortBoatChangeDataButton1.UseVisualStyleBackColor = true;
+            this.sortBoatChangeDataButton1.Click += new System.EventHandler(this.sortBoatChangeDataButton1_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +339,7 @@
             this.groupeBoat.PerformLayout();
             this.exportData.ResumeLayout(false);
             this.exportData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sortDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,7 +355,6 @@
         private System.Windows.Forms.ComboBox sortingAlgorithmComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button sortButton;
-        private System.Windows.Forms.TextBox sortedBoatsTextBox;
         private System.Windows.Forms.TabPage exportData;
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.TextBox exportPathTextBox;
@@ -352,6 +368,8 @@
         private System.Windows.Forms.DataGridView loadDataDataGridView1;
         private System.Windows.Forms.CheckedListBox exportDataCheckedListBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView sortDataGridView;
+        private System.Windows.Forms.Button sortBoatChangeDataButton1;
     }
 }
 
