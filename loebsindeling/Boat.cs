@@ -22,7 +22,7 @@ namespace loebsindeling
 
         public static List<Boat> boats = new List<Boat>();
         //only variables that are not doubles are listed.
-        public static List<string> valuesThatIsInt = new List<string> { "certifikat", "sejlnummer", "byggeaar", "klassestatusid", "rigsejlid", "propelid", "propelid1", "skrogid", "specielid", "kfid", "propelid2", "kfid1", "baadid", "wmin"};
+        public static List<string> valuesThatIsInt = new List<string> { "certifikat", "sejlnummer", "byggeaar", "klassestatusid", "rigsejlid", "propelid", "propelid1", "skrogid", "specielid", "kfid", "propelid2", "kfid1", "baadid", "wmin", "loeb nr" };
         public static List<string> valuesThatIsString = new List<string> { "baadnavn", "baadtypenavn", "nation", "propelnavn", "propelnavn1", "kftekst" };
         public static List<string> valuesThatIsBool = new List<string> { "rf", "mf", "hf", "kontrolvejet", "kontrolmaalt", "kontrolkrenget" };
 
@@ -42,6 +42,7 @@ namespace loebsindeling
         {
             doubleData = new Dictionary<string, double>();
             intData = new Dictionary<string, int>();
+            intData.Add("groupeid", 0);
             stringData = new Dictionary<string, string>();
             boolData = new Dictionary<string, bool>();
             
@@ -239,6 +240,7 @@ namespace loebsindeling
         public double PLTUD { get { return doubleData["pltud"]; } set { doubleData["pltud"] = value; } }
         public double PLDUD { get { return doubleData["pldud"]; } set { doubleData["pldud"] = value; } }
         public double EUD { get { return doubleData["eud"]; } set { doubleData["eud"] = value; } }
+        public double Score { get { return score; } set { score = value; } }
 
 
         public static void loadBoatsFromFile(string path)
@@ -378,11 +380,11 @@ namespace loebsindeling
                 {
                     if (vars[j].Equals("sorterings score"))
                     {
-                        text[i,j] = boats[i].score;
+                        text[i,j] = boats[i].Score;
                     }
                     else if (vars[j].Equals("loeb nr"))
                     {
-                        text[i,j] = boats[i].groupeId;
+                        text[i,j] = boats[i].GroupeId;
                     }
                     else if (valuesThatIsInt.Any(vars[j].Contains))
                     {
@@ -445,7 +447,7 @@ namespace loebsindeling
                     }
                     else if (s.Equals("loeb nr"))
                     {
-                        text += boat.groupeId + ";";
+                        text += boat.GroupeId + ";";
                     }
                     else if (valuesThatIsInt.Any(s.Contains))
                     {
