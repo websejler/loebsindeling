@@ -1,4 +1,5 @@
 ﻿using loebsindeling.groupsettings;
+using loebsindeling.sortsettings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,32 +57,19 @@ namespace loebsindeling
             {
                 MessageBox.Show("Data kunne ikke læses \n\r" + error.StackTrace);
             }
-            exportDataCheckedListBox1.Items.Clear();
-            List<string> variable = Boat.getDataLocationIndex().Keys.ToList();
-            for (int i = 0; i < variable.Count; i++){
-                exportDataCheckedListBox1.Items.Add(variable[i]);
-                if (Boat.standartDisplayVars.Contains(variable[i]))
-                {
-                    exportDataCheckedListBox1.SetItemCheckState(i,CheckState.Checked);
-                }
-            }
-            exportDataCheckedListBox1.Items.Add("sorterings score");
-            exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count- 1,CheckState.Checked);
-            exportDataCheckedListBox1.Items.Add("loeb nr");
-            exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
         }
 
         private void sortButton_Click(object sender, EventArgs e) {
             int i = sortingAlgorithmComboBox.SelectedIndex;
             if(i == -1) {
-                sortedBoatsTextBox.Text = "Please select a sorting algorithm.";
+                MessageBox.Show("Please select a sorting algorithm");
                 return;
             }
             
             switch(sortingAlgorithmComboBox.Items[i].ToString().ToLower()) {
                 case "sv":
                     Sorting.svSorting(Boat.boats);
-                    sortedBoatsTextBox.Text = Boat.boatsToStringSimpel(Boat.boats);
+                    Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 case "dh2022":
                     SortSettingsDH2022 Form2 = new SortSettingsDH2022();
@@ -92,10 +81,10 @@ namespace loebsindeling
                     int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
                     int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
                     Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
-                    sortedBoatsTextBox.Text = Boat.boatsToStringSort(Boat.boats);
+                    Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 default:
-                    sortedBoatsTextBox.Text = "Please select a sorting algorithm.";
+                    MessageBox.Show("Please select a sorting algorithm");
                     break;
             }
             
@@ -147,12 +136,67 @@ namespace loebsindeling
                     break;
 
                 default :
-                    sortedBoatsTextBox.Text = "Please select a grouping algorithm.";
+                    MessageBox.Show("Please select a grouping algorithm.");
                     break;
             }
 
         }
 
-        
+        private void sortBoatChangeDataButton1_Click(object sender, EventArgs e)
+        {
+            VariabelToShow variabelToShow = new VariabelToShow();
+            
+            List<string> variable = Boat.getDataLocationIndex().Keys.ToList();
+            variabelToShow.checkedListBox1.Items.Clear();
+            for (int i = 0; i < variable.Count; i++)
+            {
+                variabelToShow.checkedListBox1.Items.Add(variable[i]);
+                if (Boat.standartDisplayVars.Contains(variable[i]))
+                {
+                    variabelToShow.checkedListBox1.SetItemCheckState(i, CheckState.Checked);
+                }
+            }
+            variabelToShow.checkedListBox1.Items.Add("sorterings score");
+            variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
+            variabelToShow.checkedListBox1.Items.Add("loeb nr");
+            variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
+            variabelToShow.ShowDialog();
+
+            if (variabelToShow.abortFlag)
+                return;
+
+            Boat.standartDisplayVars.Clear();
+            for(int i = 0;i < variabelToShow.checkedListBox1.CheckedItems.Count; i++)
+            {
+                Boat.standartDisplayVars.Add(variabelToShow.checkedListBox1.CheckedItems[i].ToString());
+            }
+
+            Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = tabControl1.SelectedTab.Name;
+            if(name.Equals("exportData"))
+            {
+                if (Boat.boats.Count > 0)
+                {
+                    exportDataCheckedListBox1.Items.Clear();
+                    List<string> variable = Boat.getDataLocationIndex().Keys.ToList();
+                    for (int i = 0; i < variable.Count; i++)
+                    {
+                        exportDataCheckedListBox1.Items.Add(variable[i]);
+                        if (Boat.standartDisplayVars.Contains(variable[i]))
+                        {
+                            exportDataCheckedListBox1.SetItemCheckState(i, CheckState.Checked);
+                        }
+                    }
+                    exportDataCheckedListBox1.Items.Add("sorterings score");
+                    exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
+                    exportDataCheckedListBox1.Items.Add("loeb nr");
+                    exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
+                }
+            }
+        }
     }
 }
