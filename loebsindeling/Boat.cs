@@ -15,13 +15,17 @@ namespace loebsindeling
     internal class Boat
     {
 
+        public static List<string> standartDisplayVars = new List<string> { "certifikat", "baadtypenavn", "nation", "sejlnummer", "baadnavn", "gph" };
+
+
         public static List<Boat> boats = new List<Boat>();
-        //onlie variables that are not doubles are listed.
+        //only variables that are not doubles are listed.
         public static List<string> valuesThatIsInt = new List<string> { "certifikat", "sejlnummer", "byggeaar", "klassestatusid", "rigsejlid", "propelid", "propelid1", "skrogid", "specielid", "kfid", "propelid2", "kfid1", "baadid", "wmin"};
         public static List<string> valuesThatIsString = new List<string> { "baadnavn", "baadtypenavn", "nation", "propelnavn", "propelnavn1", "kftekst" };
         public static List<string> valuesThatIsBool = new List<string> { "rf", "mf", "hf", "kontrolvejet", "kontrolmaalt", "kontrolkrenget" };
 
         private static Dictionary<string, int> dataLocationIndex = new Dictionary<string, int>();
+
         private Dictionary<string, double> doubleData;
         private Dictionary<string, int> intData;
         private Dictionary<string, string> stringData;
@@ -380,21 +384,61 @@ namespace loebsindeling
         }
 
 
-        public static string boatsToCsvString(List<Boat> boats)
+        public static string boatsToCsvString(List<Boat> boats, List<string> vars)
         {
-            string text = "Certifikat;Baadnavn;Nation;SejlNummer;groupe;Soterings tal;\r\n";
+            string text = "";
+            foreach (string s in vars)
+            {
+                text += s + ";";
+            }
+            text += "\r\n";
+
             foreach (Boat boat in Boat.boats)
             {
-                text += boat.Certifikat + ";";
-                text += boat.BaadNavn + ";";
-                text += boat.Nation + ";";
-                text += boat.SejlNummer + ";";
-                text += boat.GroupeId + ";";
-                text += boat.score + ";";
-
+                foreach(string s in vars)
+                {
+                    if (s.Equals("sorterings score"))
+                    {
+                        text += boat.score + ";";
+                    }
+                    else if (s.Equals("loeb nr"))
+                    {
+                        text += boat.groupeId + ";";
+                    }
+                    else if (valuesThatIsInt.Any(s.Contains))
+                    {
+                        int temp;
+                        temp = boat.intData[s];
+                        text += temp + ";";
+                    }
+                    else if (valuesThatIsString.Any(s.Contains))
+                    {
+                        string temp;
+                        temp = boat.stringData[s];
+                        text += temp + ";";
+                    }
+                    else if (valuesThatIsBool.Any(s.Contains))
+                    {
+                        bool temp;
+                        temp = boat.boolData[s];
+                        text += temp + ";";
+                    }
+                    else
+                    {
+                        double temp;
+                        temp = boat.doubleData[s];
+                        text += temp + ";";
+                    }
+                }
+                
                 text += "\r\n";
             }
             return text;
+        }
+
+        public static Dictionary<string, int> getDataLocationIndex()
+        {
+            return dataLocationIndex;
         }
     }
 

@@ -55,7 +55,19 @@ namespace loebsindeling
             {
                 MessageBox.Show("Data kunne ikke læses \n\r" + error.StackTrace);
             }
-            
+            exportDataCheckedListBox1.Items.Clear();
+            List<string> variable = Boat.getDataLocationIndex().Keys.ToList();
+            for (int i = 0; i < variable.Count; i++){
+                exportDataCheckedListBox1.Items.Add(variable[i]);
+                if (Boat.standartDisplayVars.Contains(variable[i]))
+                {
+                    exportDataCheckedListBox1.SetItemCheckState(i,CheckState.Checked);
+                }
+            }
+            exportDataCheckedListBox1.Items.Add("sorterings score");
+            exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count- 1,CheckState.Checked);
+            exportDataCheckedListBox1.Items.Add("loeb nr");
+            exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
         }
 
         private void sortButton_Click(object sender, EventArgs e) {
@@ -100,7 +112,12 @@ namespace loebsindeling
         private void exportButton_Click(object sender, EventArgs e) {
             string path = saveFileDialog1.FileName;
             if (!(path.Equals("NA"))) {
-                File.WriteAllText(path, Boat.boatsToCsvString(Boat.boats));
+                List<string> list = new List<string>();
+                for(int i = 0; i < exportDataCheckedListBox1.CheckedItems.Count; i++)
+                {
+                    list.Add(exportDataCheckedListBox1.CheckedItems[i].ToString());
+                }
+                File.WriteAllText(path, Boat.boatsToCsvString(Boat.boats, list));
                 MessageBox.Show("Export success.");
             } else {
                 MessageBox.Show("Please choose a export path.");
@@ -136,9 +153,6 @@ namespace loebsindeling
 
         }
 
-        private void sortedBoatsTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
