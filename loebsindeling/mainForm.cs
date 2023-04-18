@@ -117,7 +117,7 @@ namespace loebsindeling
         {
             int i = groupeBoatsComboBox.SelectedIndex;
             if (i == -1){
-                groupeBoatsTextBox.Text = "Please select a grouping algorithm.";
+                MessageBox.Show("Please select a grouping algorithm.");
                 return;
             }
 
@@ -132,7 +132,7 @@ namespace loebsindeling
 
                     int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
                     Grouping.jst_grouping(Boat.boats, numberOfgroups);
-                    groupeBoatsTextBox.Text = Boat.boatsToStringGrouping(Boat.boats);
+                    Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
 
                 default :
@@ -197,6 +197,38 @@ namespace loebsindeling
                     exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
                 }
             }
+        }
+
+        private void groupeBoatsChangeDatabutton1_Click(object sender, EventArgs e)
+        {
+            VariabelToShow variabelToShow = new VariabelToShow();
+
+            List<string> variable = Boat.getDataLocationIndex().Keys.ToList();
+            variabelToShow.checkedListBox1.Items.Clear();
+            for (int i = 0; i < variable.Count; i++)
+            {
+                variabelToShow.checkedListBox1.Items.Add(variable[i]);
+                if (Boat.standartDisplayVars.Contains(variable[i]))
+                {
+                    variabelToShow.checkedListBox1.SetItemCheckState(i, CheckState.Checked);
+                }
+            }
+            variabelToShow.checkedListBox1.Items.Add("sorterings score");
+            variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
+            variabelToShow.checkedListBox1.Items.Add("loeb nr");
+            variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
+            variabelToShow.ShowDialog();
+
+            if (variabelToShow.abortFlag)
+                return;
+
+            Boat.standartDisplayVars.Clear();
+            for (int i = 0; i < variabelToShow.checkedListBox1.CheckedItems.Count; i++)
+            {
+                Boat.standartDisplayVars.Add(variabelToShow.checkedListBox1.CheckedItems[i].ToString());
+            }
+
+            Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
         }
     }
 }
