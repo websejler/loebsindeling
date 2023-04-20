@@ -131,17 +131,26 @@ namespace loebsindeling
             switch(groupeBoatsComboBox.Items[i].ToString().ToLower())
             {
                 case "jst-grouping":
-                    jst_groupSettings form2 = new jst_groupSettings();
+                    Jst_groupSettings form2 = new Jst_groupSettings();
                     form2.ShowDialog();
 
                     if (form2.abortFlag)
-                        break;
+                        return;
 
                     int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
                     Grouping.jst_grouping(Boat.boats, numberOfgroups);
                     Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
+                case "flyve grupper":
+                    FlyveGrupperSettings flyveGrupperSettings = new FlyveGrupperSettings();
+                    flyveGrupperSettings.ShowDialog();
 
+                    if (flyveGrupperSettings.abortFlag)
+                    {
+                        return;
+                    }
+                    //do some thing
+                    break;
                 default :
                     MessageBox.Show("Please select a grouping algorithm.");
                     break;

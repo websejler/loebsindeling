@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace loebsindeling.groupsettings
 {
-    public partial class jst_groupSettings : Form
+    public partial class Jst_groupSettings : Form
     {
         public bool abortFlag;
-        public jst_groupSettings()
+        public Jst_groupSettings()
         {
             InitializeComponent();
         }
