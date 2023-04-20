@@ -83,6 +83,10 @@ namespace loebsindeling
                     Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
+                case "dh cdl":
+                    Sorting.dHCDL(Boat.boats);
+                    Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
+                    break;
                 default:
                     MessageBox.Show("Please select a sorting algorithm");
                     break;
