@@ -26,6 +26,9 @@ namespace loebsindeling
         private void openDataFileButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog(this);
+            if (openFileDialog1.FileName.Equals("openFileDialog1")){
+                return;
+            }
             openDataFilePathTextBox.Text = openFileDialog1.FileName;
             try
             {   
