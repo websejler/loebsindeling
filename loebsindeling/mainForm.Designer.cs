@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sortingAlgorithmComboBox = new System.Windows.Forms.ComboBox();
             this.groupeBoat = new System.Windows.Forms.TabPage();
+            this.groupeBoatsChangeDatabutton1 = new System.Windows.Forms.Button();
+            this.groupeDataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupeBoatsButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupeBoatsComboBox = new System.Windows.Forms.ComboBox();
@@ -51,16 +53,14 @@
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
             this.chooseExportPathButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.groupeDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupeBoatsChangeDatabutton1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.loadData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).BeginInit();
             this.sortBoats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sortDataGridView)).BeginInit();
             this.groupeBoat.SuspendLayout();
-            this.exportData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupeDataGridView1)).BeginInit();
+            this.exportData.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -197,7 +197,8 @@
             this.sortingAlgorithmComboBox.FormattingEnabled = true;
             this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
             "Sv",
-            "DH2022"});
+            "DH2022",
+            "DH CDL"});
             this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(111, 8);
             this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";
             this.sortingAlgorithmComboBox.Size = new System.Drawing.Size(248, 21);
@@ -216,6 +217,32 @@
             this.groupeBoat.TabIndex = 3;
             this.groupeBoat.Text = "Grupper både";
             this.groupeBoat.UseVisualStyleBackColor = true;
+            // 
+            // groupeBoatsChangeDatabutton1
+            // 
+            this.groupeBoatsChangeDatabutton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupeBoatsChangeDatabutton1.Location = new System.Drawing.Point(683, 9);
+            this.groupeBoatsChangeDatabutton1.Name = "groupeBoatsChangeDatabutton1";
+            this.groupeBoatsChangeDatabutton1.Size = new System.Drawing.Size(83, 23);
+            this.groupeBoatsChangeDatabutton1.TabIndex = 8;
+            this.groupeBoatsChangeDatabutton1.Text = "Skift vist data";
+            this.groupeBoatsChangeDatabutton1.UseVisualStyleBackColor = true;
+            this.groupeBoatsChangeDatabutton1.Click += new System.EventHandler(this.groupeBoatsChangeDatabutton1_Click);
+            // 
+            // groupeDataGridView1
+            // 
+            this.groupeDataGridView1.AllowUserToAddRows = false;
+            this.groupeDataGridView1.AllowUserToDeleteRows = false;
+            this.groupeDataGridView1.AllowUserToOrderColumns = true;
+            this.groupeDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupeDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.groupeDataGridView1.Location = new System.Drawing.Point(6, 38);
+            this.groupeDataGridView1.Name = "groupeDataGridView1";
+            this.groupeDataGridView1.ReadOnly = true;
+            this.groupeDataGridView1.Size = new System.Drawing.Size(763, 453);
+            this.groupeDataGridView1.TabIndex = 7;
             // 
             // groupeBoatsButton
             // 
@@ -309,32 +336,6 @@
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
-            // groupeDataGridView1
-            // 
-            this.groupeDataGridView1.AllowUserToAddRows = false;
-            this.groupeDataGridView1.AllowUserToDeleteRows = false;
-            this.groupeDataGridView1.AllowUserToOrderColumns = true;
-            this.groupeDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupeDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.groupeDataGridView1.Location = new System.Drawing.Point(6, 38);
-            this.groupeDataGridView1.Name = "groupeDataGridView1";
-            this.groupeDataGridView1.ReadOnly = true;
-            this.groupeDataGridView1.Size = new System.Drawing.Size(763, 453);
-            this.groupeDataGridView1.TabIndex = 7;
-            // 
-            // groupeBoatsChangeDatabutton1
-            // 
-            this.groupeBoatsChangeDatabutton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupeBoatsChangeDatabutton1.Location = new System.Drawing.Point(683, 9);
-            this.groupeBoatsChangeDatabutton1.Name = "groupeBoatsChangeDatabutton1";
-            this.groupeBoatsChangeDatabutton1.Size = new System.Drawing.Size(83, 23);
-            this.groupeBoatsChangeDatabutton1.TabIndex = 8;
-            this.groupeBoatsChangeDatabutton1.Text = "Skift vist data";
-            this.groupeBoatsChangeDatabutton1.UseVisualStyleBackColor = true;
-            this.groupeBoatsChangeDatabutton1.Click += new System.EventHandler(this.groupeBoatsChangeDatabutton1_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,9 +354,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.sortDataGridView)).EndInit();
             this.groupeBoat.ResumeLayout(false);
             this.groupeBoat.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupeDataGridView1)).EndInit();
             this.exportData.ResumeLayout(false);
             this.exportData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupeDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
