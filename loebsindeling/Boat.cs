@@ -18,6 +18,11 @@ namespace loebsindeling
     {
 
         public static List<string> standartDisplayVars = new List<string> { "certifikat", "baadtypenavn", "nation", "sejlnummer", "baadnavn", "sorterings score", "loeb nr" };
+        public static int nrOfBoatsWithNoFlyingSails;
+        public static int nrOfBoatsWithSpinnakerAndGennaker;
+        public static int nrOfBoatsWithSpinnaker;
+        public static int nrOfBoatsWithGennaker;
+        public static int nrOfBoatsWithSpinnakerOrGennaker;
 
 
         public static List<Boat> boats = new List<Boat>();
@@ -113,6 +118,26 @@ namespace loebsindeling
 
             ints = new List<int>();
             groupeId = 0;
+            if(this.SL == 0 && this.SLU == 0)
+            {
+                nrOfBoatsWithNoFlyingSails++;
+            } 
+            else if (this.SL != 0 && this.SLU != 0)
+            {
+                nrOfBoatsWithSpinnakerAndGennaker++;
+                nrOfBoatsWithSpinnakerOrGennaker++;
+            }
+            else if (this.SLU != 0 && this.SL == 0)
+            {
+                nrOfBoatsWithGennaker++;
+                nrOfBoatsWithSpinnakerOrGennaker++;
+            }
+            else if (this.SLU == 0 && this.SL != 0)
+            {
+                nrOfBoatsWithSpinnaker++;
+                nrOfBoatsWithSpinnakerOrGennaker++;
+            }
+            
         }
 
 
@@ -246,6 +271,11 @@ namespace loebsindeling
         public static void loadBoatsFromFile(string path)
         {
             boats.Clear();
+            nrOfBoatsWithNoFlyingSails = 0;
+            nrOfBoatsWithSpinnakerAndGennaker = 0;
+            nrOfBoatsWithSpinnaker = 0;
+            nrOfBoatsWithGennaker = 0;
+            nrOfBoatsWithSpinnakerOrGennaker = 0;
             string[] lines = { "" };
             if (path.EndsWith(".csv"))
             {
@@ -532,5 +562,4 @@ namespace loebsindeling
             }
         }
     }
-
 }

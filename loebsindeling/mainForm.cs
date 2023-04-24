@@ -131,17 +131,45 @@ namespace loebsindeling
             switch(groupeBoatsComboBox.Items[i].ToString().ToLower())
             {
                 case "jst-grouping":
-                    jst_groupSettings form2 = new jst_groupSettings();
+                    Jst_groupSettings form2 = new Jst_groupSettings();
                     form2.ShowDialog();
 
                     if (form2.abortFlag)
-                        break;
+                        return;
 
                     int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
                     Grouping.jst_grouping(Boat.boats, numberOfgroups);
                     Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
+                case "flyve grupper":
+                    FlyveGrupperSettings flyveGrupperSettings = new FlyveGrupperSettings();
+                    flyveGrupperSettings.ShowDialog();
 
+                    if (flyveGrupperSettings.abortFlag)
+                    {
+                        return;
+                    }
+                    //do some thing
+                    int temp1 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown1.Value);
+                    int temp2 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown2.Value);
+                    int temp3 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown3.Value);
+                    int temp4 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown4.Value);
+                    switch (flyveGrupperSettings.state)
+                    {
+                        case 1:
+                            Grouping.jst_grouping(Boat.boats, temp1);
+                            break;
+                        case 2:
+                            Grouping.flyvergruppering2(Boat.boats, temp1, temp2);
+                            break;
+                        case 3:
+                            Grouping.flyvergruppering4(Boat.boats, temp1, temp2, temp3, temp4);
+                            break;
+                        default:
+                            break;
+                    }
+                    Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
+                    break;
                 default :
                     MessageBox.Show("Please select a grouping algorithm.");
                     break;
