@@ -41,6 +41,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.nrOfBoats1 = new System.Windows.Forms.Label();
+            this.nrOfBoats2 = new System.Windows.Forms.Label();
+            this.nrOfBoats3 = new System.Windows.Forms.Label();
+            this.nrOfBoats4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -70,7 +74,7 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown4.Location = new System.Drawing.Point(671, 190);
+            this.numericUpDown4.Location = new System.Drawing.Point(518, 245);
             this.numericUpDown4.Minimum = new decimal(new int[] {
             1,
             0,
@@ -88,7 +92,7 @@
             // raceLabel4
             // 
             this.raceLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.raceLabel4.Location = new System.Drawing.Point(249, 192);
+            this.raceLabel4.Location = new System.Drawing.Point(96, 247);
             this.raceLabel4.Name = "raceLabel4";
             this.raceLabel4.Size = new System.Drawing.Size(416, 18);
             this.raceLabel4.TabIndex = 18;
@@ -98,7 +102,7 @@
             // numericUpDown3
             // 
             this.numericUpDown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown3.Location = new System.Drawing.Point(671, 164);
+            this.numericUpDown3.Location = new System.Drawing.Point(518, 219);
             this.numericUpDown3.Minimum = new decimal(new int[] {
             1,
             0,
@@ -116,7 +120,7 @@
             // raceLabel3
             // 
             this.raceLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.raceLabel3.Location = new System.Drawing.Point(249, 166);
+            this.raceLabel3.Location = new System.Drawing.Point(96, 221);
             this.raceLabel3.Name = "raceLabel3";
             this.raceLabel3.Size = new System.Drawing.Size(416, 18);
             this.raceLabel3.TabIndex = 20;
@@ -126,7 +130,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.Location = new System.Drawing.Point(671, 138);
+            this.numericUpDown2.Location = new System.Drawing.Point(518, 193);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             1,
             0,
@@ -144,7 +148,7 @@
             // raceLabel2
             // 
             this.raceLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.raceLabel2.Location = new System.Drawing.Point(249, 140);
+            this.raceLabel2.Location = new System.Drawing.Point(96, 195);
             this.raceLabel2.Name = "raceLabel2";
             this.raceLabel2.Size = new System.Drawing.Size(416, 18);
             this.raceLabel2.TabIndex = 22;
@@ -154,7 +158,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown1.Location = new System.Drawing.Point(671, 112);
+            this.numericUpDown1.Location = new System.Drawing.Point(518, 167);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
             0,
@@ -172,7 +176,7 @@
             // raceLabel1
             // 
             this.raceLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.raceLabel1.Location = new System.Drawing.Point(249, 114);
+            this.raceLabel1.Location = new System.Drawing.Point(96, 169);
             this.raceLabel1.Name = "raceLabel1";
             this.raceLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.raceLabel1.Size = new System.Drawing.Size(416, 18);
@@ -216,11 +220,59 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
+            // nrOfBoats1
+            // 
+            this.nrOfBoats1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrOfBoats1.Location = new System.Drawing.Point(641, 169);
+            this.nrOfBoats1.Name = "nrOfBoats1";
+            this.nrOfBoats1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrOfBoats1.Size = new System.Drawing.Size(85, 18);
+            this.nrOfBoats1.TabIndex = 29;
+            this.nrOfBoats1.Text = "Antal løb";
+            this.nrOfBoats1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nrOfBoats2
+            // 
+            this.nrOfBoats2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrOfBoats2.Location = new System.Drawing.Point(641, 195);
+            this.nrOfBoats2.Name = "nrOfBoats2";
+            this.nrOfBoats2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrOfBoats2.Size = new System.Drawing.Size(85, 18);
+            this.nrOfBoats2.TabIndex = 30;
+            this.nrOfBoats2.Text = "Antal løb";
+            this.nrOfBoats2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nrOfBoats3
+            // 
+            this.nrOfBoats3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrOfBoats3.Location = new System.Drawing.Point(641, 221);
+            this.nrOfBoats3.Name = "nrOfBoats3";
+            this.nrOfBoats3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrOfBoats3.Size = new System.Drawing.Size(85, 18);
+            this.nrOfBoats3.TabIndex = 31;
+            this.nrOfBoats3.Text = "Antal løb";
+            this.nrOfBoats3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nrOfBoats4
+            // 
+            this.nrOfBoats4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrOfBoats4.Location = new System.Drawing.Point(641, 247);
+            this.nrOfBoats4.Name = "nrOfBoats4";
+            this.nrOfBoats4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrOfBoats4.Size = new System.Drawing.Size(85, 18);
+            this.nrOfBoats4.TabIndex = 32;
+            this.nrOfBoats4.Text = "Antal løb";
+            this.nrOfBoats4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FlyveGrupperSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.nrOfBoats4);
+            this.Controls.Add(this.nrOfBoats3);
+            this.Controls.Add(this.nrOfBoats2);
+            this.Controls.Add(this.nrOfBoats1);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.radioButton2);
@@ -259,5 +311,9 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label nrOfBoats1;
+        private System.Windows.Forms.Label nrOfBoats2;
+        private System.Windows.Forms.Label nrOfBoats3;
+        private System.Windows.Forms.Label nrOfBoats4;
     }
 }

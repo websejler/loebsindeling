@@ -345,7 +345,7 @@
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(800, 566);
             this.Name = "mainForm";
-            this.Text = "Løbsindeling - 1.1.5";
+            this.Text = "Løbsindeling - 1.2.0";
             this.tabControl1.ResumeLayout(false);
             this.loadData.ResumeLayout(false);
             this.loadData.PerformLayout();

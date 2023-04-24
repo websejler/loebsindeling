@@ -150,6 +150,25 @@ namespace loebsindeling
                         return;
                     }
                     //do some thing
+                    int temp1 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown1.Value);
+                    int temp2 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown2.Value);
+                    int temp3 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown3.Value);
+                    int temp4 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown4.Value);
+                    switch (flyveGrupperSettings.state)
+                    {
+                        case 1:
+                            Grouping.jst_grouping(Boat.boats, temp1);
+                            break;
+                        case 2:
+                            Grouping.flyvergruppering2(Boat.boats, temp1, temp2);
+                            break;
+                        case 3:
+                            Grouping.flyvergruppering4(Boat.boats, temp1, temp2, temp3, temp4);
+                            break;
+                        default:
+                            break;
+                    }
+                    Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
                 default :
                     MessageBox.Show("Please select a grouping algorithm.");
