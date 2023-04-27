@@ -65,7 +65,7 @@ namespace loebsindeling
         private void sortButton_Click(object sender, EventArgs e) {
             int i = sortingAlgorithmComboBox.SelectedIndex;
             if(i == -1) {
-                MessageBox.Show("Please select a sorting algorithm");
+                MessageBox.Show("Vælg en sortering algoritme");
                 return;
             }
             
@@ -91,7 +91,7 @@ namespace loebsindeling
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 default:
-                    MessageBox.Show("Please select a sorting algorithm");
+                    MessageBox.Show("Vælg en sortering algoritme");
                     break;
             }
             
@@ -114,9 +114,9 @@ namespace loebsindeling
                     list.Add(exportDataCheckedListBox1.CheckedItems[i].ToString());
                 }
                 File.WriteAllText(path, Boat.boatsToCsvString(Boat.boats, list));
-                MessageBox.Show("Export success.");
+                MessageBox.Show("Export succes");
             } else {
-                MessageBox.Show("Please choose a export path.");
+                MessageBox.Show("Vælg en export sti.");
             }
         }
 
@@ -124,7 +124,7 @@ namespace loebsindeling
         {
             int i = groupeBoatsComboBox.SelectedIndex;
             if (i == -1){
-                MessageBox.Show("Please select a grouping algorithm.");
+                MessageBox.Show("Vælg en grupperings algoritme");
                 return;
             }
 
@@ -171,7 +171,7 @@ namespace loebsindeling
                     Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
                 default :
-                    MessageBox.Show("Please select a grouping algorithm.");
+                    MessageBox.Show("Vælg en grupperings algoritme");
                     break;
             }
 
