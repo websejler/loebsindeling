@@ -9,7 +9,7 @@ namespace loebsindeling
 {
     internal class Grouping
     {
-        public static List<Boat> jst_grouping(List<Boat> boatList, int numberOfGroups)
+        public static List<Boat> scoreStepGruppering(List<Boat> boatList, int numberOfGroups)
         {
             if(boatList.Count== 0) throw new InvalidDataException("No data");
             double min, max, step;
@@ -29,7 +29,7 @@ namespace loebsindeling
             }
             return boatList;
         }
-        public static List<Boat> jst_grouping(List<Boat> boatList, int numberOfGroups, int startGroupeNr)
+        public static List<Boat> scoreStepGruppering(List<Boat> boatList, int numberOfGroups, int startGroupeNr)
         {
             if (boatList.Count == 0) throw new InvalidDataException("No data");
             double min, max, step;
@@ -65,8 +65,8 @@ namespace loebsindeling
                     flyingSailsGroupe.Add(boat);
                 }
             }
-            jst_grouping(flyingSailsGroupe, nrOfFlyingSailsGroups);
-            jst_grouping(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nrOfFlyingSailsGroups+1);
+            scoreStepGruppering(flyingSailsGroupe, nrOfFlyingSailsGroups);
+            scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nrOfFlyingSailsGroups+1);
 
             return;
         }
@@ -98,12 +98,12 @@ namespace loebsindeling
                 }
             }
             int nextGroupeID = nrOfSpinnakerAndGennakerSailsGroups+1;
-            jst_grouping(spinnakerAndGennakerGroupe, nrOfSpinnakerAndGennakerSailsGroups);
-            jst_grouping(gennakerGroupe, nrOfGennakerSailsGroups, nextGroupeID);
+            scoreStepGruppering(spinnakerAndGennakerGroupe, nrOfSpinnakerAndGennakerSailsGroups);
+            scoreStepGruppering(gennakerGroupe, nrOfGennakerSailsGroups, nextGroupeID);
             nextGroupeID += nrOfGennakerSailsGroups;
-            jst_grouping(spinnakerGroupe, nrOfSpinnakerSailsGroups, nextGroupeID);
+            scoreStepGruppering(spinnakerGroupe, nrOfSpinnakerSailsGroups, nextGroupeID);
             nextGroupeID += nrOfSpinnakerSailsGroups;
-            jst_grouping(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nextGroupeID);
+            scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nextGroupeID);
 
             return;
         }
