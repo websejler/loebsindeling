@@ -95,6 +95,12 @@
     <Compile Include="groupsettings\FlyveGrupperSettings.Designer.cs">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="groupsettings\GrafDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="groupsettings\GrafDrawing.Designer.cs">
+      <DependentUpon>GrafDrawing.cs</DependentUpon>
+    </Compile>
     <Compile Include="groupsettings\ScoreStepGrupperingSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="groupsettings\FlyveGrupperSettings.resx">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="groupsettings\GrafDrawing.resx">
+      <DependentUpon>GrafDrawing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="groupsettings\ScoreStepGrupperingSettings.resx">
       <DependentUpon>ScoreStepGrupperingSettings.cs</DependentUpon>
