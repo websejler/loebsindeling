@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Jst_groupSettings));
             this.numberOfGroups = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -90,6 +91,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.numberOfGroups);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Jst_groupSettings";
             this.Text = "jst_groupSettings";
             ((System.ComponentModel.ISupportInitialize)(this.numberOfGroups)).EndInit();

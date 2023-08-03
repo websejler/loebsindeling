@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace loebsindeling
     {
         public static List<Boat> jst_grouping(List<Boat> boatList, int numberOfGroups)
         {
+            if(boatList.Count== 0) throw new InvalidDataException("No data");
             double min, max, step;
             min = boatList[0].score;
             max = boatList[boatList.Count-1].score;
@@ -29,6 +31,7 @@ namespace loebsindeling
         }
         public static List<Boat> jst_grouping(List<Boat> boatList, int numberOfGroups, int startGroupeNr)
         {
+            if (boatList.Count == 0) throw new InvalidDataException("No data");
             double min, max, step;
             min = boatList[0].score;
             max = boatList[boatList.Count - 1].score;
@@ -49,6 +52,7 @@ namespace loebsindeling
 
         public static void flyvergruppering2(List<Boat> boats, int nrOfNoFlyingSailsGroups, int nrOfFlyingSailsGroups)
         {
+            if (boats.Count == 0) throw new InvalidDataException("No data");
             List<Boat> noFlyingSailsGroupe = new List<Boat>();
             List<Boat> flyingSailsGroupe = new List<Boat>();
             foreach(Boat boat in boats)
