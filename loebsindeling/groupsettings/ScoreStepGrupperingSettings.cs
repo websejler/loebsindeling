@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace loebsindeling.groupsettings
 {
-    public partial class Jst_groupSettings : Form
+    public partial class ScoreStepGrupperingSettings : Form
     {
         public bool abortFlag;
-        public Jst_groupSettings()
+        public ScoreStepGrupperingSettings()
         {
             InitializeComponent();
         }

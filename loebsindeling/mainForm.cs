@@ -130,15 +130,15 @@ namespace loebsindeling
 
             switch(groupeBoatsComboBox.Items[i].ToString().ToLower())
             {
-                case "jst-grouping":
-                    Jst_groupSettings form2 = new Jst_groupSettings();
+                case "score step gruppering":
+                    ScoreStepGrupperingSettings form2 = new ScoreStepGrupperingSettings();
                     form2.ShowDialog();
 
                     if (form2.abortFlag)
                         return;
 
                     int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
-                    Grouping.jst_grouping(Boat.boats, numberOfgroups);
+                    Grouping.scoreStepGruppering(Boat.boats, numberOfgroups);
                     Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
                 case "flyve grupper":
@@ -157,7 +157,7 @@ namespace loebsindeling
                     switch (flyveGrupperSettings.state)
                     {
                         case 1:
-                            Grouping.jst_grouping(Boat.boats, temp1);
+                            Grouping.scoreStepGruppering(Boat.boats, temp1);
                             break;
                         case 2:
                             Grouping.flyvergruppering2(Boat.boats, temp1, temp2);

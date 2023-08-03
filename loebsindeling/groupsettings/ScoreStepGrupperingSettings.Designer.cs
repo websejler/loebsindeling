@@ -1,6 +1,6 @@
 ﻿namespace loebsindeling.groupsettings
 {
-    partial class Jst_groupSettings
+    partial class ScoreStepGrupperingSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Jst_groupSettings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScoreStepGrupperingSettings));
             this.numberOfGroups = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -82,7 +82,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Jst_groupSettings
+            // ScoreStepGrupperingSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,8 +92,8 @@
             this.Controls.Add(this.numberOfGroups);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Jst_groupSettings";
-            this.Text = "jst_groupSettings";
+            this.Name = "ScoreStepGrupperingSettings";
+            this.Text = "ScoreStepGrupperingSettings";
             ((System.ComponentModel.ISupportInitialize)(this.numberOfGroups)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

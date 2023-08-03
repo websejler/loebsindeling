@@ -95,11 +95,11 @@
     <Compile Include="groupsettings\FlyveGrupperSettings.Designer.cs">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="groupsettings\Jst-groupSettings.cs">
+    <Compile Include="groupsettings\ScoreStepGrupperingSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="groupsettings\Jst-groupSettings.Designer.cs">
-      <DependentUpon>Jst-groupSettings.cs</DependentUpon>
+    <Compile Include="groupsettings\ScoreStepGrupperingSettings.Designer.cs">
+      <DependentUpon>ScoreStepGrupperingSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
@@ -125,8 +125,8 @@
     <EmbeddedResource Include="groupsettings\FlyveGrupperSettings.resx">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="groupsettings\Jst-groupSettings.resx">
-      <DependentUpon>Jst-groupSettings.cs</DependentUpon>
+    <EmbeddedResource Include="groupsettings\ScoreStepGrupperingSettings.resx">
+      <DependentUpon>ScoreStepGrupperingSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>

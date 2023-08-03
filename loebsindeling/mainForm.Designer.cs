@@ -268,7 +268,7 @@
             // 
             this.groupeBoatsComboBox.FormattingEnabled = true;
             this.groupeBoatsComboBox.Items.AddRange(new object[] {
-            "JST-Grouping",
+            "Score step gruppering",
             "Flyve Grupper"});
             this.groupeBoatsComboBox.Location = new System.Drawing.Point(121, 11);
             this.groupeBoatsComboBox.Name = "groupeBoatsComboBox";
