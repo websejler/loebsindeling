@@ -18,8 +18,12 @@ namespace loebsindeling.groupsettings
         
         public GrafDrawing()
         {
-            InitializeComponent();   
+            InitializeComponent();
+            xVar = "score";
+            yVar = "l";
         }
+
+        string xVar, yVar;
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -29,9 +33,9 @@ namespace loebsindeling.groupsettings
             List<double> ys = new List<double>();
             foreach(Boat boat in Boat.boats)
             {
-               xs.Add(boat.Score);
+                xs.Add(boat.getDataDoubleCast(xVar));
                 //ys.Add(boat.LOA-boat.OA-boat.OF);
-                ys.Add(boat.L);
+                ys.Add(boat.getDataDoubleCast(yVar));
             }
 
             double minX = xs.Min();
@@ -52,7 +56,7 @@ namespace loebsindeling.groupsettings
                 ys[i] = (ys[i]-minY)*yScale;
                 g.DrawRectangle(pen, dot((int)xs[i], (int)ys[i]));
             }
-            
+            AxisText.Text = "x Axis: " + xVar + "      y Axis: " + yVar;
         }
 
         private System.Drawing.Rectangle dot(int x, int y)
@@ -60,13 +64,28 @@ namespace loebsindeling.groupsettings
             return new System.Drawing.Rectangle(x+1, panel1.Height - (y + 2),1,1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void yAxis_Click(object sender, EventArgs e)
+        {
+            List<String> varNames = new List<string>(Boat.getDataLocationIndex().Keys);
+            //todo remove other axis form list.
+
+            ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
+            changeDataInGraph.ShowDialog();
+
+            yVar = changeDataInGraph.var;
+            this.Refresh();
+        }
+
+        private void xAxis_Click(object sender, EventArgs e)
         {
             List<String> varNames = new List<string>(Boat.getDataLocationIndex().Keys);
             //todo remove other axis form list.
             
             ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
-            changeDataInGraph.Show();
+            changeDataInGraph.ShowDialog();
+            
+            xVar = changeDataInGraph.var;
+            this.Refresh();
 
         }
     }

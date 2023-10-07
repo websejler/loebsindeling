@@ -15,6 +15,7 @@ namespace loebsindeling.groupsettings.grafDrawingFolder
     {
         public int i = 1;
         List<Button> buttonList = new List<Button>();
+        public string var = "";
 
         public ChangeDataInGraph(List<String> varNames)
         {
@@ -36,11 +37,19 @@ namespace loebsindeling.groupsettings.grafDrawingFolder
                     button.Location = new Point(x, y);
                 }
                 button.Text = varNames[j];
+                button.Click += new EventHandler(changeVarButton_Click);
                 this.panel1.Controls.Add(button);
                 button.Show();
                 buttonList.Add(button);
             }
 
+        }
+
+        protected void changeVarButton_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            var = b.Text;
+            this.Close();
         }
     }
 }
