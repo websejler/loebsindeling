@@ -269,5 +269,10 @@ namespace loebsindeling
 
             Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
         }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

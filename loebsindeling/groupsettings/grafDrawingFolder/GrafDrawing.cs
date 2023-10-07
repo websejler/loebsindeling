@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using loebsindeling.groupsettings.grafDrawingFolder;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace loebsindeling.groupsettings
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen pen = new Pen(Color.FromArgb(91, 192, 222) , 4);
+            Pen pen = new Pen(Color.FromArgb(91, 192, 222) , 2);
             List<double> xs = new List<double>();
             List<double> ys = new List<double>();
             foreach(Boat boat in Boat.boats)
@@ -57,6 +58,16 @@ namespace loebsindeling.groupsettings
         private System.Drawing.Rectangle dot(int x, int y)
         {
             return new System.Drawing.Rectangle(x+1, panel1.Height - (y + 2),1,1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<String> varNames = new List<string>(Boat.getDataLocationIndex().Keys);
+            //todo remove other axis form list.
+            
+            ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
+            changeDataInGraph.Show();
+
         }
     }
 }

@@ -95,10 +95,16 @@
     <Compile Include="groupsettings\FlyveGrupperSettings.Designer.cs">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="groupsettings\GrafDrawing.cs">
+    <Compile Include="groupsettings\grafDrawingFolder\ChangeDataInGraph.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="groupsettings\GrafDrawing.Designer.cs">
+    <Compile Include="groupsettings\grafDrawingFolder\ChangeDataInGraph.Designer.cs">
+      <DependentUpon>ChangeDataInGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="groupsettings\grafDrawingFolder\GrafDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="groupsettings\grafDrawingFolder\GrafDrawing.Designer.cs">
       <DependentUpon>GrafDrawing.cs</DependentUpon>
     </Compile>
     <Compile Include="groupsettings\ScoreStepGrupperingSettings.cs">
@@ -131,7 +137,10 @@
     <EmbeddedResource Include="groupsettings\FlyveGrupperSettings.resx">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="groupsettings\GrafDrawing.resx">
+    <EmbeddedResource Include="groupsettings\grafDrawingFolder\ChangeDataInGraph.resx">
+      <DependentUpon>ChangeDataInGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="groupsettings\grafDrawingFolder\GrafDrawing.resx">
       <DependentUpon>GrafDrawing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="groupsettings\ScoreStepGrupperingSettings.resx">
