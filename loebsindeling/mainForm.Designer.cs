@@ -347,7 +347,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 566);
             this.Name = "mainForm";
-            this.Text = "Løbsindeling - 1.2.1";
+            this.Text = "Løbsindeling - 1.2.2";
             this.tabControl1.ResumeLayout(false);
             this.loadData.ResumeLayout(false);
             this.loadData.PerformLayout();
