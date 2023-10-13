@@ -173,6 +173,10 @@ namespace loebsindeling
                 case "graf gruppering":
                     GrafDrawing graf = new GrafDrawing();
                     graf.ShowDialog();
+                    if (!graf.abort)
+                    {
+                        Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
+                    }
                     break;
                 default :
                     MessageBox.Show("Vælg en grupperings algoritme");

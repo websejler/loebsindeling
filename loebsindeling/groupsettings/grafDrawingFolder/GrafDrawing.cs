@@ -16,7 +16,8 @@ namespace loebsindeling.groupsettings
 {
     public partial class GrafDrawing : Form
     {
-
+        int mouseX, mouseY;
+        bool mouseInPanel;
         string xVar, yVar;
         private double xScale, yScale;
         private double minX, minY, maxX, maxY;
@@ -28,6 +29,7 @@ namespace loebsindeling.groupsettings
 
         Color blueColor = Color.FromArgb(91, 192, 222);
         Color redColor = Color.FromArgb(255,0,0);
+        Color blackColor = Color.FromArgb(0,0,0);
 
         public GrafDrawing()
         {
@@ -44,7 +46,9 @@ namespace loebsindeling.groupsettings
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen pen = new Pen(blueColor, 2);
+            Pen penBlue = new Pen(blueColor, 2);
+            Pen penRed = new Pen(redColor, 5);
+            Pen penBlack = new Pen(blackColor, 1);
             List<double> xs = new List<double>();
             List<double> ys = new List<double>();
             foreach (Boat boat in Boat.boats)
@@ -69,14 +73,24 @@ namespace loebsindeling.groupsettings
             {
                 xs[i] = (xs[i] - minX) * xScale;
                 ys[i] = (ys[i] - minY) * yScale;
-                g.DrawRectangle(pen, dot((int)xs[i], (int)ys[i] + 2));
+                g.DrawRectangle(penBlue, dot((int)xs[i], (int)ys[i] + 2));
+                
+                
             }
             if (pointsXValue.Count > 0) {
-                pen = new Pen(redColor, 5);
                 for (int i = 0; i < pointsXValue.Count; i++)
                 {
-                    g.DrawRectangle(pen, square((pointsXValue[i]-minX)*xScale, (pointsYValue[i]-minY)*yScale, 3));
+                    int x = (int)((pointsXValue[i] - minX) * xScale);
+                    int y = (int)((pointsYValue[i] - minY) * yScale);
+                    g.DrawLine(penBlack, x, panel1.Height, x, y);
+                    g.DrawLine(penBlack, 0, y, x, y);
+                    g.DrawRectangle(penRed, square(x - 2, y - 1, 3));
                 }
+            }
+            if (mouseInPanel)
+            {
+                g.DrawLine(penBlack, mouseX, panel1.Height, mouseX, mouseY);
+                g.DrawLine(penBlack, 0, mouseY, mouseX, mouseY);
             }
 
             AxisText.Text = "x Axis: " + xVar + "      y Axis: " + yVar;
@@ -87,7 +101,7 @@ namespace loebsindeling.groupsettings
             return new System.Drawing.Rectangle(x + 1, panel1.Height - (y + 2), 1, 1);
         }
 
-        private System.Drawing.Rectangle square(double x, double y, int size)
+        private System.Drawing.Rectangle square(int x, int y, int size)
         {
             
             return new System.Drawing.Rectangle((int)x, (int)y, size, size);
@@ -98,10 +112,56 @@ namespace loebsindeling.groupsettings
             this.Close();
         }
 
+        private void panel1_MouseEnter(object sender, EventArgs e)
+        {
+            mouseInPanel = true;
+        }
+
+        private void panel1_MouseLeave(object sender, EventArgs e)
+        {
+            mouseInPanel = false;
+            this.Refresh();
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseInPanel)
+            {
+                mouseX = e.X;
+                mouseY = e.Y;
+                this.Refresh();
+            }
+
+        }
+
         private void save_Click(object sender, EventArgs e)
         {
             //todo: lig både i grupper alt efter hvor der er blevet klikket.
             abort = false;
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach(Boat boat in Boat.boats)
+                {
+                    if(boat.GroupeId == 0)
+                    {
+                        if(boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            if(boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
             this.Close();
         }
 
@@ -109,6 +169,7 @@ namespace loebsindeling.groupsettings
         {
             List<String> varNames = new List<string>(Boat.getDataLocationIndex().Keys);
             removeNonNumberVarsFromList(varNames);
+            varNames.Add("score");
             ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
             changeDataInGraph.ShowDialog();
             if (changeDataInGraph.var.Equals(""))
@@ -123,6 +184,7 @@ namespace loebsindeling.groupsettings
         {
             List<String> varNames = new List<string>(Boat.getDataLocationIndex().Keys);
             removeNonNumberVarsFromList(varNames);
+            varNames.Add("score");
             ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
             changeDataInGraph.ShowDialog();
             if (changeDataInGraph.var.Equals(""))
