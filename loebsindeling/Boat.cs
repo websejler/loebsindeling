@@ -561,5 +561,37 @@ namespace loebsindeling
                 dataGridView.Rows.Add(temp);
             }
         }
+
+        public double getDataDoubleCast(string var)
+        {
+            if (var.Equals("sorterings score") || var.Equals("score"))
+            {
+                return this.score;
+            }
+            else if (var.Equals("loeb nr"))
+            {
+                return this.GroupeId;
+            }
+            else if (valuesThatIsInt.Any(var.Contains))
+            {
+                return this.intData[var];
+            }
+            else if (valuesThatIsString.Any(var.Contains))
+            {
+                throw new Exception("No var namede \"" + var + "\" to be casted to double");
+            }
+            else if (valuesThatIsBool.Any(var.Contains))
+            {
+                if (this.boolData[var])
+                    return 1;
+                else 
+                    return 0;
+            }
+            else
+            {
+                return this.doubleData[var];
+            }
+            return 0;
+        }
     }
 }
