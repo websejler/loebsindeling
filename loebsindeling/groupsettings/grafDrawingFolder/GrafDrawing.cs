@@ -22,8 +22,10 @@ namespace loebsindeling.groupsettings
         private double minX, minY, maxX, maxY;
         private double xRange, yRange;
         public bool abort;
-        List<double> pointsX;
-        List<double> pointsY;
+        List<double> pointsXValue;
+        List<double> pointsYValue;
+        const int DIST_FROM_CLICK_TO_POINT = 7;
+
         Color blueColor = Color.FromArgb(91, 192, 222);
         Color redColor = Color.FromArgb(255,0,0);
 
@@ -35,8 +37,8 @@ namespace loebsindeling.groupsettings
             xScale = 1;
             yScale = 1;
             abort = true;
-            pointsX = new List<double>();
-            pointsY = new List<double>();
+            pointsXValue = new List<double>();
+            pointsYValue = new List<double>();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -69,11 +71,11 @@ namespace loebsindeling.groupsettings
                 ys[i] = (ys[i] - minY) * yScale;
                 g.DrawRectangle(pen, dot((int)xs[i], (int)ys[i] + 2));
             }
-            if (pointsX.Count > 0) {
+            if (pointsXValue.Count > 0) {
                 pen = new Pen(redColor, 5);
-                for (int i = 0; i < pointsX.Count; i++)
+                for (int i = 0; i < pointsXValue.Count; i++)
                 {
-                    g.DrawRectangle(pen, square((pointsX[i]-minX)*xScale, (pointsY[i]-minY)*yScale, 3));
+                    g.DrawRectangle(pen, square((pointsXValue[i]-minX)*xScale, (pointsYValue[i]-minY)*yScale, 3));
                 }
             }
 
@@ -112,8 +114,8 @@ namespace loebsindeling.groupsettings
             if (changeDataInGraph.var.Equals(""))
                 return;
             yVar = changeDataInGraph.var;
-            pointsX.Clear();
-            pointsY.Clear();
+            pointsXValue.Clear();
+            pointsYValue.Clear();
             this.Refresh();
         }
 
@@ -126,8 +128,8 @@ namespace loebsindeling.groupsettings
             if (changeDataInGraph.var.Equals(""))
                 return;
             xVar = changeDataInGraph.var;
-            pointsX.Clear();
-            pointsY.Clear();
+            pointsXValue.Clear();
+            pointsYValue.Clear();
             this.Refresh();
         }
 
@@ -138,13 +140,30 @@ namespace loebsindeling.groupsettings
 
         private void panel1_Click(object sender, MouseEventArgs e)
         {
+            int x = e.X;
+            int y = e.Y;
+
+            for(int i = 0; i < pointsXValue.Count; i++)
+            {
+                int otherX = (int)((pointsXValue[i] - minX) * xScale);
+                int otherY = (int)((pointsYValue[i] - minY) * yScale);
+                double dist = Math.Sqrt(Math.Pow(x - otherX, 2) + Math.Pow(y-otherY,2));
+
+                if(dist < DIST_FROM_CLICK_TO_POINT)
+                {
+                    pointsXValue.RemoveAt(i);
+                    pointsYValue.RemoveAt(i);
+                    this.Refresh();
+                    return;
+                }
+            }
             
-            double x = e.X / xScale;
-            double y = e.Y / yScale;
-            x += minX;
-            y += minY;
-            pointsX.Add(x);
-            pointsY.Add(y);
+            double xD = e.X / xScale;
+            double yD = e.Y / yScale;
+            xD += minX;
+            yD += minY;
+            pointsXValue.Add(xD);
+            pointsYValue.Add(yD);
             this.Refresh();
         }
 

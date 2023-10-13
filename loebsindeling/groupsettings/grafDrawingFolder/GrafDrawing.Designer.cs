@@ -127,7 +127,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GrafDrawing";
             this.Text = "Graf gruppering";
-            this.ResizeEnd += new System.EventHandler(this.GrafDrawing_ResizeEnd);
+            this.Resize += new System.EventHandler(this.GrafDrawing_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();
 
