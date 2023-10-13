@@ -67,6 +67,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // openDataFileButton
             // 
@@ -269,7 +270,8 @@
             this.groupeBoatsComboBox.FormattingEnabled = true;
             this.groupeBoatsComboBox.Items.AddRange(new object[] {
             "Score step gruppering",
-            "Flyve Grupper"});
+            "Flyve Grupper",
+            "Graf gruppering"});
             this.groupeBoatsComboBox.Location = new System.Drawing.Point(121, 11);
             this.groupeBoatsComboBox.Name = "groupeBoatsComboBox";
             this.groupeBoatsComboBox.Size = new System.Drawing.Size(248, 21);
