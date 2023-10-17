@@ -16,7 +16,7 @@ namespace loebsindeling
 {
     internal class Boat
     {
-
+           
         public static List<string> standartDisplayVars = new List<string> { "certifikat", "baadtypenavn", "nation", "sejlnummer", "baadnavn", "sorterings score", "loeb nr" };
         public static int nrOfBoatsWithNoFlyingSails;
         public static int nrOfBoatsWithSpinnakerAndGennaker;
@@ -42,6 +42,8 @@ namespace loebsindeling
         public double score;
         private int groupeId;
 
+        public static char FILE_SEPERATOR;
+
 
         public Boat(string data)
         {
@@ -59,32 +61,36 @@ namespace loebsindeling
             string tempString = "";
             bool tempBool = false;
 
-            for (int i = 0; i < data.Length; i++)
+            string[] dataArray;
+            if (FILE_SEPERATOR == ',')
             {
-                if (data[i] == '"') inQuotation = !inQuotation;
-
-                if (inQuotation)
+                for(int i = 0; i < data.Length; i++)
                 {
-                    if (data[i] == ',')
+                    if (data[i] == '"')
+                        inQuotation = !inQuotation;
+
+                    if (inQuotation && data[i] == ',')
                     {
                         newdata += '.';
                     }
                     else
                     {
-                        if (data[i] != '"') newdata += data[i];
+                        newdata += data[i];
                     }
                 }
-                else
+                newdata = newdata.Replace("\"", "");
+                dataArray = newdata.Split(FILE_SEPERATOR);
+                for(int i = 0; i < dataArray.Length; i++)
                 {
-                    if (data[i] != '"') newdata += data[i];
+                    dataArray[i] = dataArray[i].Replace('.', ',');
                 }
             }
-            newdata = newdata.Replace(';', ',');
-            string[] dataArray = newdata.Split(',');
-            for (int i = 0; i < dataArray.Length; i++)
+            else
             {
-                dataArray[i] = dataArray[i].Replace('.', ',');
+                dataArray = data.Split(FILE_SEPERATOR);
             }
+            
+           
             try
             {
                 foreach (string value in dataLocationIndex.Keys){
@@ -279,7 +285,7 @@ namespace loebsindeling
             string[] lines = { "" };
             if (path.EndsWith(".csv"))
             {
-                lines = System.IO.File.ReadAllLines(path);
+                lines = System.IO.File.ReadAllLines(path,System.Text.Encoding.Default);
 
             }
             else if (path.EndsWith(".xlsx"))
@@ -368,8 +374,8 @@ namespace loebsindeling
         private static void initDataLocationIndex(string line)
         {
             dataLocationIndex.Clear();
-            line = line.Replace(';', ',');
-            string[] dataArray = line.Split(',');
+            FILE_SEPERATOR = line[10];
+            string[] dataArray = line.Split(FILE_SEPERATOR);
             for (int i = 0; i < dataArray.Length; i++)
             {
                 dataLocationIndex.Add(dataArray[i].ToLower(), i);
@@ -395,8 +401,7 @@ namespace loebsindeling
                 text[i, 1] = boats[i].BaadType;
                 text[i, 2] = boats[i].Nation;
                 text[i, 3] = boats[i].SejlNummer;
-                bytes = Encoding.Default.GetBytes(boats[i].BaadNavn);
-                text[i, 4] = Encoding.UTF8.GetString(bytes);
+                text[i, 4] = boats[i].BaadNavn;
             }
             return text;
         }
@@ -421,7 +426,7 @@ namespace loebsindeling
                     }
                     else if (valuesThatIsString.Any(vars[j].Contains))
                     {
-                        text[i,j] = boats[i].stringData[vars[j]];
+                        text[i, j] = boats[i].stringData[vars[j]];
                     }
                     else if (valuesThatIsBool.Any(vars[j].Contains))
                     {
