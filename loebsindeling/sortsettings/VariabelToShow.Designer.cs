@@ -56,10 +56,10 @@
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(12, 18);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.checkedListBox1.Size = new System.Drawing.Size(300, 394);
             this.checkedListBox1.TabIndex = 14;
             // 
