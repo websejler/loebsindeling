@@ -395,7 +395,8 @@ namespace loebsindeling
                 text[i, 1] = boats[i].BaadType;
                 text[i, 2] = boats[i].Nation;
                 text[i, 3] = boats[i].SejlNummer;
-                text[i, 4] = boats[i].BaadNavn;
+                bytes = Encoding.Default.GetBytes(boats[i].BaadNavn);
+                text[i, 4] = Encoding.UTF8.GetString(bytes);
             }
             return text;
         }
