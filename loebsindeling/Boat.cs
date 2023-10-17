@@ -365,7 +365,6 @@ namespace loebsindeling
             }
         }
 
-
         private static void initDataLocationIndex(string line)
         {
             dataLocationIndex.Clear();
@@ -376,7 +375,6 @@ namespace loebsindeling
                 dataLocationIndex.Add(dataArray[i].ToLower(), i);
             }
         }
-
 
         public static string boatsToStringSimpel(List<Boat> boats)
         {
@@ -436,27 +434,6 @@ namespace loebsindeling
             }
             return text;
         }
-
-        public static string boatsToStringSort(List<Boat> boats)
-        {
-            string text = "";
-            foreach (Boat boat in Boat.boats)
-            {
-                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + "\r\n";
-            }
-            return text;
-        }
-
-        public static string boatsToStringGrouping(List<Boat> boats)
-        {
-            string text = "";
-            foreach (Boat boat in Boat.boats)
-            {
-                text += boat.Certifikat + "  -  " + boat.BaadNavn + "  -  " + boat.Nation + " " + boat.SejlNummer + " - " + boat.GroupeId + "\r\n";
-            }
-            return text;
-        }
-
 
         public static string boatsToCsvString(List<Boat> boats, List<string> vars)
         {
@@ -592,6 +569,14 @@ namespace loebsindeling
                 return this.doubleData[var];
             }
             return 0;
+        }
+
+        public static void SetgroupeIdForAll(int groupeId)
+        {
+            foreach(Boat boat in boats)
+            {
+                boat.GroupeId = groupeId;
+            }
         }
     }
 }

@@ -136,7 +136,7 @@ namespace loebsindeling.groupsettings
 
         private void save_Click(object sender, EventArgs e)
         {
-            //todo: lig både i grupper alt efter hvor der er blevet klikket.
+            Boat.SetgroupeIdForAll(0);
             abort = false;
             int i;
             for (i = 0; i < pointsXValue.Count; i++)
