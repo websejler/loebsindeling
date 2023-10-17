@@ -74,6 +74,7 @@ namespace loebsindeling
             switch(sortingAlgorithmComboBox.Items[i].ToString().ToLower()) {
                 case "sv":
                     Sorting.svSorting(Boat.boats);
+                    Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 case "dh2022":
@@ -86,10 +87,12 @@ namespace loebsindeling
                     int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
                     int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
                     Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
+                    Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 case "dh cdl":
                     Sorting.dHCDL(Boat.boats);
+                    Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 default:
@@ -140,6 +143,7 @@ namespace loebsindeling
                         return;
 
                     int numberOfgroups = Decimal.ToInt32(form2.numberOfGroups.Value);
+                    Boat.SetgroupeIdForAll(0);
                     Grouping.scoreStepGruppering(Boat.boats, numberOfgroups);
                     Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     break;
@@ -151,6 +155,7 @@ namespace loebsindeling
                     {
                         return;
                     }
+                    Boat.SetgroupeIdForAll(0);
                     //do some thing
                     int temp1 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown1.Value);
                     int temp2 = Decimal.ToInt32(flyveGrupperSettings.numericUpDown2.Value);
@@ -177,6 +182,7 @@ namespace loebsindeling
                     graf.ShowDialog();
                     if (!graf.abort)
                     {
+                        
                         Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
                     }
                     break;
@@ -241,6 +247,10 @@ namespace loebsindeling
                     exportDataCheckedListBox1.Items.Add("loeb nr");
                     exportDataCheckedListBox1.SetItemCheckState(exportDataCheckedListBox1.Items.Count - 1, CheckState.Checked);
                 }
+            } else if (name.Equals("sortBoats")) {
+                Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
+            } else if (name.Equals("groupeBoat")){
+                Boat.displayDataGridView(Boat.boats, groupeDataGridView1, Boat.standartDisplayVars);
             }
         }
 
