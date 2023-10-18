@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace loebsindeling
 {
@@ -65,8 +66,27 @@ namespace loebsindeling
                     flyingSailsGroupe.Add(boat);
                 }
             }
-            scoreStepGruppering(flyingSailsGroupe, nrOfFlyingSailsGroups);
-            scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nrOfFlyingSailsGroups+1);
+            bool failflag = false;
+            try
+            {
+                scoreStepGruppering(flyingSailsGroupe, nrOfFlyingSailsGroups);
+            } catch (InvalidDataException e)
+            {
+                if (e.Message.Equals("No data"))
+                    failflag = true;
+            }
+            try
+            {
+                scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nrOfFlyingSailsGroups + 1);
+            } catch (InvalidDataException e)
+            {
+                if(e.Message.Equals("No data"))
+                    failflag = true;
+            }
+            if (failflag)
+            {
+                MessageBox.Show("Nogle af grupperne havde ingen både!");
+            }
 
             return;
         }
@@ -98,13 +118,41 @@ namespace loebsindeling
                 }
             }
             int nextGroupeID = nrOfSpinnakerAndGennakerSailsGroups+1;
-            scoreStepGruppering(spinnakerAndGennakerGroupe, nrOfSpinnakerAndGennakerSailsGroups);
-            scoreStepGruppering(gennakerGroupe, nrOfGennakerSailsGroups, nextGroupeID);
+            bool failFlag = false;
+            try
+            {
+                scoreStepGruppering(spinnakerAndGennakerGroupe, nrOfSpinnakerAndGennakerSailsGroups);
+            } catch (InvalidDataException e) {
+                if(e.Message.Equals("No data"))
+                    failFlag = true;
+            }
+            try
+            {
+                scoreStepGruppering(gennakerGroupe, nrOfGennakerSailsGroups, nextGroupeID);
+            } catch (InvalidDataException e) {
+                if(e.Message.Equals("No data"))
+                    failFlag = true;
+            }
             nextGroupeID += nrOfGennakerSailsGroups;
-            scoreStepGruppering(spinnakerGroupe, nrOfSpinnakerSailsGroups, nextGroupeID);
+            try
+            {
+                scoreStepGruppering(spinnakerGroupe, nrOfSpinnakerSailsGroups, nextGroupeID);
+            } catch (InvalidDataException e) {
+                if(e.Message.Equals("No data"))
+                    failFlag = true;
+            }
             nextGroupeID += nrOfSpinnakerSailsGroups;
-            scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nextGroupeID);
-
+            try
+            {
+                scoreStepGruppering(noFlyingSailsGroupe, nrOfNoFlyingSailsGroups, nextGroupeID);
+            } catch (InvalidDataException e) {
+                if(e.Message.Equals("No data"))
+                    failFlag = true;
+            }
+            if(failFlag)
+            {
+                MessageBox.Show("Nogle af grupperne havde ingen både!");
+            }
             return;
         }
     }
