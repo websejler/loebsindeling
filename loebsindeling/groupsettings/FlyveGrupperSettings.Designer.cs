@@ -202,10 +202,11 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(12, 58);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(355, 17);
+            this.radioButton3.Size = new System.Drawing.Size(443, 17);
             this.radioButton3.TabIndex = 28;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Op til 4 grupper - Genakker, Spiler, Genakker og Spiler, Ingen flyvesejl\r\n";
+            this.radioButton3.Text = "Op til 4 grupper - Asymmetriske spiler, Spiler, Asymmetriske spiler og Spiler, In" +
+    "gen flyvesejl\r\n";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 

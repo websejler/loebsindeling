@@ -99,7 +99,7 @@ namespace loebsindeling.groupsettings
             nrOfBoats1.Show();
             nrOfBoats1.Text = "Antal Både: " + Boat.nrOfBoatsWithNoFlyingSails;
             raceLabel2.Show();
-            raceLabel2.Text = "Antal løb for både med genakker";
+            raceLabel2.Text = "Antal løb for både med asymmetriske spiler";
             numericUpDown2.Show();
             nrOfBoats2.Show();
             nrOfBoats2.Text = "Antal Både: " + Boat.nrOfBoatsWithGennaker;
@@ -109,7 +109,7 @@ namespace loebsindeling.groupsettings
             nrOfBoats3.Show();
             nrOfBoats3.Text = "Antal Både: " + Boat.nrOfBoatsWithSpinnaker;
             raceLabel4.Show();
-            raceLabel4.Text = "Antal løb for både med spiler og genammer";
+            raceLabel4.Text = "Antal løb for både med spiler og asymmetriske spiler";
             numericUpDown4.Show();
             nrOfBoats4.Show();
             nrOfBoats4.Text = "Antal Både: " + Boat.nrOfBoatsWithSpinnakerAndGennaker;
