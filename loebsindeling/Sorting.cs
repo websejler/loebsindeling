@@ -10,6 +10,7 @@ namespace loebsindeling {
             foreach (Boat boat in boatList)
             {
                 boat.score = boat.Sv;
+                boat.sorted = true;
             }
             boatList.Sort(delegate (Boat x, Boat y)
             {
@@ -157,6 +158,7 @@ namespace loebsindeling {
             {
                 boat.ints.Add(i);
                 boat.score = (boat.ints[0] + boat.ints[1] + boat.ints[2]) * circleCount + (boat.ints[3] + boat.ints[4] + boat.ints[5]) * upAndDownCount;
+                boat.sorted = true;
                 i++;
             }
             boatList.Sort(delegate (Boat x, Boat y)
@@ -186,6 +188,7 @@ namespace loebsindeling {
                 double rl = (vmgUp6ms * vmgUp6ms) / (Fn * Fn * 9.81);
                 double dhwl = boat.LOA - boat.OA - boat.OF;
                 boat.score = (dhwl + rl) / 2;
+                boat.sorted = true;
             }
             boatList.Sort(delegate (Boat x, Boat y)
             {

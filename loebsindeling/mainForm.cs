@@ -134,6 +134,12 @@ namespace loebsindeling
                 return;
             }
 
+            if (!Boat.boats[0].sorted)
+            {
+                MessageBox.Show("Sorter båden før gruppering");
+                return;
+            }
+
             switch(groupeBoatsComboBox.Items[i].ToString().ToLower())
             {
                 case "score step gruppering":

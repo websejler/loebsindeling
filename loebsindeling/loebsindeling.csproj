@@ -122,10 +122,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorting.cs" />
-    <Compile Include="sortsettings\VariabelToShow.cs">
+    <Compile Include="VariabelToShow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="sortsettings\VariabelToShow.Designer.cs">
+    <Compile Include="VariabelToShow.Designer.cs">
       <DependentUpon>VariabelToShow.cs</DependentUpon>
     </Compile>
     <Compile Include="sortsettings\SortSettingsDH2022.cs">
@@ -134,6 +134,7 @@
     <Compile Include="sortsettings\SortSettingsDH2022.Designer.cs">
       <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
     </Compile>
+    <Compile Include="Text.cs" />
     <EmbeddedResource Include="groupsettings\FlyveGrupperSettings.resx">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,7 +160,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="sortsettings\VariabelToShow.resx">
+    <EmbeddedResource Include="VariabelToShow.resx">
       <DependentUpon>VariabelToShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sortsettings\SortSettingsDH2022.resx">
