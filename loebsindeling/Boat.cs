@@ -586,5 +586,21 @@ namespace loebsindeling
                 boat.GroupeId = groupeId;
             }
         }
+
+        internal static List<string> getWindVarsTAU()
+        {
+            List<string> vars = new List<string>();
+
+            string[] varsToTest = { "tau3", "tau4", "tau5", "tau6", "tau7", "tau8", "tau10" };
+
+            foreach (string var in varsToTest)
+            {
+                if (dataLocationIndex.ContainsKey(var))
+                {
+                    vars.Add(var);
+                }
+            }
+            return vars;
+        }
     }
 }
