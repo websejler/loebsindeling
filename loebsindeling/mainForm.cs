@@ -94,7 +94,7 @@ namespace loebsindeling
 
                     int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
                     int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
-                    Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount);
+                    Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount,Form2.getLightWindWeight(), Form2.getMediumWindWeight(), Form2.getHardWindWeight());
                     Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;

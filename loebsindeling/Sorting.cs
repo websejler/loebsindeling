@@ -30,7 +30,7 @@ namespace loebsindeling {
             return boatList;
         }
 
-        public static List<Boat> dh2022Sort(List<Boat> boatList, int upAndDownCount, int circleCount)
+        public static List<Boat> dh2022Sort(List<Boat> boatList, int upAndDownCount, int circleCount, double LightWindWeight, double mediumWindWeight, double hardWindWeight)
         {
             //sort for tacil
             boatList.Sort(delegate (Boat x, Boat y)
@@ -157,7 +157,7 @@ namespace loebsindeling {
             foreach (Boat boat in boatList)
             {
                 boat.ints.Add(i);
-                boat.score = (boat.ints[0] + boat.ints[1] + boat.ints[2]) * circleCount + (boat.ints[3] + boat.ints[4] + boat.ints[5]) * upAndDownCount;
+                boat.score = (boat.ints[0] * LightWindWeight + boat.ints[1] * mediumWindWeight + boat.ints[2] * hardWindWeight) * circleCount + (boat.ints[3] * LightWindWeight + boat.ints[4] * mediumWindWeight + boat.ints[5] * hardWindWeight) * upAndDownCount;
                 boat.sorted = true;
                 i++;
             }
