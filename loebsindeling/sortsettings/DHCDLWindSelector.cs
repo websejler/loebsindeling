@@ -18,7 +18,7 @@ namespace loebsindeling.sortsettings
         public DHCDLWindSelector(List<string> vars)
         {
             InitializeComponent();
-            abort = false;
+            abort = true;
             WindSelectorComboBox.Items.Clear();
             foreach (string var in vars)
             {
@@ -38,12 +38,13 @@ namespace loebsindeling.sortsettings
 
         private void button2_Click(object sender, EventArgs e)
         {
-            abort = true;
+
             this.Close();
         }
 
         private void SortButon_Click(object sender, EventArgs e)
         {
+            abort = false;
             this.Close();
         }
 
