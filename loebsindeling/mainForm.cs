@@ -99,7 +99,11 @@ namespace loebsindeling
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
                 case "dh cdl":
-                    Sorting.dHCDL(Boat.boats);
+                    List<string> vars = Boat.getWindVarsTAU();
+                    sortsettings.DHCDLWindSelector windSelector = new sortsettings.DHCDLWindSelector(vars);
+                    windSelector.ShowDialog();
+                    string var = windSelector.getSelectedVar();
+                    Sorting.dHCDL(Boat.boats, var);
                     Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;

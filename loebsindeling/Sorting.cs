@@ -179,13 +179,12 @@ namespace loebsindeling {
             return boatList;
         }
 
-        public static List<Boat> dHCDL(List<Boat> boatList)
-        {   
-
+        public static List<Boat> dHCDL(List<Boat> boatList, string windVarName)
+        {
             foreach (Boat boat in boatList)
             {
-                double vmgUp6ms = (3600 / boat.TAU6) * 0.5144;
-                double rl = (vmgUp6ms * vmgUp6ms) / (Fn * Fn * 9.81);
+                double vmgUpVarMs = (3600 / boat.getDataDoubleCast(windVarName)) * 0.5144;
+                double rl = (vmgUpVarMs * vmgUpVarMs) / (Fn * Fn * 9.81);
                 double dhwl = boat.LOA - boat.OA - boat.OF;
                 boat.score = (dhwl + rl) / 2;
                 boat.sorted = true;
