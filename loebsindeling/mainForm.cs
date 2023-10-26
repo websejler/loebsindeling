@@ -26,8 +26,15 @@ namespace loebsindeling
         }
 
         private void openDataFileButton_Click(object sender, EventArgs e)
-        {   
-            openFileDialog1.Filter = "CSV files (*.csv)|*.csv|Excel files (*.xlsx)|*.xlsx";
+        {
+            string fileFilter = "CSV files (*.csv)|*.csv";
+
+            Type officeType = Type.GetTypeFromProgID("Excel.Application");
+            if (officeType != null) {
+                fileFilter += "|Excel files (*.xlsx)|*.xlsx";
+            }
+            
+            openFileDialog1.Filter = fileFilter;
             openFileDialog1.ShowDialog(this);
             if (openFileDialog1.FileName.Equals("openFileDialog1")){
                 return;
