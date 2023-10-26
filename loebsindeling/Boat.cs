@@ -40,6 +40,7 @@ namespace loebsindeling
 
         public List<int> ints;
         public double score;
+        public bool sorted;
         private int groupeId;
 
         public static char FILE_SEPERATOR;
@@ -55,7 +56,8 @@ namespace loebsindeling
             
             string newdata = "";
             bool inQuotation = false;
-
+            score = 0;
+            sorted = false;
             int tempInt = 0;
             double tempDouble = 0;
             string tempString = "";
