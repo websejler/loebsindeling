@@ -43,6 +43,9 @@ namespace loebsindeling
         public bool sorted;
         private int groupeId;
 
+        public double xCordDraw;
+        public double yCordDraw;
+
         public static char FILE_SEPERATOR;
 
 
@@ -62,6 +65,8 @@ namespace loebsindeling
             double tempDouble = 0;
             string tempString = "";
             bool tempBool = false;
+            xCordDraw = -1;
+            yCordDraw = -1;
 
             string[] dataArray;
             if (FILE_SEPERATOR == ',')
