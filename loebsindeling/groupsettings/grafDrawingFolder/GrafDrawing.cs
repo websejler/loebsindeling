@@ -9,10 +9,12 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace loebsindeling.groupsettings
 {
@@ -29,7 +31,8 @@ namespace loebsindeling.groupsettings
         List<double> pointsYValue;
 
         const int DIST_FROM_CLICK_TO_POINT = 7;
-        const int QUEUE_MAX_SIZE = 5;
+        const int QUEUE_MAX_SIZE = 2;
+        const double TOOL_TIP_DISPLAY_DIST = 5.0;
 
         Bitmap dotBitMap;
         Bitmap clicksBitMap;
@@ -46,6 +49,8 @@ namespace loebsindeling.groupsettings
         private System.Timers.Timer aTimer;
         private Queue<int> xMouseQueue;
         private Queue<int> yMouseQueue;
+
+        System.Windows.Forms.ToolTip toolTip;
 
 
         public GrafDrawing()
@@ -66,13 +71,15 @@ namespace loebsindeling.groupsettings
             penRed = new Pen(redColor, 5);
             penBlack = new Pen(blackColor, 1);
 
-            aTimer = new System.Timers.Timer(10);
+            aTimer = new System.Timers.Timer(30);
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
 
             xMouseQueue = new Queue<int>();
             yMouseQueue = new Queue<int>();
+
+            toolTip = new System.Windows.Forms.ToolTip();
 
             reCalNumbers();
             reDrawDotsOnBitMap();
@@ -131,8 +138,15 @@ namespace loebsindeling.groupsettings
                 {
                     mouseX = e.X;
                     mouseY = e.Y;
+
+                    string text = getToolTipString();
+                    if(!text.Equals(""))
+                        toolTip.SetToolTip(panel1,text);
+
                 }
             }
+            
+
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
@@ -252,6 +266,7 @@ namespace loebsindeling.groupsettings
             pointsXValue.Add(xD);
             pointsYValue.Add(yD);
             reDrawClicksOnBitMap();
+            this.Refresh();
         }
 
         private void removeNonNumberVarsFromList(List<String> varNames)
@@ -349,6 +364,28 @@ namespace loebsindeling.groupsettings
             }
             
             return false;
+        }
+
+        private string getToolTipString()
+        {
+            string returnString = "";
+            foreach(Boat boat in Boat.boats)
+            {
+                double dst = dist(boat.xCordDraw, boat.yCordDraw, mouseX, mouseY);
+                if(dst <= TOOL_TIP_DISPLAY_DIST)
+                {
+                    if (!returnString.Equals(""))
+                        returnString += "\n";
+                    returnString += boat.BaadType;
+                }
+            }
+            return returnString;
+        }
+
+        private double dist(double x1, double y1, double x2, double y2)
+        {
+            
+            return Math.Sqrt(Math.Pow(x1-x2,2) + Math.Pow(y1-y2,2));
         }
     }
 }
