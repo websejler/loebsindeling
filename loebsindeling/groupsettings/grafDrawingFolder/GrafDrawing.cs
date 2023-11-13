@@ -32,7 +32,7 @@ namespace loebsindeling.groupsettings
 
         const int DIST_FROM_CLICK_TO_POINT = 7;
         const int QUEUE_MAX_SIZE = 2;
-        const double TOOL_TIP_DISPLAY_DIST = 5.0;
+        const double TOOL_TIP_DISPLAY_DIST = 10.0;
 
         Bitmap dotBitMap;
         Bitmap clicksBitMap;
@@ -133,31 +133,33 @@ namespace loebsindeling.groupsettings
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(mouseX != e.X && mouseY != e.Y) {
-                if (mouseInPanel)
-                {
-                    mouseX = e.X;
-                    mouseY = e.Y;
-
-                    string text = getToolTipString();
-                    if(!text.Equals(""))
-                        toolTip.SetToolTip(panel1,text);
-
-                }
+            if (mouseInPanel)
+            {
+                mouseX = e.X;
+                mouseY = e.Y;
             }
-            
-
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
+            updateMouseQueue(mouseX,mouseY);
 
-            if (updatePlaneGraphics(mouseX, mouseY)) { 
+            if (updatePlaneGraphics()) { 
                 this.Invoke((MethodInvoker)delegate
                 {
+                    string text = getToolTipString();
+                    if (!text.Equals(""))
+                    {
+                        toolTip.SetToolTip(panel1, text + "\nhello");
+                    }
+                    else
+                    {
+                        toolTip.Hide(panel1);
+                    }
                     this.Refresh();
                 });
             }
+            
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -340,18 +342,28 @@ namespace loebsindeling.groupsettings
                     tempGraphics.DrawRectangle(penRed, square(x - 2, y - 1, 3));
                 }
                 tempGraphics.Dispose();
+            } else
+            {
+                Graphics tempGraphics;
+                clicksBitMap = new Bitmap(panel1.Width, panel1.Height);
+                tempGraphics = Graphics.FromImage(clicksBitMap);
+                tempGraphics.Dispose();
             }
         }
 
-        private bool updatePlaneGraphics(int x, int y)
+        private void updateMouseQueue(int x, int y)
         {
-            if(xMouseQueue.Count >= QUEUE_MAX_SIZE) {
+            if (xMouseQueue.Count >= QUEUE_MAX_SIZE)
+            {
                 xMouseQueue.Dequeue();
                 yMouseQueue.Dequeue();
             }
             xMouseQueue.Enqueue(x);
             yMouseQueue.Enqueue(y);
+        }
 
+        private bool updatePlaneGraphics()
+        {
             int[] xArr = xMouseQueue.ToArray();
             int[] yArr = yMouseQueue.ToArray();
 
@@ -369,14 +381,16 @@ namespace loebsindeling.groupsettings
         private string getToolTipString()
         {
             string returnString = "";
-            foreach(Boat boat in Boat.boats)
-            {
-                double dst = dist(boat.xCordDraw, boat.yCordDraw, mouseX, mouseY);
-                if(dst <= TOOL_TIP_DISPLAY_DIST)
+            if (mouseInPanel) {
+                foreach (Boat boat in Boat.boats)
                 {
-                    if (!returnString.Equals(""))
-                        returnString += "\n";
-                    returnString += boat.BaadType;
+                    double dst = dist(boat.xCordDraw, boat.yCordDraw, mouseX, (panel1.Height - mouseY));
+                    if (dst <= TOOL_TIP_DISPLAY_DIST)
+                    {
+                        if (!returnString.Equals(""))
+                            returnString += "\n";
+                        returnString += boat.BaadType;
+                    }
                 }
             }
             return returnString;
