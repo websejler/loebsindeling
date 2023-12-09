@@ -1,4 +1,5 @@
 ﻿using loebsindeling.groupsettings.grafDrawingFolder;
+using loebsindeling.sortsettings;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace loebsindeling.groupsettings
         int mouseX, mouseY;
         bool mouseInPanel;
         string xVar, yVar;
+        List<string> dotVars;
         private double xScale, yScale;
         private double minX, minY, maxX, maxY;
         private double xRange, yRange;
@@ -58,6 +60,8 @@ namespace loebsindeling.groupsettings
             InitializeComponent();
             xVar = "score";
             yVar = "l";
+            dotVars = new List<string>();
+            dotVars.Add("baadtypenavn");
             xScale = 1;
             yScale = 1;
             abort = true;
@@ -150,7 +154,7 @@ namespace loebsindeling.groupsettings
                     string text = getToolTipString();
                     if (!text.Equals(""))
                     {
-                        toolTip.SetToolTip(panel1, text + "\nhello");
+                        toolTip.SetToolTip(panel1, text);
                     }
                     else
                     {
@@ -283,6 +287,33 @@ namespace loebsindeling.groupsettings
             }
         }
 
+        private void changeDataOnDotsButton_Click(object sender, EventArgs e)
+        {
+            List<string> varNames;
+            varNames = Boat.getDataLocationIndex().Keys.ToList();
+            VariabelToShow variabelToShow = new VariabelToShow();
+            variabelToShow.checkedListBox1.Items.Clear();
+            for(int i = 0; i < varNames.Count; i++)
+            {
+                variabelToShow.checkedListBox1.Items.Add(varNames[i]);
+                if (dotVars.Contains(varNames[i]))
+                {
+                    variabelToShow.checkedListBox1.SetItemChecked(i, true);
+                }
+            }
+            variabelToShow.checkedListBox1.Items.Add("sorterings score");
+            variabelToShow.ShowDialog();
+
+            if (variabelToShow.abortFlag)
+                return;
+
+            dotVars.Clear();
+            for(int i = 0; i < variabelToShow.checkedListBox1.CheckedItems.Count; i++)
+            {
+                dotVars.Add(variabelToShow.checkedListBox1.CheckedItems[i].ToString());
+            }
+        }
+
         private void reCalNumbers()
         {
             minX = Double.MaxValue; minY = Double.MaxValue;
@@ -389,7 +420,7 @@ namespace loebsindeling.groupsettings
                     {
                         if (!returnString.Equals(""))
                             returnString += "\n";
-                        returnString += boat.BaadType;
+                        returnString += getBoatDotDataString(boat);
                     }
                 }
             }
@@ -398,8 +429,24 @@ namespace loebsindeling.groupsettings
 
         private double dist(double x1, double y1, double x2, double y2)
         {
-            
             return Math.Sqrt(Math.Pow(x1-x2,2) + Math.Pow(y1-y2,2));
         }
+        
+
+        private string getBoatDotDataString(Boat boat)
+        {
+            string dataString = "";
+            if (dotVars.Count == 1 && dotVars[0].Equals("baadtypenavn")) {
+                dataString = boat.BaadType;
+            } else {
+                for (int i = 0; i < dotVars.Count; i++)
+                {
+                    dataString+= dotVars[i].ToString() + ": " + boat.getDataAsString(dotVars[i]) + "   ";
+                }
+                dataString.Remove(dataString.Length-3, 3);
+            }
+            return dataString;
+        }
+
     }
 }
