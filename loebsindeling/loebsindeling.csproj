@@ -174,7 +174,6 @@
     <EmbeddedResource Include="sortsettings\SortSettingsDH2022.resx">
       <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="loebsindeling_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

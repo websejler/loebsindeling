@@ -43,6 +43,9 @@ namespace loebsindeling
         public bool sorted;
         private int groupeId;
 
+        public double xCordDraw;
+        public double yCordDraw;
+
         public static char FILE_SEPERATOR;
 
 
@@ -62,6 +65,8 @@ namespace loebsindeling
             double tempDouble = 0;
             string tempString = "";
             bool tempBool = false;
+            xCordDraw = -1;
+            yCordDraw = -1;
 
             string[] dataArray;
             if (FILE_SEPERATOR == ',')
@@ -579,7 +584,39 @@ namespace loebsindeling
             return 0;
         }
 
-        public static void SetgroupeIdForAll(int groupeId)
+        public string getDataAsString(string var)
+        {
+            if (var.Equals("sorterings score") || var.Equals("score"))
+            {
+                return "" + this.score;
+            }
+            else if (var.Equals("loeb nr"))
+            {
+                return "" + this.GroupeId;
+            }
+            else if (valuesThatIsInt.Any(var.Contains))
+            {
+                return "" + this.intData[var];
+            }
+            else if (valuesThatIsString.Any(var.Contains))
+            {
+                return this.stringData[var];
+            }
+            else if (valuesThatIsBool.Any(var.Contains))
+            {
+                if (this.boolData[var])
+                    return "true";
+                else
+                    return "false";
+            }
+            else
+            {
+                return "" + this.doubleData[var];
+            }
+            throw new Exception("\"No var namede \"" + var + "\" to be found.");
+        }
+
+            public static void SetgroupeIdForAll(int groupeId)
         {
             foreach(Boat boat in boats)
             {

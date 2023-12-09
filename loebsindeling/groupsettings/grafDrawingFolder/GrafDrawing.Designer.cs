@@ -37,6 +37,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.yAxis = new System.Windows.Forms.Button();
             this.AxisText = new System.Windows.Forms.Label();
+            this.changeDataOnDotsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
@@ -45,6 +46,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 414);
@@ -116,11 +118,23 @@
             this.AxisText.TabIndex = 8;
             this.AxisText.Text = "x Axis: score     y Axis: l";
             // 
+            // changeDataOnDotsButton
+            // 
+            this.changeDataOnDotsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.changeDataOnDotsButton.Location = new System.Drawing.Point(250, 457);
+            this.changeDataOnDotsButton.Name = "changeDataOnDotsButton";
+            this.changeDataOnDotsButton.Size = new System.Drawing.Size(122, 23);
+            this.changeDataOnDotsButton.TabIndex = 9;
+            this.changeDataOnDotsButton.Text = "Skift data på prikker";
+            this.changeDataOnDotsButton.UseVisualStyleBackColor = true;
+            this.changeDataOnDotsButton.Click += new System.EventHandler(this.changeDataOnDotsButton_Click);
+            // 
             // GrafDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 485);
+            this.Controls.Add(this.changeDataOnDotsButton);
             this.Controls.Add(this.AxisText);
             this.Controls.Add(this.yAxis);
             this.Controls.Add(this.cancelButton);
@@ -145,5 +159,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button yAxis;
         private System.Windows.Forms.Label AxisText;
+        private System.Windows.Forms.Button changeDataOnDotsButton;
     }
 }
