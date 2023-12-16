@@ -247,7 +247,7 @@ namespace loebsindeling.groupsettings
         private void panel1_Click(object sender, MouseEventArgs e)
         {
             int x = e.X;
-            int y = e.Y;
+            int y = this.panel1.Height - e.Y;
 
             for(int i = 0; i < pointsXValue.Count; i++)
             {
@@ -265,8 +265,8 @@ namespace loebsindeling.groupsettings
                 }
             }
             
-            double xD = e.X / xScale;
-            double yD = e.Y / yScale;
+            double xD = x / xScale;
+            double yD = y / yScale;
             xD += minX;
             yD += minY;
             pointsXValue.Add(xD);
@@ -341,6 +341,12 @@ namespace loebsindeling.groupsettings
 
             xScale = (panel1.Width - 5) / xRange;
             yScale = (panel1.Height - 5) / yRange;
+
+            foreach(Boat boat in Boat.boats)
+            {
+                boat.xCordDraw = ((boat.xCordDraw - minX) * xScale);
+                boat.yCordDraw = ((boat.yCordDraw - minY) * yScale);
+            }
         }
 
         private void reDrawDotsOnBitMap()
@@ -350,8 +356,6 @@ namespace loebsindeling.groupsettings
             tempGraphics = Graphics.FromImage(dotBitMap);
             foreach(Boat boat in Boat.boats)
             {
-                boat.xCordDraw = ((boat.xCordDraw - minX) * xScale);
-                boat.yCordDraw = ((boat.yCordDraw - minY) * yScale);
                 tempGraphics.DrawRectangle(penBlue, dot((int) boat.xCordDraw, (int) boat.yCordDraw + 2));
             }
             tempGraphics.Dispose();
@@ -368,9 +372,9 @@ namespace loebsindeling.groupsettings
                 {
                     int x = (int)((pointsXValue[i] - minX) * xScale);
                     int y = (int)((pointsYValue[i] - minY) * yScale);
-                    tempGraphics.DrawLine(penBlack, x, panel1.Height, x, y);
-                    tempGraphics.DrawLine(penBlack, 0, y, x, y);
-                    tempGraphics.DrawRectangle(penRed, square(x - 2, y - 1, 3));
+                    tempGraphics.DrawLine(penBlack, x, panel1.Height, x, panel1.Height-y);
+                    tempGraphics.DrawLine(penBlack, 0, panel1.Height - y, x, panel1.Height - y);
+                    tempGraphics.DrawRectangle(penRed, square(x - 2, panel1.Height - y - 1, 3));
                 }
                 tempGraphics.Dispose();
             } else
