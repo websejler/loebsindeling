@@ -187,6 +187,15 @@ namespace loebsindeling.groupsettings
                                 boat.GroupeId = i + 1;
                             }
                         }
+                    } else
+                    {
+                        if (pointsXValue[boat.GroupeId - 1] >= pointsXValue[i] && boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            if (pointsYValue[boat.GroupeId -1] >= pointsYValue[i] && boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
                     }
                 }
             }
