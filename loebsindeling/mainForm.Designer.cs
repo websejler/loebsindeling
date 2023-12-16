@@ -32,6 +32,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openDataFileButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.welcomTab = new System.Windows.Forms.TabPage();
+            this.welcomeTextBox = new System.Windows.Forms.TextBox();
             this.loadData = new System.Windows.Forms.TabPage();
             this.loadDataDataGridView1 = new System.Windows.Forms.DataGridView();
             this.openDataFilePathTextBox = new System.Windows.Forms.TextBox();
@@ -55,6 +57,7 @@
             this.chooseExportPathButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
+            this.welcomTab.SuspendLayout();
             this.loadData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).BeginInit();
             this.sortBoats.SuspendLayout();
@@ -84,6 +87,7 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.welcomTab);
             this.tabControl1.Controls.Add(this.loadData);
             this.tabControl1.Controls.Add(this.sortBoats);
             this.tabControl1.Controls.Add(this.groupeBoat);
@@ -94,6 +98,29 @@
             this.tabControl1.Size = new System.Drawing.Size(780, 523);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // welcomTab
+            // 
+            this.welcomTab.Controls.Add(this.welcomeTextBox);
+            this.welcomTab.Location = new System.Drawing.Point(4, 22);
+            this.welcomTab.Name = "welcomTab";
+            this.welcomTab.Size = new System.Drawing.Size(772, 497);
+            this.welcomTab.TabIndex = 4;
+            this.welcomTab.Text = "Velkommen";
+            this.welcomTab.UseVisualStyleBackColor = true;
+            // 
+            // welcomeTextBox
+            // 
+            this.welcomeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.welcomeTextBox.Location = new System.Drawing.Point(0, 0);
+            this.welcomeTextBox.Multiline = true;
+            this.welcomeTextBox.Name = "welcomeTextBox";
+            this.welcomeTextBox.ReadOnly = true;
+            this.welcomeTextBox.Size = new System.Drawing.Size(772, 501);
+            this.welcomeTextBox.TabIndex = 0;
+            this.welcomeTextBox.Text = resources.GetString("welcomeTextBox.Text");
             // 
             // loadData
             // 
@@ -351,6 +378,8 @@
             this.Name = "mainForm";
             this.Text = "Løbsindeling - x.x.x";
             this.tabControl1.ResumeLayout(false);
+            this.welcomTab.ResumeLayout(false);
+            this.welcomTab.PerformLayout();
             this.loadData.ResumeLayout(false);
             this.loadData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadDataDataGridView1)).EndInit();
@@ -393,6 +422,8 @@
         private System.Windows.Forms.Button sortBoatChangeDataButton1;
         private System.Windows.Forms.Button groupeBoatsChangeDatabutton1;
         private System.Windows.Forms.DataGridView groupeDataGridView1;
+        private System.Windows.Forms.TabPage welcomTab;
+        private System.Windows.Forms.TextBox welcomeTextBox;
     }
 }
 
