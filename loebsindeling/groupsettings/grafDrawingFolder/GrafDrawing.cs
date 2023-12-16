@@ -247,10 +247,12 @@ namespace loebsindeling.groupsettings
 
         private void GrafDrawing_ResizeEnd(object sender, EventArgs e)
         {
-            reCalNumbers();
-            reDrawDotsOnBitMap();
-            reDrawClicksOnBitMap();
-            this.Refresh();
+            if (this.panel1.Height > 1 && this.panel1.Width > 1) {
+                reCalNumbers();
+                reDrawDotsOnBitMap();
+                reDrawClicksOnBitMap();
+                this.Refresh();
+            }
         }
 
         private void panel1_Click(object sender, MouseEventArgs e)
