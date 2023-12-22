@@ -56,6 +56,8 @@
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
             this.chooseExportPathButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.helpTab = new System.Windows.Forms.TabPage();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.welcomTab.SuspendLayout();
             this.loadData.SuspendLayout();
@@ -65,6 +67,7 @@
             this.groupeBoat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupeDataGridView1)).BeginInit();
             this.exportData.SuspendLayout();
+            this.helpTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -92,6 +95,7 @@
             this.tabControl1.Controls.Add(this.sortBoats);
             this.tabControl1.Controls.Add(this.groupeBoat);
             this.tabControl1.Controls.Add(this.exportData);
+            this.tabControl1.Controls.Add(this.helpTab);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -120,7 +124,7 @@
             this.welcomeTextBox.ReadOnly = true;
             this.welcomeTextBox.Size = new System.Drawing.Size(772, 501);
             this.welcomeTextBox.TabIndex = 0;
-            this.welcomeTextBox.Text = resources.GetString("welcomeTextBox.Text");
+            this.welcomeTextBox.Text = "Velkommen til Dansk Sejlunion, Teknisk Udvalg - Testmiljø for Løbsinddeling";
             // 
             // loadData
             // 
@@ -367,6 +371,28 @@
             this.chooseExportPathButton.UseVisualStyleBackColor = true;
             this.chooseExportPathButton.Click += new System.EventHandler(this.chooseExportPathButton_Click);
             // 
+            // helpTab
+            // 
+            this.helpTab.Controls.Add(this.linkLabel1);
+            this.helpTab.Location = new System.Drawing.Point(4, 22);
+            this.helpTab.Name = "helpTab";
+            this.helpTab.Padding = new System.Windows.Forms.Padding(3);
+            this.helpTab.Size = new System.Drawing.Size(772, 497);
+            this.helpTab.TabIndex = 5;
+            this.helpTab.Text = "Hjælp";
+            this.helpTab.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(10, 10);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(233, 13);
+            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/websejler/loebsindeling/wiki";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +417,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupeDataGridView1)).EndInit();
             this.exportData.ResumeLayout(false);
             this.exportData.PerformLayout();
+            this.helpTab.ResumeLayout(false);
+            this.helpTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -424,6 +452,8 @@
         private System.Windows.Forms.DataGridView groupeDataGridView1;
         private System.Windows.Forms.TabPage welcomTab;
         private System.Windows.Forms.TextBox welcomeTextBox;
+        private System.Windows.Forms.TabPage helpTab;
+        public System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
