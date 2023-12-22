@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace loebsindeling
 {
-    public partial class SortSettingsDH2022 : Form
+    public partial class SortSettingsTASortering : Form
     {
         public bool abortFlag;
         private bool bChecked;
         private const double STANDARD_LIGHT_WIND_WEIGHT    = 1.0;
         private const double STANDARD_MEDIUM_WIND_WEIGHT   = 1.0;
         private const double STANDARD_HARD_WIND_WEIGHT     = 1.0;
-        private const double WEIGHT_INCREMENT_STEP_SIZE = 0.5;
+        private const double WEIGHT_INCREMENT_STEP_SIZE = 0.1;
         private const int WEIGHT_DECIMALS = 1;
 
-        public SortSettingsDH2022()
+        public SortSettingsTASortering()
         {
             InitializeComponent();
             abortFlag = true;

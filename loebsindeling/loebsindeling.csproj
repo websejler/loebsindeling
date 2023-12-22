@@ -134,11 +134,11 @@
     <Compile Include="VariabelToShow.Designer.cs">
       <DependentUpon>VariabelToShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="sortsettings\SortSettingsDH2022.cs">
+    <Compile Include="sortsettings\SortSettingsTASortering.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="sortsettings\SortSettingsDH2022.Designer.cs">
-      <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
+    <Compile Include="sortsettings\SortSettingsTASortering.Designer.cs">
+      <DependentUpon>SortSettingsTASortering.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="groupsettings\FlyveGrupperSettings.resx">
       <DependentUpon>FlyveGrupperSettings.cs</DependentUpon>
@@ -171,8 +171,8 @@
     <EmbeddedResource Include="VariabelToShow.resx">
       <DependentUpon>VariabelToShow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sortsettings\SortSettingsDH2022.resx">
-      <DependentUpon>SortSettingsDH2022.cs</DependentUpon>
+    <EmbeddedResource Include="sortsettings\SortSettingsTASortering.resx">
+      <DependentUpon>SortSettingsTASortering.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

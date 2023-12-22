@@ -230,7 +230,7 @@
             this.sortingAlgorithmComboBox.FormattingEnabled = true;
             this.sortingAlgorithmComboBox.Items.AddRange(new object[] {
             "Sv",
-            "DH2022",
+            "TA sortering",
             "DH CDL"});
             this.sortingAlgorithmComboBox.Location = new System.Drawing.Point(111, 8);
             this.sortingAlgorithmComboBox.Name = "sortingAlgorithmComboBox";

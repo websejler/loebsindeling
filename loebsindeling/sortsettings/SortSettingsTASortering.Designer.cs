@@ -1,6 +1,6 @@
 ﻿namespace loebsindeling
 {
-    partial class SortSettingsDH2022
+    partial class SortSettingsTASortering
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SortSettingsDH2022));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SortSettingsTASortering));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numberOfUpDownRaces = new System.Windows.Forms.NumericUpDown();
@@ -115,9 +115,9 @@
             this.WindWeightCheckBox.AutoSize = true;
             this.WindWeightCheckBox.Location = new System.Drawing.Point(12, 80);
             this.WindWeightCheckBox.Name = "WindWeightCheckBox";
-            this.WindWeightCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.WindWeightCheckBox.Size = new System.Drawing.Size(132, 17);
             this.WindWeightCheckBox.TabIndex = 14;
-            this.WindWeightCheckBox.Text = "Manuel vind vægning";
+            this.WindWeightCheckBox.Text = "Manuel vind vægtning";
             this.WindWeightCheckBox.UseVisualStyleBackColor = true;
             this.WindWeightCheckBox.CheckStateChanged += new System.EventHandler(this.WindWeightCheckBox_CheckStateChanged);
             // 
@@ -190,7 +190,7 @@
             0,
             0});
             // 
-            // SortSettingsDH2022
+            // SortSettingsTASortering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,7 +209,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SortSettingsDH2022";
+            this.Name = "SortSettingsTASortering";
             this.Text = "SortSettings";
             ((System.ComponentModel.ISupportInitialize)(this.numberOfUpDownRaces)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfCircleRaces)).EndInit();

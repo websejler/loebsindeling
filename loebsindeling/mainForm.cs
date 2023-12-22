@@ -25,8 +25,8 @@ namespace loebsindeling
             saveFileDialog1.FileName = "NA";
             this.Text = "Løbsindeling - " + VersionLabel;
             DateTime dateTime = DateTime.Now;
-            if(dateTime.CompareTo(DateTime.Parse("1 may 2023")) == 1)
-                MessageBox.Show("Dette er måske ikke den nyeste version af Lobesindeling\n!!!");
+            if(dateTime.CompareTo(DateTime.Parse("1 March 2024")) == 1)
+                MessageBox.Show("!!!  Dette er måske ikke den nyeste version af Lobesindeling  !!!");
         }
 
         private void openDataFileButton_Click(object sender, EventArgs e)
@@ -89,8 +89,8 @@ namespace loebsindeling
                     Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;
-                case "dh2022":
-                    SortSettingsDH2022 Form2 = new SortSettingsDH2022();
+                case "ta sortering":
+                    SortSettingsTASortering Form2 = new SortSettingsTASortering();
                     Form2.ShowDialog();
 
                     if (Form2.abortFlag)
@@ -98,7 +98,7 @@ namespace loebsindeling
 
                     int circleCount = Decimal.ToInt32(Form2.numberOfCircleRaces.Value);
                     int upDownCount = Decimal.ToInt32(Form2.numberOfUpDownRaces.Value);
-                    Sorting.dh2022Sort(Boat.boats, upDownCount, circleCount,Form2.getLightWindWeight(), Form2.getMediumWindWeight(), Form2.getHardWindWeight());
+                    Sorting.tASortering(Boat.boats, upDownCount, circleCount,Form2.getLightWindWeight(), Form2.getMediumWindWeight(), Form2.getHardWindWeight());
                     Boat.SetgroupeIdForAll(0);
                     Boat.displayDataGridView(Boat.boats, sortDataGridView, Boat.standartDisplayVars);
                     break;

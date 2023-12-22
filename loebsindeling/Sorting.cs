@@ -30,7 +30,7 @@ namespace loebsindeling {
             return boatList;
         }
 
-        public static List<Boat> dh2022Sort(List<Boat> boatList, int upAndDownCount, int circleCount, double LightWindWeight, double mediumWindWeight, double hardWindWeight)
+        public static List<Boat> tASortering(List<Boat> boatList, int upAndDownCount, int circleCount, double LightWindWeight, double mediumWindWeight, double hardWindWeight)
         {
             //sort for tacil
             boatList.Sort(delegate (Boat x, Boat y)
