@@ -20,10 +20,13 @@ namespace loebsindeling
     public partial class mainForm : Form
     {
         public mainForm()
-        {
+        {   
             InitializeComponent();
             saveFileDialog1.FileName = "NA";
             this.Text = "Løbsindeling - " + VersionLabel;
+            DateTime dateTime = DateTime.Now;
+            if(dateTime.CompareTo(DateTime.Parse("1 may 2023")) == 1)
+                MessageBox.Show("Dette er måske ikke den nyeste version af Lobesindeling\n!!!");
         }
 
         private void openDataFileButton_Click(object sender, EventArgs e)
