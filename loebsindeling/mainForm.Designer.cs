@@ -55,9 +55,9 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.exportPathTextBox = new System.Windows.Forms.TextBox();
             this.chooseExportPathButton = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.helpTab = new System.Windows.Forms.TabPage();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.welcomTab.SuspendLayout();
             this.loadData.SuspendLayout();
@@ -118,13 +118,13 @@
             this.welcomeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.welcomeTextBox.Location = new System.Drawing.Point(0, 0);
+            this.welcomeTextBox.Location = new System.Drawing.Point(0, 3);
             this.welcomeTextBox.Multiline = true;
             this.welcomeTextBox.Name = "welcomeTextBox";
             this.welcomeTextBox.ReadOnly = true;
-            this.welcomeTextBox.Size = new System.Drawing.Size(772, 501);
+            this.welcomeTextBox.Size = new System.Drawing.Size(772, 498);
             this.welcomeTextBox.TabIndex = 0;
-            this.welcomeTextBox.Text = "Velkommen til Dansk Sejlunion, Teknisk Udvalg - Testmiljø for Løbsinddeling";
+            this.welcomeTextBox.Text = "Velkommen til Dansk Sejlunion, Teknisk Udvalg - Testmiljø for Løbsinddeling.";
             // 
             // loadData
             // 
@@ -292,9 +292,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Grupperings algoritme";
+            this.label2.Text = "Grupperingsalgoritme";
             // 
             // groupeBoatsComboBox
             // 
