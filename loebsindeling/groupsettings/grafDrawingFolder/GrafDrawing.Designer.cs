@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrafDrawing));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.DrawPanel = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xAxis = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
@@ -38,24 +38,25 @@
             this.yAxis = new System.Windows.Forms.Button();
             this.AxisText = new System.Windows.Forms.Label();
             this.changeDataOnDotsButton = new System.Windows.Forms.Button();
+            this.buttonLineSelection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panel1
+            // DrawPanel
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DrawPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 414);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_Click);
-            this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.DrawPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DrawPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.DrawPanel.Location = new System.Drawing.Point(12, 12);
+            this.DrawPanel.Name = "DrawPanel";
+            this.DrawPanel.Size = new System.Drawing.Size(776, 414);
+            this.DrawPanel.TabIndex = 0;
+            this.DrawPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.DrawPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_Click);
+            this.DrawPanel.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
+            this.DrawPanel.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // contextMenuStrip1
             // 
@@ -129,18 +130,30 @@
             this.changeDataOnDotsButton.UseVisualStyleBackColor = true;
             this.changeDataOnDotsButton.Click += new System.EventHandler(this.changeDataOnDotsButton_Click);
             // 
+            // buttonLineSelection
+            // 
+            this.buttonLineSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonLineSelection.Location = new System.Drawing.Point(378, 457);
+            this.buttonLineSelection.Name = "buttonLineSelection";
+            this.buttonLineSelection.Size = new System.Drawing.Size(80, 23);
+            this.buttonLineSelection.TabIndex = 10;
+            this.buttonLineSelection.Text = "Skift opdeling";
+            this.buttonLineSelection.UseVisualStyleBackColor = true;
+            this.buttonLineSelection.Click += new System.EventHandler(this.buttonLineSelection_Click);
+            // 
             // GrafDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 485);
+            this.Controls.Add(this.buttonLineSelection);
             this.Controls.Add(this.changeDataOnDotsButton);
             this.Controls.Add(this.AxisText);
             this.Controls.Add(this.yAxis);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.xAxis);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.DrawPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GrafDrawing";
             this.Text = "Graf gruppering";
@@ -152,7 +165,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel DrawPanel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button xAxis;
         private System.Windows.Forms.Button saveButton;
@@ -160,5 +173,6 @@
         private System.Windows.Forms.Button yAxis;
         private System.Windows.Forms.Label AxisText;
         private System.Windows.Forms.Button changeDataOnDotsButton;
+        private System.Windows.Forms.Button buttonLineSelection;
     }
 }
