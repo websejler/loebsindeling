@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\juliu\Documents\loebsindelingPublish\</PublishUrl>
+    <PublishUrl>C:\Users\Julius\Documents\loebsindeling\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.3.4.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -71,7 +71,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -106,6 +106,12 @@
     </Compile>
     <Compile Include="groupsettings\grafDrawingFolder\GrafDrawing.Designer.cs">
       <DependentUpon>GrafDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="groupsettings\grafDrawingFolder\LineSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="groupsettings\grafDrawingFolder\LineSelector.Designer.cs">
+      <DependentUpon>LineSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="groupsettings\ScoreStepGrupperingSettings.cs">
       <SubType>Form</SubType>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="groupsettings\grafDrawingFolder\GrafDrawing.resx">
       <DependentUpon>GrafDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="groupsettings\grafDrawingFolder\LineSelector.resx">
+      <DependentUpon>LineSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="groupsettings\ScoreStepGrupperingSettings.resx">
       <DependentUpon>ScoreStepGrupperingSettings.cs</DependentUpon>
@@ -230,7 +239,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
+    <Content Include="resources\horizontal.png" />
+    <Content Include="resources\verticalGreenBox.png" />
+    <None Include="resources\horizontalBar.png" />
+    <Content Include="resources\horizontalGreenBox.png" />
+    <Content Include="resources\icon.ico" />
+    <Content Include="resources\leftDown.png" />
+    <Content Include="resources\leftDownGreenBox.png" />
+    <Content Include="resources\leftUp.png" />
+    <Content Include="resources\leftUpGreenBox.png" />
+    <Content Include="resources\rightDown.png" />
+    <Content Include="resources\rightDownGreenBox.png" />
+    <Content Include="resources\rightUp.png" />
+    <Content Include="resources\rightUpGreenBox.png" />
+    <Content Include="resources\vertical.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

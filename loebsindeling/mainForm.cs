@@ -1,4 +1,5 @@
 ﻿using loebsindeling.groupsettings;
+using loebsindeling.groupsettings.grafDrawingFolder;
 using loebsindeling.sortsettings;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ namespace loebsindeling
             DateTime dateTime = DateTime.Now;
             if(dateTime.CompareTo(DateTime.Parse("1 March 2024")) == 1)
                 MessageBox.Show("!!!  Dette er måske ikke den nyeste version af Lobesindeling  !!!");
+            
+            LineSelector f = new LineSelector((int)LineSelector.LineType.LeftUp);
+            f.ShowDialog();
+            MessageBox.Show("num: " + f.selectedLine);
         }
 
         private void openDataFileButton_Click(object sender, EventArgs e)
