@@ -482,15 +482,50 @@ namespace loebsindeling.groupsettings
                     return;
                 }
             }
+
             
             double xD = x / xScale;
             double yD = y / yScale;
             xD += minX;
             yD += minY;
+            if (!leagleClickOnPlane(xD, yD))
+            {
+                MessageBox.Show("Linjer krydser hinanden.\nDette er ikke tilladt.");
+                return;
+            }
             pointsXValue.Add(xD);
             pointsYValue.Add(yD);
             reDrawClicksOnBitMap();
             this.Refresh();
+        }
+
+        private bool leagleClickOnPlane(double xD, double yD)
+        {
+            switch (lineType)
+            {
+                case (int)LineSelector.LineType.Horizontal:
+                case (int)LineSelector.LineType.Vertical:
+                    return true;
+                case (int)LineSelector.LineType.RightUp:
+                case (int)LineSelector.LineType.LeftDown:
+                    for(int i = 0; i < pointsXValue.Count; i++)
+                    {
+                        if (!((xD < pointsXValue[i] && yD < pointsYValue[i]) || ((xD >= pointsXValue[i] && yD >= pointsYValue[i]))))
+                            return false;
+                    }
+                    return true;
+                case (int)LineSelector.LineType.RightDown:
+                case (int)LineSelector.LineType.LeftUp:
+                    for (int i = 0; i < pointsXValue.Count; i++)
+                    {
+                        if (!((xD < pointsXValue[i] && yD >= pointsYValue[i]) || ((xD >= pointsXValue[i] && yD < pointsYValue[i]))))
+                            return false;
+                    }
+                    return true;
+                default:
+                    throw new Exception("Line type not found");
+                    break;
+            }
         }
 
         private void removeNonNumberVarsFromList(List<String> varNames)
@@ -571,7 +606,26 @@ namespace loebsindeling.groupsettings
         {
             LineSelector lineSelector = new LineSelector(lineType);
             lineSelector.ShowDialog(this);
+            int oldLineType = lineType;
             lineType = lineSelector.selectedLine;
+            for(int i = 0; i < pointsXValue.Count; i++)
+            {
+                if (!leagleClickOnPlane(pointsXValue[i], pointsYValue[i]))
+                {
+                    
+                    DialogResult result = MessageBox.Show("Linjer krydser hinanden.\nDette er ikke tilladt.\nVil du slette alle punkter?", "Bekræftelse", MessageBoxButtons.YesNoCancel);
+                    if(result == DialogResult.Yes)
+                    {
+                        pointsXValue.Clear();
+                        pointsYValue.Clear();
+                        break;
+                    } else
+                    {
+                        lineType = oldLineType;
+                        break;
+                    }
+                }
+            }
             reDrawClicksOnBitMap();
             this.Refresh();
         }
