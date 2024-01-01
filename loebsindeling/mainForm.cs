@@ -92,7 +92,7 @@ namespace loebsindeling
                     break;
                 case "ta sortering":
                     SortSettingsTASortering Form2 = new SortSettingsTASortering();
-                    Form2.ShowDialog();
+                    Form2.ShowDialog(this);
 
                     if (Form2.abortFlag)
                         break;
@@ -106,7 +106,7 @@ namespace loebsindeling
                 case "dh cdl":
                     List<string> vars = Boat.getWindVarsTAU();
                     sortsettings.DHCDLWindSelector windSelector = new sortsettings.DHCDLWindSelector(vars);
-                    windSelector.ShowDialog();
+                    windSelector.ShowDialog(this);
                     string var = windSelector.getSelectedVar();
                     Sorting.dHCDL(Boat.boats, var);
                     Boat.SetgroupeIdForAll(0);
@@ -160,7 +160,7 @@ namespace loebsindeling
             {
                 case "score step gruppering":
                     ScoreStepGrupperingSettings form2 = new ScoreStepGrupperingSettings();
-                    form2.ShowDialog();
+                    form2.ShowDialog(this);
 
                     if (form2.abortFlag)
                         return;
@@ -172,7 +172,7 @@ namespace loebsindeling
                     break;
                 case "flyve grupper":
                     FlyveGrupperSettings flyveGrupperSettings = new FlyveGrupperSettings();
-                    flyveGrupperSettings.ShowDialog();
+                    flyveGrupperSettings.ShowDialog(this);
 
                     if (flyveGrupperSettings.abortFlag)
                     {
@@ -202,7 +202,7 @@ namespace loebsindeling
                     break;
                 case "graf gruppering":
                     GrafDrawing graf = new GrafDrawing();
-                    graf.ShowDialog();
+                    graf.ShowDialog(this);
                     if (!graf.abort)
                     {
                         
@@ -234,7 +234,7 @@ namespace loebsindeling
             variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
             variabelToShow.checkedListBox1.Items.Add("loeb nr");
             variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
-            variabelToShow.ShowDialog();
+            variabelToShow.ShowDialog(this);
 
             if (variabelToShow.abortFlag)
                 return;
@@ -295,7 +295,7 @@ namespace loebsindeling
             variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
             variabelToShow.checkedListBox1.Items.Add("loeb nr");
             variabelToShow.checkedListBox1.SetItemCheckState(variabelToShow.checkedListBox1.Items.Count - 1, CheckState.Checked);
-            variabelToShow.ShowDialog();
+            variabelToShow.ShowDialog(this);
 
             if (variabelToShow.abortFlag)
                 return;

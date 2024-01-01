@@ -56,7 +56,7 @@ namespace loebsindeling.groupsettings
 
         int lineType = 0;
 
-
+        
         public GrafDrawing()
         {
             InitializeComponent();
@@ -176,25 +176,57 @@ namespace loebsindeling.groupsettings
             aTimer.Dispose();
             Boat.SetgroupeIdForAll(0);
             abort = false;
-            int i;
-            for (i = 0; i < pointsXValue.Count; i++)
+            
+            switch (lineType)
             {
-                foreach(Boat boat in Boat.boats)
+                case (int)LineSelector.LineType.Horizontal:
+                    horizontalLineTypeSave();
+                    break;
+                case (int)LineSelector.LineType.Vertical:
+                    verticalLineTypeSave();
+                    break;
+                case (int)LineSelector.LineType.LeftDown:
+                    leftDownLineTypeSave();
+                    break;
+                case (int)LineSelector.LineType.RightDown:
+                    rightDownLineTypeSave();
+                    break;
+                case (int)LineSelector.LineType.LeftUp:
+                    leftUpLineTypeSave();
+                    break;
+                case (int)LineSelector.LineType.RightUp:
+                    rightUpLineTypeSave();
+                    break;
+                default:
+                    throw new Exception("Line type not found");
+                    break;
+            }
+            
+            this.Close();
+        }
+
+        private void leftDownLineTypeSave()
+        {
+            int i;
+            for ( i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
                 {
-                    if(boat.GroupeId == 0)
+                    if (boat.GroupeId == 0)
                     {
-                        if(boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        if (boat.getDataDoubleCast(xVar) < pointsXValue[i])
                         {
-                            if(boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            if (boat.getDataDoubleCast(yVar) < pointsYValue[i])
                             {
                                 boat.GroupeId = i + 1;
                             }
                         }
-                    } else
+                    }
+                    else
                     {
                         if (pointsXValue[boat.GroupeId - 1] >= pointsXValue[i] && boat.getDataDoubleCast(xVar) < pointsXValue[i])
                         {
-                            if (pointsYValue[boat.GroupeId -1] >= pointsYValue[i] && boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            if (pointsYValue[boat.GroupeId - 1] >= pointsYValue[i] && boat.getDataDoubleCast(yVar) < pointsYValue[i])
                             {
                                 boat.GroupeId = i + 1;
                             }
@@ -209,7 +241,179 @@ namespace loebsindeling.groupsettings
                     boat.GroupeId = i + 1;
                 }
             }
-            this.Close();
+        }
+        private void rightDownLineTypeSave()
+        {
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
+                {
+                    if (boat.GroupeId == 0)
+                    {
+                        if (boat.getDataDoubleCast(xVar) >= pointsXValue[i])
+                        {
+                            if (boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pointsXValue[boat.GroupeId - 1] < pointsXValue[i] && boat.getDataDoubleCast(xVar) >= pointsXValue[i])
+                        {
+                            if (pointsYValue[boat.GroupeId - 1] >= pointsYValue[i] && boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
+        }
+        private void leftUpLineTypeSave()
+        {
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
+                {
+                    if (boat.GroupeId == 0)
+                    {
+                        if (boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            if (boat.getDataDoubleCast(yVar) >= pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pointsXValue[boat.GroupeId - 1] >= pointsXValue[i] && boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            if (pointsYValue[boat.GroupeId - 1] < pointsYValue[i] && boat.getDataDoubleCast(yVar) >= pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
+        }
+        private void rightUpLineTypeSave()
+        {
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
+                {
+                    if (boat.GroupeId == 0)
+                    {
+                        if (boat.getDataDoubleCast(xVar) >= pointsXValue[i])
+                        {
+                            if (boat.getDataDoubleCast(yVar) >= pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pointsXValue[boat.GroupeId - 1] < pointsXValue[i] && boat.getDataDoubleCast(xVar) >= pointsXValue[i])
+                        {
+                            if (pointsYValue[boat.GroupeId - 1] < pointsYValue[i] && boat.getDataDoubleCast(yVar) >= pointsYValue[i])
+                            {
+                                boat.GroupeId = i + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
+        }
+        private void verticalLineTypeSave()
+        {
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
+                {
+                    if (boat.GroupeId == 0)
+                    {
+                        if (boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            boat.GroupeId = i + 1;   
+                        }
+                    }
+                    else
+                    {
+                        if (pointsXValue[boat.GroupeId - 1] >= pointsXValue[i] && boat.getDataDoubleCast(xVar) < pointsXValue[i])
+                        {
+                            boat.GroupeId = i + 1;
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
+        }
+        private void horizontalLineTypeSave()
+        {
+            int i;
+            for (i = 0; i < pointsXValue.Count; i++)
+            {
+                foreach (Boat boat in Boat.boats)
+                {
+                    if (boat.GroupeId == 0)
+                    {
+                        if (boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                        {
+                            boat.GroupeId = i + 1;
+                        }
+                    }
+                    else
+                    {
+                        if (pointsYValue[boat.GroupeId - 1] >= pointsYValue[i] && boat.getDataDoubleCast(yVar) < pointsYValue[i])
+                        {
+                            boat.GroupeId = i + 1;
+                        }
+                    }
+                }
+            }
+            foreach (Boat boat in Boat.boats)
+            {
+                if (boat.GroupeId == 0)
+                {
+                    boat.GroupeId = i + 1;
+                }
+            }
         }
 
         private void yAxis_Click(object sender, EventArgs e)
@@ -218,7 +422,7 @@ namespace loebsindeling.groupsettings
             removeNonNumberVarsFromList(varNames);
             varNames.Add("score");
             ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
-            changeDataInGraph.ShowDialog();
+            changeDataInGraph.ShowDialog(this);
             if (changeDataInGraph.var.Equals(""))
                 return;
             yVar = changeDataInGraph.var;
@@ -236,7 +440,7 @@ namespace loebsindeling.groupsettings
             removeNonNumberVarsFromList(varNames);
             varNames.Add("score");
             ChangeDataInGraph changeDataInGraph = new ChangeDataInGraph(varNames);
-            changeDataInGraph.ShowDialog();
+            changeDataInGraph.ShowDialog(this);
             if (changeDataInGraph.var.Equals(""))
                 return;
             xVar = changeDataInGraph.var;
@@ -316,7 +520,7 @@ namespace loebsindeling.groupsettings
                 }
             }
             variabelToShow.checkedListBox1.Items.Add("sorterings score");
-            variabelToShow.ShowDialog();
+            variabelToShow.ShowDialog(this);
 
             if (variabelToShow.abortFlag)
                 return;
@@ -366,7 +570,7 @@ namespace loebsindeling.groupsettings
         private void buttonLineSelection_Click(object sender, EventArgs e)
         {
             LineSelector lineSelector = new LineSelector(lineType);
-            lineSelector.ShowDialog();
+            lineSelector.ShowDialog(this);
             lineType = lineSelector.selectedLine;
             reDrawClicksOnBitMap();
             this.Refresh();
