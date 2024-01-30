@@ -163,9 +163,7 @@ namespace loebsindeling.groupsettings
                     {
                         toolTip.Hide(DrawPanel);
                     }
-                    //this.Refresh();
-                    //Invalidate();
-                    this.Invalidate();
+                    this.Refresh();
                 });
             }
             
